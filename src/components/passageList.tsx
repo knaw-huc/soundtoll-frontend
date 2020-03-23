@@ -1,7 +1,7 @@
 import React from "react";
 import {IResultPassageList} from "../misc/interfaces";
 
-function PassageList(props: { result: IResultPassageList }) {
+function PassageList(props: { result: IResultPassageList}) {
 
     return (
         <div className="hcList hcMarginBottom2">

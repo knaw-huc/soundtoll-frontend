@@ -8,14 +8,12 @@ import {IMapData} from "../misc/interfaces";
 
 function Geomap(props: { code: string }) {
     const [data, setData] = useState<IMapData>({name: "", region: "", lat: 0, long: 0, zoom: 1});
-    const [loading, setLoading] = useState(true);
     let url: string = "none";
 
     async function fetchData() {
         const response = await fetch(SONT_SERVICE + "map/" + props.code);
         const json = await response.json();
         setData(json);
-        setLoading(false);
     }
 
     const position: [number, number] = [data.lat as number, data.long as number]
@@ -39,7 +37,7 @@ function Geomap(props: { code: string }) {
     useEffect(() => {
         window.scroll(0,0);
         fetchData();
-    }, []);
+    });
 
     return (
         <div>

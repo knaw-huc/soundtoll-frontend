@@ -1,4 +1,4 @@
-import React, {CElement} from "react";
+import React from "react";
 import {useState, useEffect} from "react";
 import {SONT_SERVICE} from "../../config";
 import {facetList, ISendCandidate} from "../../misc/interfaces";
@@ -27,14 +27,14 @@ function HomePortFacet(props: {parentCallback: ISendCandidate}) {
 
     function changeListLength() {
         if (more) {
-            if (filter == "") {
+            if (filter === "") {
                 url= SONT_SERVICE + "elastic/initial_facet/schipper_plaatsnaam/short";
             } else {
                 url= SONT_SERVICE + "elastic/facet/schipper_plaatsnaam/short/" + filter;
             }
             setMore(false);
         } else {
-            if (filter == "") {
+            if (filter === "") {
                 url= SONT_SERVICE + "elastic/initial_facet/schipper_plaatsnaam/long";
             } else {
                 url= SONT_SERVICE + "elastic/facet/schipper_plaats/longnaam/" + filter;

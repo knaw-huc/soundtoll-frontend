@@ -1,4 +1,4 @@
-import React, {CElement} from "react";
+import React from "react";
 import {useState, useEffect} from "react";
 import {SONT_SERVICE} from "../../config";
 import {facetList, ISendCandidate} from "../../misc/interfaces";
@@ -26,14 +26,14 @@ function DestinationStandardFacet(props: {parentCallback: ISendCandidate}) {
 
     function changeListLength() {
         if (more) {
-            if (filter == "") {
+            if (filter === "") {
                 url= SONT_SERVICE + "elastic/initial_facet/naar_standaard.plaats/short";
             } else {
                 url= SONT_SERVICE + "elastic/facet/naar_standaard.plaats/short/" + filter;
             }
             setMore(false);
         } else {
-            if (filter == "") {
+            if (filter === "") {
                 url= SONT_SERVICE + "elastic/initial_facet/naar_standaard.plaats/long";
             } else {
                 url= SONT_SERVICE + "elastic/facet/naar_standaard.plaats/long/" + filter;

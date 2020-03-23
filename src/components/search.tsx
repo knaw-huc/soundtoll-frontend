@@ -54,12 +54,12 @@ export default function Search(props: { search_string: string }) {
     const [destinationFacets, setDestinationFacets] = useState(searchData.facetstate.arrival);
     const [standardFacets, setStandardFacets] = useState(searchData.facetstate.standard);
     const [commodityFacets, setCommodityFacets] = useState(searchData.facetstate.misc);
-    const [refresh, setRefresh] = useState(true);
     let searchBuffer = searchData;
     const [searchStruc, setSearchStruc] = useState<ISearchObject>(searchData);
     const [data, setData] = useState<IResultPassageList>({amount: 0, passages: []});
-    const [page, setPage] = useState(1);
+    const [refresh, setRefresh] = useState(true);
 
+    console.log(searchStruc);
     const sendCandidate: ISendCandidate = (candidate: IFacetCandidate) => {
         searchBuffer = searchStruc;
         if (searchStruc.searchvalues === "none") {
@@ -125,14 +125,12 @@ export default function Search(props: { search_string: string }) {
 
 
     function nextPage() {
-        setPage(page + 1)
-        goToPage(page);
+        goToPage(searchStruc.page + 1);
     }
 
     function prevPage() {
-        if (page > 0) {
-            setPage(page - 1);
-            goToPage(page);
+        if (searchStruc.page > 0) {
+            goToPage(searchStruc.page - 1);
         }
 
     }
@@ -149,6 +147,7 @@ export default function Search(props: { search_string: string }) {
         searchBuffer = searchStruc;
         searchBuffer.sortorder = field;
         setSearchStruc(searchBuffer);
+        setRefresh(!refresh);
     }
 
     const resetFacets: IResetFacets = () => {
@@ -160,7 +159,6 @@ export default function Search(props: { search_string: string }) {
     }
 
     const removeFacet: IRemoveFacet = (field: string, value: string) => {
-        let bufferArray = [];
         searchBuffer = searchStruc;
         if (typeof searchBuffer.searchvalues === "object") {
             searchBuffer.searchvalues.forEach((item: ISearchValues) => {
@@ -221,7 +219,7 @@ export default function Search(props: { search_string: string }) {
 
     useEffect(() => {
         fetchData();
-    }, [searchStruc])
+    }, [refresh])
 
     return (
         <div>

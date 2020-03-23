@@ -1,4 +1,4 @@
-import React, {CElement} from "react";
+import React from "react";
 import {useState, useEffect} from "react";
 import {SONT_SERVICE} from "../../config";
 import {facetList, ISendCandidate} from "../../misc/interfaces";
@@ -28,14 +28,14 @@ function DeparturePortFacet(props: {parentCallback: ISendCandidate}) {
 
     function changeListLength() {
         if (more) {
-            if (filter == "") {
+            if (filter === "") {
                 url= SONT_SERVICE + "elastic/initial_facet/van.plaats/short";
             } else {
                 url= SONT_SERVICE + "elastic/facet/van.plaats/short/" + filter;
             }
             setMore(false);
         } else {
-            if (filter == "") {
+            if (filter === "") {
                 url= SONT_SERVICE + "elastic/initial_facet/van.plaats/long";
             } else {
                 url= SONT_SERVICE + "elastic/facet/van.plaats/long/" + filter;

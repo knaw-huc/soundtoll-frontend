@@ -1,7 +1,7 @@
-import React, {CElement} from "react";
+import React from "react";
 import {useState, useEffect} from "react";
 import {SONT_SERVICE} from "../../config";
-import {facetList, facetData, ISendCandidate, IFacetCandidate} from "../../misc/interfaces";
+import {facetList, ISendCandidate} from "../../misc/interfaces";
 
 
 function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {

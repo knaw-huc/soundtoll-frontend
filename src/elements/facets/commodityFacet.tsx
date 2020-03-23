@@ -1,4 +1,4 @@
-import React, {CElement} from "react";
+import React from "react";
 import {useState, useEffect} from "react";
 import {SONT_SERVICE} from "../../config";
 import {facetList, ISendCandidate} from "../../misc/interfaces";
@@ -23,14 +23,14 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
 
     function changeListLength() {
         if (more) {
-            if (filter == "") {
+            if (filter === "") {
                 commURL= SONT_SERVICE + "elastic/initial_facet/lading.soort/short";
             } else {
                 commURL= SONT_SERVICE + "elastic/facet/lading.soort/short/" + filter;
             }
             setMore(false);
         } else {
-            if (filter == "") {
+            if (filter === "") {
                 commURL= SONT_SERVICE + "elastic/initial_facet/lading.soort/long";
             } else {
                 commURL= SONT_SERVICE + "elastic/facet/lading.soort/long/" + filter;
