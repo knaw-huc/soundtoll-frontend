@@ -122,8 +122,6 @@ export default function Search(props: { search_string: string }) {
         setData(json);
     }
 
-
-
     function nextPage() {
         goToPage(searchStruc.page + 1);
     }
@@ -323,6 +321,13 @@ export default function Search(props: { search_string: string }) {
                                         )
                                     })
                                 )}
+                            </div>
+                            <div className="hcList">
+                                <div className="hcListHeader">
+                                    <div className="hcLabel">Full name</div>
+                                    <div className="hcLabel">Year</div>
+                                    <div className="hcLabel">Home port</div>
+                                </div>
                             </div>
                             <PassageList result={data}/>
                             {data.amount > 20 ? (
