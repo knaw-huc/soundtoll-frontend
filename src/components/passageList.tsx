@@ -77,11 +77,10 @@ function PassageList(props: {
 
     }
 
-    fetchData();
 
-    // useEffect(() => {
-    //     fetchData();
-    // });
+     useEffect(() => {
+         fetchData();
+     });
 
 
     return (
