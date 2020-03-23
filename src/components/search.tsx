@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Header from "../page/header";
 import Footer from "../page/footer";
 import ShipmasterFacet from "../elements/facets/shipmasterFacet";
@@ -14,13 +14,14 @@ import CommodityFacet from "../elements/facets/commodityFacet";
 import PassageList from "./passageList";
 import {
     IFacetCandidate, IRemoveFacet,
-    IResetFacets,
+    IResetFacets, IResultPassageList,
     ISearchObject,
     ISearchValues,
     ISendCandidate,
     ISendPage,
     ISortOrder
 } from "../misc/interfaces";
+import {ELASTIC_URL} from "../config";
 import {Base64} from "js-base64";
 
 export default function Search(props: { search_string: string }) {
@@ -56,6 +57,8 @@ export default function Search(props: { search_string: string }) {
     const [refresh, setRefresh] = useState(true);
     let searchBuffer = searchData;
     const [searchStruc, setSearchStruc] = useState<ISearchObject>(searchData);
+    const [data, setData] = useState<IResultPassageList>({amount: 0, passages: []});
+    const [page, setPage] = useState(1);
 
     const sendCandidate: ISendCandidate = (candidate: IFacetCandidate) => {
         searchBuffer = searchStruc;
@@ -91,7 +94,51 @@ export default function Search(props: { search_string: string }) {
         }
     }
 
-    const setPage: ISendPage = (page: number) => {
+    let facets: ISearchValues[] = [];
+    if (typeof searchStruc.searchvalues === "object") {
+        facets = searchStruc.searchvalues as ISearchValues[];
+    }
+
+    let numberOfResults: string = "0";
+    let pluralResults: string = "";
+    if (data.amount === 1) {
+        pluralResults = " result";
+    } else {
+        pluralResults = " results";
+    }
+
+    if (data.amount >= 10000) {
+        numberOfResults = data.amount.toLocaleString('nl-NL') + "+" + pluralResults;
+    } else {
+        numberOfResults = data.amount.toLocaleString('nl-NL') + pluralResults;
+    }
+
+    const cross: string = "[x]";
+
+    async function fetchData() {
+        const url = ELASTIC_URL + Base64.toBase64(JSON.stringify(searchStruc));
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json);
+    }
+
+
+
+    function nextPage() {
+        setPage(page + 1)
+        goToPage(page);
+    }
+
+    function prevPage() {
+        if (page > 0) {
+            setPage(page - 1);
+            goToPage(page);
+        }
+
+    }
+
+
+    const goToPage: ISendPage = (page: number) => {
         searchBuffer = searchStruc;
         searchBuffer.page = page;
         setSearchStruc(searchBuffer);
@@ -109,6 +156,7 @@ export default function Search(props: { search_string: string }) {
         searchBuffer.page = 1;
         searchBuffer.searchvalues = "none";
         setSearchStruc(searchBuffer);
+        setRefresh(!refresh);
     }
 
     const removeFacet: IRemoveFacet = (field: string, value: string) => {
@@ -120,12 +168,15 @@ export default function Search(props: { search_string: string }) {
                     item.values = item.values.filter((element => element !== value));
                 }
             })
-            searchBuffer.searchvalues = searchBuffer.searchvalues.filter(function (el) {return el.values.length > 0});
+            searchBuffer.searchvalues = searchBuffer.searchvalues.filter(function (el) {
+                return el.values.length > 0
+            });
             if (searchBuffer.searchvalues.length === 0) {
                 searchBuffer.searchvalues = "none";
             }
         }
         setSearchStruc(searchBuffer);
+        setRefresh(!refresh);
     }
 
     function toggleShipMasterFacets() {
@@ -167,6 +218,10 @@ export default function Search(props: { search_string: string }) {
             setCommodityFacets(true);
         }
     }
+
+    useEffect(() => {
+        fetchData();
+    }, [searchStruc])
 
     return (
         <div>
@@ -239,8 +294,46 @@ export default function Search(props: { search_string: string }) {
                                 </div>) : (<div/>)}
                         </div>
 
-                        <PassageList searchData={searchStruc} parentPageCallback={setPage}
-                                     parentSortCallback={setSortOrder} parentRemoveFacet={removeFacet} parentResetFacets={resetFacets} refresh={refresh}/>
+                        <div className="hcLayoutResults">
+                            <div className="hcResultsHeader hcMarginBottom1">
+                                <div>{numberOfResults}</div>
+                                <div><select value={searchStruc.sortorder} onChange={(e) => {
+                                    setSortOrder(e.target.value)
+                                }}>
+                                    <option value="schipper_achternaam">Order by family name</option>
+                                    <option value="jaar">Order by year</option>
+                                    <option value="schipper_plaatsnaam">Order by home port</option>
+                                </select></div>
+                            </div>
+                            <div className="hcMarginBottom2">
+                                <div className="hcSmallTxt hcTxtColorGreyMid">Selected facets: <span
+                                    className="hcFacetReset hcClickable" onClick={resetFacets}>Reset facets</span>
+                                </div>
+                                {searchStruc.searchvalues === "none" ? (
+                                    <span className="hcSelectedFacet"><span
+                                        className="hcSelectedFacetType">None</span></span>
+                                ) : (
+                                    facets.map((item: ISearchValues) => {
+                                        return (
+                                            <span className="hcSelectedFacet"><span
+                                                className="hcSelectedFacetType">{item.name}: </span>
+                                                {item.values.map(function (skipper, i) {
+                                                    return (<div className="hcFacetValues" key={i}
+                                                                 onClick={() => removeFacet(item.name, skipper)}>{skipper} {cross} </div>)
+                                                })}
+                                    </span>
+                                        )
+                                    })
+                                )}
+                            </div>
+                            <PassageList result={data}/>
+                            {data.amount > 20 ? (
+                                <div className="hcPagination">
+                                    <div className="hcClickable" onClick={prevPage}>&#8592; Previous</div>
+                                    <div className="hcClickable" onClick={nextPage}>Next &#8594;</div>
+                                </div>
+                            ) : (<div/>)}
+                        </div>
                     </div>
                 </div>
             </div>
