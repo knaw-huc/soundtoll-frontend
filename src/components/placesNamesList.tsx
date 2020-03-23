@@ -1,0 +1,64 @@
+import React from "react";
+import {IResult, IPlaceList, ISearchObject, ISearchValues} from "../misc/interfaces";
+import {Base64} from "js-base64";
+
+function PlacesNamesList(props: {namesList: IResult, port: string}) {
+    const data = props.namesList.data as IPlaceList;
+    let right = data.itemList;
+    let left = right.splice(0, Math.ceil(right.length / 2));
+    let searchData:ISearchObject = {
+        facetstate: {
+            shipmaster: true,
+            departure: false,
+            arrival: false,
+            standard: false,
+            misc: false
+        },
+        searchvalues: "none",
+        page: 1,
+        sortorder: "schipper_achternaam"
+    }
+    let portName: string = "Home port"
+
+
+    function pickPlace(name: string): void {
+        switch (props.port) {
+            case "schipper_plaatsnaam":
+                portName = "Home port";
+                break;
+            case "van_standaard.plaats":
+                portName = "Departure port";
+                break;
+            case "naar_standaard.plaats":
+                portName = "Port of arrival";
+                break;
+        }
+        searchData.searchvalues = [{name: portName, field: props.port, values: [name]} as ISearchValues];
+        const codedData: string = Base64.toBase64(JSON.stringify(searchData));
+        window.location.href = "/#search/" + codedData;
+
+    }
+    return (
+        <div>
+            <div className="hc2columns">
+                <div>
+                    {left.map(item => {
+                        return <div className="hcClickable" onClick={() => pickPlace(item.name)}>
+                            {item.name}<br/>
+                        </div>
+                    })}</div>
+                <div>
+                    {right.map(item => {
+                        return <div className="hcClickable" onClick={() => pickPlace(item.name)}>
+                            {item.name}<br/>
+                        </div>
+                    })}
+                </div>
+            </div>
+
+
+        </div>
+    )
+}
+
+export default PlacesNamesList;

@@ -501,7 +501,7 @@ input, select, option, textarea {
     align-items: baseline;
     padding-right: 1rem; }
   select {
-    background-color: none; } }
+    background-color: inherit; } }
 
 .hcBorderBottom {
   border-bottom: 1px solid #ededed; }
@@ -509,7 +509,7 @@ input, select, option, textarea {
 .hcMapPlaceholder {
   width: 100%;
   height: 250px;
-  background-image: url("../images/map-placeholder.jpg");
+  /*background-image: url("../images/map-placeholder.jpg");*/
   background-size: cover;
   background-position: center; }
 
@@ -635,13 +635,13 @@ hr {
 .hcLayoutResults {
   width: 100%; }
 
-.hcLayoutFacetsToggel {
+.hcLayoutFacetsToggle {
   display: flex;
   height: 230px;
   flex-direction: row;
   overflow-x: auto;
   background-color: #fafafa; }
-  .hcLayoutFacetsToggel div {
+  .hcLayoutFacetsToggle div {
     width: 250px;
     margin-right: 3rem; }
 
@@ -657,13 +657,13 @@ hr {
     width: 350px; }
   .hcLayoutResults {
     width: calc(100% - 350px); }
-  .hcLayoutFacetsToggel {
+  .hcLayoutFacetsToggle {
     display: block;
     overflow-x: none;
     height: auto;
     flex-direction: column;
     background: none; }
-    .hcLayoutFacetsToggel div {
+    .hcLayoutFacetsToggle div {
       width: 100%;
       margin-right: auto; }
   #showFacets {
@@ -757,12 +757,13 @@ margin: 6px 0 0 16px;
     height: 100%;
     align-items: baseline;
     line-height: 130%; }
-  .hcPageHeaderSimple nav a {
+  .hcPageHeaderSimple nav a, .hcPageHeaderSimple nav div {
     height: 100%;
     padding: 1.5rem 1rem;
     display: flex;
     color: #fff;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer;}
   .hcPageHeaderSimple nav a:hover {
     background-color: rgba(255, 255, 255, 0.11); }
   .hcPageHeaderSimple nav a:first-child {
@@ -1051,10 +1052,10 @@ margin: 6px 0 0 16px;
   background-color: #f6f6f6;
   border-radius: 3px;
   margin: 0 .5rem .5rem 0;
-  cursor: pointer; }
+  }
 
 .hcSelectedFacet:after {
-  content: url(../images/icons/icon-delete.svg);
+  /*content: url(../images/icons/icon-delete.svg);*/
   margin-left: .3rem;
   opacity: .4; }
 
@@ -1079,11 +1080,16 @@ margin: 6px 0 0 16px;
   cursor: pointer; }
 
 .hcFacetHelp {
-  display: none;
-  position: absolute;
-  background-color: #25a39a;
+  display: inline-block;
+  background-color: #cccccc;
   padding: .5rem;
-  width: 250px; }
+  width: fit-content }
+
+.hcFacetHelpVisible {
+  display: inline-block;
+  background-color: #cccccc;
+  padding: .5rem;
+  width: fit-content }
 
 .hcPagination {
   display: flex;
@@ -1206,7 +1212,9 @@ a {
   text-align: center;
 }
 #hcLeftScan{
-  width: 200px;
+  width: 250px;
+  border: 1px solid #666;
+  cursor: pointer;
 }
 .hcScanName{
   font-size: 0.8rem;
@@ -1235,6 +1243,7 @@ a {
   font-weight: 700;
   color:#333;
   padding-right: 40px;
+  vertical-align: top;
 }
 .hcCargoTable{
   display: table;
@@ -1262,3 +1271,77 @@ border-left: 1px solid #ccc;
 #mapid{
   border: 1px solid #999;
 }
+
+.hcClickable {
+  color:#0087d4;
+  cursor: pointer;
+  display: inline;
+}
+
+.hcRightMargin{
+  margin-right: 8px;
+  display: inline;
+}
+
+.hcLetterPicker, .hcPageBrowser {
+  margin-bottom: 10px;
+  padding: 4px 8px;
+  background-color: #dddddd;
+}
+
+.hcPageBrowser{
+  margin-top: 10px;
+}
+
+.leaflet-container {
+  height: 600px;
+  width: 900px;
+  margin: 20px auto;
+}
+
+.hcFacetGroup {
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.hcRightMargin select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0087d4;
+  border: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.hcFacetSelector {
+  font-size: small;
+}
+
+.hcFacetItem{
+  cursor: pointer;
+}
+
+.hcPortPicker{
+  display: inline-block;
+  width: fit-content;
+  height: auto;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+.hcPortPicker:focus, select:focus{
+  outline-style: none;
+}
+
+.hcFacetValues{
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.hcFacetReset{
+  float: right;
+}
+
+
+
