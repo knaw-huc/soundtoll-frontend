@@ -36,7 +36,7 @@ function PlacesNamesList(props: {namesList: IResult, port: string}) {
         searchData.searchvalues = [{name: portName, field: props.port, values: [name]} as ISearchValues];
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
         window.location.href = "/#search/" + codedData;
-
+        window.scroll(0,0);
     }
     return (
         <div>

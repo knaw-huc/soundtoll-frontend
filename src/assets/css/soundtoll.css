@@ -457,6 +457,7 @@ input, select, option, textarea {
   width: 23%;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
 }
 .hcPartnerLogos{
   background-color: #ffffff;
@@ -1341,6 +1342,11 @@ border-left: 1px solid #ccc;
 
 .hcFacetReset{
   float: right;
+}
+
+.hcFacetLoading{
+  padding: 6px;
+  font-style: italic;
 }
 
 

@@ -11,6 +11,7 @@ function HomePortFacet(props: {parentCallback: ISendCandidate}) {
     let [data, setData] = useState<facetList>({"buckets": []});
     let url: string = SONT_SERVICE + "elastic/initial_facet/schipper_plaatsnaam/short";
     const [help, setHelp] = useState(false);
+    const [loading, setLoading] = useState(true);
     const facets: facetList = data;
 
     async function fetchData() {
@@ -23,6 +24,7 @@ function HomePortFacet(props: {parentCallback: ISendCandidate}) {
         const response = await fetch(url);
         const json = await response.json();
         setData(json);
+        setLoading(false);
     }
 
     function changeListLength() {
@@ -71,7 +73,7 @@ function HomePortFacet(props: {parentCallback: ISendCandidate}) {
             </div> }
 
             <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>
-            <div className="hcFacetItems">
+            {!loading ? (<div className="hcFacetItems">
                 {facets.buckets.map((item) => {
                     return (
                         <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Home port", field: "schipper_plaatsnaam", candidate: item.key})}>
@@ -85,7 +87,9 @@ function HomePortFacet(props: {parentCallback: ISendCandidate}) {
                     { more ? (<div>More...</div>) : (<div>Less...</div>)}
 
                 </div>
-            </div>
+            </div>) : (
+                <div className="hcfacetLoading">Loading...</div>
+            )}
         </div>
     );
 }

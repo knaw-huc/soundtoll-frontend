@@ -59,7 +59,6 @@ export default function Search(props: { search_string: string }) {
     const [data, setData] = useState<IResultPassageList>({amount: 0, passages: []});
     const [refresh, setRefresh] = useState(true);
 
-    console.log(searchStruc);
     const sendCandidate: ISendCandidate = (candidate: IFacetCandidate) => {
         searchBuffer = searchStruc;
         if (searchStruc.searchvalues === "none") {
@@ -89,8 +88,10 @@ export default function Search(props: { search_string: string }) {
                     });
                 }
             }
+            searchBuffer.page = 1;
             setSearchStruc(searchBuffer);
             setRefresh(!refresh);
+            window.scroll(0,0);
         }
     }
 
@@ -139,6 +140,7 @@ export default function Search(props: { search_string: string }) {
         searchBuffer.page = page;
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
+        window.scroll(0,0);
     }
 
     const setSortOrder: ISortOrder = (field: string) => {

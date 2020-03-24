@@ -23,7 +23,6 @@ function Passage(props: { passageId: number }) {
     }
     
     useEffect(() => {
-        window.scroll(0,0);
         fetchData();
     })
 

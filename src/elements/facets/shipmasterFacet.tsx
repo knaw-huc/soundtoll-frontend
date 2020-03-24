@@ -9,6 +9,7 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
     let [more, setMore] = useState(true);
     const [filter, setFilter] = useState("");
     let [data, setData] = useState<facetList>({"buckets": []});
+    const [loading, setLoading] = useState(true);
     let url: string = SONT_SERVICE + "elastic/initial_facet/schipper_naam/short";
     const [help, setHelp] = useState(false);
     const facets: facetList = data;
@@ -23,6 +24,7 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
         const response = await fetch(url);
         const json = await response.json();
         setData(json);
+        setLoading(false);
     }
 
 
@@ -67,12 +69,12 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
             <div>
             {help ? (<div className="hcFacetHelp">
                 <strong>The full name facet </strong><br/>
-                The names of the shipmasters are ordered by their number of passages. Filtering this facet is bases on family name.
+                The names of the shipmasters are ordered by their number of passages. Filtering this facet is based on <u>family name</u>.
             </div>) : (<div/>)}
 
             </div>
             <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>
-            <div className="hcFacetItems">
+            {!loading ? (<div className="hcFacetItems">
                 {facets.buckets.map((item) => {
                     return (
                         <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Full name", field: "schipper_naam", candidate: item.key})}>
@@ -85,7 +87,8 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
                 <div className="hcClickable" onClick={changeListLength}>
                     { more ? (<div>More...</div>) : (<div>Less...</div>)}
                 </div>
-            </div>
+            </div>) :
+                (<div className="hcFacetLoading">Loading...</div>)}
         </div>
     );
 }

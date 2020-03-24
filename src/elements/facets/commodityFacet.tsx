@@ -11,6 +11,7 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
     let [data, setData] = useState<facetList>({"buckets": []});
     let commURL: string = SONT_SERVICE + "elastic/initial_facet/lading.soort/short";
     const [help, setHelp] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const facets: facetList = data;
 
@@ -19,6 +20,7 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
         const response = await fetch(commURL);
         const json = await response.json();
         setData(json);
+        setLoading(false);
     }
 
     function changeListLength() {
@@ -73,7 +75,7 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
             </div> }
 
             <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>
-            <div className="hcFacetItems">
+            {!loading ? (<div className="hcFacetItems">
                 {facets.buckets.map((item) => {
                     return (
                         <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Commodity", field: "lading.soort", candidate: item.key})}>
@@ -87,7 +89,8 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
                     { more ? (<div>More...</div>) : (<div>Less...</div>)}
 
                 </div>
-            </div>
+            </div>) :
+                (<div className="hcFacetLoading">Loading...</div>)}
         </div>
     );
 }

@@ -10,6 +10,8 @@ function Geomap(props: { code: string }) {
     const [data, setData] = useState<IMapData>({name: "", region: "", lat: 0, long: 0, zoom: 1});
     let url: string = "none";
 
+    window.scroll(0,0);
+
     async function fetchData() {
         const response = await fetch(SONT_SERVICE + "map/" + props.code);
         const json = await response.json();
@@ -29,13 +31,12 @@ function Geomap(props: { code: string }) {
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             />
             <Marker position={position}>
-                <Popup><span>Place</span></Popup>
+
             </Marker>
         </Map>
     );
 
     useEffect(() => {
-        window.scroll(0,0);
         fetchData();
     });
 

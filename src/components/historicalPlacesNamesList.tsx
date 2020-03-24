@@ -23,7 +23,7 @@ function HistoricalPlacesNamesList(props: {namesList: IResult}) {
         searchData.searchvalues = [{name: "Home port", field: "schipper_plaatsnaam", values: [name]} as ISearchValues];
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
         window.location.href = "/#search/" + codedData;
-
+        window.scroll(0,0);
     }
 
     return (

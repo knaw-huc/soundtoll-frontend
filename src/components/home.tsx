@@ -29,6 +29,7 @@ export default class Home extends React.Component {
                             <p>Many theories concerning the role of the writer as reader exist. In a sense,
                                 if social realism holds, we have to choose between the neosemantic paradigm of
                                 narrative and the neocultural paradigm of consensus. </p>
+                            <p><strong><i>This page will contain the homepage of the Soundtoll Registers Online. With another text, of course...</i></strong></p>
                         </div>
                     </div>
                 </div>

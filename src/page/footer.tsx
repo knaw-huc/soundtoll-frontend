@@ -12,86 +12,62 @@ import breed from "../assets/images/Logo Breed Documentconversie Mooi Werk (2).j
 import oks from "../assets/images/oks.png";
 import smf from "../assets/images/smf_logo_compact.jpg";
 import huygens from "../assets/images/logo-blue-huygens.svg";
+import {goOut} from "../misc/functions";
 
 export default class Footer extends React.Component {
     render()  {
         return (
-            <BrowserRouter>
+
             <div className="hcContentContainer bgColorBrand1">
                 <div className="hcMarginTop5 hcMarginBottom5">
                     <div className="hcBasicSideMargin">
                         <div className="hcPartnerLogos">
                             <div className="hcPartnerLogoRow">
-                                <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
+                                <div className="hcPartnerLogo" onClick={() => goOut("https://www.tresoar.nl/Pages/Default.aspx")}>
                                         <img src={tresoar} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={rug} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={fa} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={nwo} alt="Logo" />
-                                    </Link>
                                 </div>
                             </div>
                             <div className="hcPartnerLogoRow">
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={ark} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={fonds} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={hoek} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={muller} alt="Logo" />
-                                    </Link>
                                 </div>
                             </div>
                             <div className="hcPartnerLogoRow">
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={breed} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={oks} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={smf} alt="Logo" />
-                                    </Link>
                                 </div>
                                 <div className="hcPartnerLogo">
-                                    <Link to={{pathname: ""}}>
                                         <img src={huygens} alt="Logo" />
-                                    </Link>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </BrowserRouter>
         )
 }
 }
