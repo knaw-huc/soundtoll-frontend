@@ -9,16 +9,16 @@ function DepartureStandardFacet(props: {parentCallback: ISendCandidate}) {
     let [more, setMore] = useState(true);
     const [filter, setFilter] = useState("");
     let [data, setData] = useState<facetList>({"buckets": []});
-    let url: string = SONT_SERVICE + "elastic/initial_facet/van_standaard.plaats/short";
+    let url: string = SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/short";
     const [help, setHelp] = useState(false);
     const facets: facetList = data;
     const [loading, setLoading] = useState(true);
 
     async function fetchData() {
         if (more) {
-            url = SONT_SERVICE + "elastic/facet/van_standaard.plaats/short/" + filter;
+            url = SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/short/" + filter;
         } else {
-            url = SONT_SERVICE + "elastic/facet/van_standaard.plaats/long/" + filter;
+            url = SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/long/" + filter;
         }
 
         const response = await fetch(url);
@@ -30,16 +30,16 @@ function DepartureStandardFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/van_standaard.plaats/short";
+                url= SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/short";
             } else {
-                url= SONT_SERVICE + "elastic/facet/van_standaard.plaats/short/" + filter;
+                url= SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/van_standaard.plaats/long";
+                url= SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/long";
             } else {
-                url= SONT_SERVICE + "elastic/facet/van_standaard.plaats/long/" + filter;
+                url= SONT_SERVICE + "elastic/nested_facet/van_standaard.plaats/long/" + filter;
             }
             setMore(true);
         }

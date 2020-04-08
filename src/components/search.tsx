@@ -36,7 +36,7 @@ export default function Search(props: { search_string: string }) {
         },
         searchvalues: "none",
         page: 1,
-        sortorder: "schipper_achternaam"
+        sortorder: "schipper_achternaam.raw"
     }
 
     if (props.search_string !== "") {
@@ -298,9 +298,9 @@ export default function Search(props: { search_string: string }) {
                                 <div><select value={searchStruc.sortorder} onChange={(e) => {
                                     setSortOrder(e.target.value)
                                 }}>
-                                    <option value="schipper_achternaam">Order by family name</option>
+                                    <option value="schipper_achternaam.raw">Order by family name</option>
                                     <option value="jaar">Order by year</option>
-                                    <option value="schipper_plaatsnaam">Order by home port</option>
+                                    <option value="schipper_plaatsnaam.raw">Order by home port</option>
                                 </select></div>
                             </div>
                             <div className="hcMarginBottom2">

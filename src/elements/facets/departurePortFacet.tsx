@@ -11,14 +11,14 @@ function DeparturePortFacet(props: {parentCallback: ISendCandidate}) {
     let [data, setData] = useState<facetList>({"buckets": []});
     const [help, setHelp] = useState(false);
     const [loading, setLoading] = useState(true);
-    let url: string = SONT_SERVICE + "elastic/initial_facet/van.plaats/short";
+    let url: string = SONT_SERVICE + "elastic/nested_facet/van.plaats/short";
     const facets: facetList = data;
 
     async function fetchData() {
         if (more) {
-            url = SONT_SERVICE + "elastic/facet/van.plaats/short/" + filter;
+            url = SONT_SERVICE + "elastic/nested_facet/van.plaats/short/" + filter;
         } else {
-            url = SONT_SERVICE + "elastic/facet/van.plaats/long/" + filter;
+            url = SONT_SERVICE + "elastic/nested_facet/van.plaats/long/" + filter;
         }
 
         const response = await fetch(url);
@@ -30,16 +30,16 @@ function DeparturePortFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/van.plaats/short";
+                url= SONT_SERVICE + "elastic/nested_facet/van.plaats/short";
             } else {
-                url= SONT_SERVICE + "elastic/facet/van.plaats/short/" + filter;
+                url= SONT_SERVICE + "elastic/nested_facet/van.plaats/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/van.plaats/long";
+                url= SONT_SERVICE + "elastic/nested_facet/van.plaats/long";
             } else {
-                url= SONT_SERVICE + "elastic/facet/van.plaats/long/" + filter;
+                url= SONT_SERVICE + "elastic/nested_facet/van.plaats/long/" + filter;
             }
             setMore(true);
         }
@@ -51,7 +51,6 @@ function DeparturePortFacet(props: {parentCallback: ISendCandidate}) {
         {
             setFilter(e.currentTarget.value);
         }
-        fetchData();
     }
 
     useEffect(() => {

@@ -6,18 +6,21 @@ import {facetList, ISendCandidate} from "../../misc/interfaces";
 
 function CommodityFacet(props: {parentCallback: ISendCandidate}) {
 
-    let [more, setMore] = useState(true);
+    const [more, setMore] = useState(true);
     const [filter, setFilter] = useState("");
-    let [data, setData] = useState<facetList>({"buckets": []});
-    let commURL: string = SONT_SERVICE + "elastic/initial_facet/lading.soort/short";
+    const [data, setData] = useState<facetList>({"buckets": []});
+    let url: string = SONT_SERVICE + "elastic/nested_facet/lading.soort/short";
     const [help, setHelp] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const facets: facetList = data;
 
     async function fetchData() {
-        console.log(commURL);
-        const response = await fetch(commURL);
+        if (more) {
+            url = SONT_SERVICE + "elastic/nested_facet/lading.soort/short/" + filter;
+        } else {
+            url = SONT_SERVICE + "elastic/nested_facet/lading.soort/long/" + filter;
+        }
+        const response = await fetch(url);
         const json = await response.json();
         setData(json);
         setLoading(false);
@@ -26,20 +29,19 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                commURL= SONT_SERVICE + "elastic/initial_facet/lading.soort/short";
+                url = SONT_SERVICE + "elastic/nested_facet/lading.soort/short";
             } else {
-                commURL= SONT_SERVICE + "elastic/facet/lading.soort/short/" + filter;
+                url = SONT_SERVICE + "elastic/nested_facet/lading.soort/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                commURL= SONT_SERVICE + "elastic/initial_facet/lading.soort/long";
+                url = SONT_SERVICE + "elastic/nested_facet/lading.soort/long";
             } else {
-                commURL= SONT_SERVICE + "elastic/facet/lading.soort/long/" + filter;
+                url = SONT_SERVICE + "elastic/nested_facet/lading.soort/long/" + filter;
             }
             setMore(true);
         }
-        fetchData();
     }
 
 
@@ -47,18 +49,12 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
         if (e.currentTarget.value.length > 1)
         {
             setFilter(e.currentTarget.value);
-            if (more) {
-                commURL = SONT_SERVICE + "elastic/facet/lading.soort/short/" + filter;
-            } else {
-                commURL = SONT_SERVICE + "elastic/facet/lading.soort/long/" + filter;
-            }
         }
-        fetchData();
     }
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [filter, more]);
 
     return (
         <div className="hcFacet">
@@ -76,7 +72,7 @@ function CommodityFacet(props: {parentCallback: ISendCandidate}) {
 
             <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>
             {!loading ? (<div className="hcFacetItems">
-                {facets.buckets.map((item) => {
+                {data.buckets.map((item) => {
                     return (
                         <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Commodity", field: "lading.soort", candidate: item.key})}>
                             {item.key}

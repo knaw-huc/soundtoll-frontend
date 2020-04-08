@@ -22,19 +22,19 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
         switch (props.port) {
             case "Home port":
                 header = "Home port big region";
-                field = "plaats_regio_klein";
+                field = "plaats_regio_groot";
                 break;
             case "Departure":
                 header = "Departure port big region";
-                field = "van_regio_klein.name";
+                field = "van_regio_groot.name";
                 break;
             case "Arrival":
                 header = "Arrival port big region";
-                field = "naar_regio_klein.name";
+                field = "naar_regio_groot.name";
                 break;
             default:
                 header = "Home port big region";
-                field = "plaats_regio_klein";
+                field = "plaats_regio_groot";
                 break;
         }
         props.parentCallback({facet: header, field: field, candidate: value});

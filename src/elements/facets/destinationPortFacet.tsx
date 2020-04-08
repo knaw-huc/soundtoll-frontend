@@ -9,16 +9,16 @@ function DestinationPortFacet(props: {parentCallback: ISendCandidate}) {
     let [more, setMore] = useState(true);
     const [filter, setFilter] = useState("");
     let [data, setData] = useState<facetList>({"buckets": []});
-    let url: string = SONT_SERVICE + "elastic/initial_facet/naar.plaats/short";
+    let url: string = SONT_SERVICE + "elastic/nested_facet/naar.plaats/short";
     const [help, setHelp] = useState(false);
     const facets: facetList = data;
     const [loading, setLoading] = useState(true);
 
     async function fetchData() {
         if (more) {
-            url = SONT_SERVICE + "elastic/facet/naar.plaats/short/" + filter;
+            url = SONT_SERVICE + "elastic/nested_facet/naar.plaats/short/" + filter;
         } else {
-            url = SONT_SERVICE + "elastic/facet/naar.plaats/long/" + filter;
+            url = SONT_SERVICE + "elastic/nested_facet/naar.plaats/long/" + filter;
         }
 
         const response = await fetch(url);
@@ -30,16 +30,16 @@ function DestinationPortFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/naar.plaats/short";
+                url= SONT_SERVICE + "elastic/nested_facet/naar.plaats/short";
             } else {
-                url= SONT_SERVICE + "elastic/facet/naar.plaats/short/" + filter;
+                url= SONT_SERVICE + "elastic/nested_facet/naar.plaats/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/naar.plaats/long";
+                url= SONT_SERVICE + "elastic/nested_facet/naar.plaats/long";
             } else {
-                url= SONT_SERVICE + "elastic/facet/naar.plaats/long/" + filter;
+                url= SONT_SERVICE + "elastic/nested_facet/naar.plaats/long/" + filter;
             }
             setMore(true);
         }
