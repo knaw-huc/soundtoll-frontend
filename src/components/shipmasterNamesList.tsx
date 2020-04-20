@@ -16,7 +16,7 @@ function ShipmasterNamesList(props: {skipperList: IResult}) {
         },
         searchvalues: "none",
         page: 1,
-        sortorder: "schipper_achternaam"
+        sortorder: "schipper_achternaam.raw"
     }
 
 

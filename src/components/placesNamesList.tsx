@@ -16,7 +16,7 @@ function PlacesNamesList(props: {namesList: IResult, port: string}) {
         },
         searchvalues: "none",
         page: 1,
-        sortorder: "schipper_achternaam"
+        sortorder: "schipper_achternaam.raw"
     }
     let portName: string = "Home port"
 
