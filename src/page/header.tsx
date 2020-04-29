@@ -10,17 +10,17 @@ export default class Header extends React.Component {
 
 
     goBrowsing() {
-        window.location.href = "http://localhost:3000/#browse";
+        window.location.href = "#browse";
     }
 
     goSearching() {
         // const interpreter = interpret(SontMachine);
         // interpreter.send("search", {search_string: "none"});
-        window.location.href = "http://localhost:3000/#search/";
+        window.location.href = "#search/";
     }
 
     goHome() {
-        window.location.href = "http://localhost:3000/#home";
+        window.location.href = "#home";
     }
 
     // goGeo() {
@@ -28,7 +28,7 @@ export default class Header extends React.Component {
     // }
 
     goAbout() {
-        window.location.href = "http://localhost:3000/#about";
+        window.location.href = "#about";
     }
 
     render() {

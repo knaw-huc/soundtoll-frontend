@@ -6,6 +6,7 @@ import HomePortFacet from "../elements/facets/homePortFacet";
 import SmallRegionFacet from "../elements/facets/smallRegionFacet";
 import {useState} from "react";
 import BigRegionFacet from "../elements/facets/bigRegionFacet";
+import BigRegionFacetHome from "../elements/facets/bigRegionFacetHome";
 import DeparturePortFacet from "../elements/facets/departurePortFacet";
 import DestinationPortFacet from "../elements/facets/destinationPortFacet";
 import DepartureStandardFacet from "../elements/facets/departureStandardFacet";
@@ -38,6 +39,7 @@ export default function Search(props: { search_string: string }) {
         page: 1,
         sortorder: "schipper_achternaam.raw"
     }
+
 
     if (props.search_string !== "") {
         try {
@@ -243,7 +245,7 @@ export default function Search(props: { search_string: string }) {
                                     <ShipmasterFacet parentCallback={sendCandidate}/>
                                     <HomePortFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Home port"/>
-                                    <BigRegionFacet parentCallback={sendCandidate} port="Home port"/>
+                                    <BigRegionFacetHome parentCallback={sendCandidate}/>
                                 </div>) : (<div/>)}
 
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"

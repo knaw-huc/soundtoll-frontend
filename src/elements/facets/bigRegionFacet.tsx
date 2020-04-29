@@ -8,6 +8,7 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
     const url: string = SONT_SERVICE + "big_regions";
     const port: string = props.port;
     const [help, setHelp] = useState(false);
+    const [count, setCount] = useState(0);
 
     async function fetchData() {
         const response = await fetch(url);
@@ -42,7 +43,9 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
 
     useEffect(() => {
         fetchData();
-    });
+    }, [count]);
+
+
 
     return (
         <div className="hcFacet">

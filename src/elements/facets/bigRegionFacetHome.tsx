@@ -3,10 +3,10 @@ import {IRegionDataList, ISendCandidate} from "../../misc/interfaces";
 import {useState, useEffect} from "react";
 import {SONT_SERVICE} from "../../config";
 
-function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
+function BigRegionFacet(props: {parentCallback: ISendCandidate}) {
     const [data, setData] = useState<IRegionDataList>({regions: []});
-    const url: string = SONT_SERVICE + "small_regions";
-    const port: string = props.port;
+    const url: string = SONT_SERVICE + "big_regions";
+    const port: string = 'Home';
     const [help, setHelp] = useState(false);
     const [count, setCount] = useState(0);
 
@@ -17,27 +17,27 @@ function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string})
     }
 
     function sendCandidate(value: string) {
-        let header: string = "";
-        let field: string = "";
+        let header: string = "Home port big region";
+        let field: string = "plaats_regio_groot";
 
-        switch (props.port) {
+       /* switch (props.port) {
             case "Home port":
-                header = "Home port small region";
-                field = "plaats_regio_klein";
+                header = "Home port big region";
+                field = "plaats_regio_groot";
                 break;
             case "Departure":
-                header = "Departure port small region";
-                field = "van_regio_klein.name";
+                header = "Departure port big region";
+                field = "van_regio_groot.name";
                 break;
             case "Arrival":
-                header = "Arrival port small region";
-                field = "naar_regio_klein.name";
+                header = "Arrival port big region";
+                field = "naar_regio_groot.name";
                 break;
             default:
-                header = "Home port small region";
-                field = "plaats_regio_klein";
+                header = "Home port big region";
+                field = "plaats_regio_groot";
                 break;
-        }
+        }*/
         props.parentCallback({facet: header, field: field, candidate: value});
     }
 
@@ -45,10 +45,12 @@ function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string})
         fetchData();
     }, [count]);
 
+
+
     return (
         <div className="hcFacet">
             <div className="hcFacetTitle">
-                <span>{port}: small region</span>
+                <span>{port}: big region</span>
                 <span className="hcIconHelp" onClick={() => setHelp(!help)}><img
                     src="https://d33wubrfki0l68.cloudfront.net/85886ca3e2d8c36ba06d7773a094512272453181/545f8/images/icons/icon-huc-help.svg"
                     alt=""/></span>
@@ -57,7 +59,7 @@ function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string})
             <div className="hcFacetHelp">
                 <strong>The small region facet </strong><br/>
                 Select the region of the shipmasters home ports.
-            </div>}
+            </div> }
             <div className="hcFacetItems">
                 <select className="hcFacetSelector" onChange={(e) => sendCandidate(e.target.value)}>
                     <option value="none">--- Select region ---</option>
@@ -71,4 +73,4 @@ function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string})
 
 }
 
-export default SmallRegionFacet;
+export default BigRegionFacet;
