@@ -142,12 +142,12 @@ function Places() {
                     ) : (
                         <div>
                             <PlacesNamesList namesList={result as IResult} port={port}/>
-                            <div className="hcPageBrowser">
+                            {/*<div className="hcPageBrowser">
                                 <div className="hcClickable hcRightMargin" onClick={() => move(1)}>Start</div>
                                 <div className="hcClickable hcRightMargin" onClick={() => move(page - 1)}>Prev</div>
                                 <div className="hcClickable hcRightMargin" onClick={() => move(page + 1)}>Next</div>
                                 <div className="hcClickable hcRightMargin" onClick={() => move(lastPage)}>End</div>
-                            </div>
+                            </div>*/}
                         </div>
 
                     )}
