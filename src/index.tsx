@@ -7,6 +7,7 @@ import Geomap from "./components/geomap";
 import About from "./components/about";
 import Maps from "./components/maps";
 import Shipmasters from "./components/shipmasters";
+import Commodities from "./components/commodities";
 import Passage from "./components/passage";
 import {StateMachineComponent} from "./renderMachine";
 import * as serviceWorker from './serviceWorker';
@@ -64,6 +65,7 @@ ReactDOM.render(
             "map": ({state}) => <Geomap code={(state.context || {}).code}/>,
             "about": ({state}) => <About/>,
             "currencies": ({state}) => <Currency/>,
+            "commodities": ({state}) => <Commodities/>,
             "names": ({state}) => <Shipmasters/>,
             "places": ({state}) => <Places/>,
             "hist_places": ({state}) => <HistoricalPlaces/>,

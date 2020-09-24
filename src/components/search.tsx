@@ -329,8 +329,10 @@ export default function Search(props: { search_string: string }) {
                             <div className="hcList">
                                 <div className="hcListHeader">
                                     <div className="hcLabel">Full name</div>
-                                    <div className="hcLabel">Year</div>
+                                    <div className="hcLabel">Date</div>
                                     <div className="hcLabel">Home port</div>
+                                    <div className="hcLabel">From</div>
+                                    <div className="hcLabel">To</div>
                                 </div>
                             </div>
                             <PassageList result={data}/>

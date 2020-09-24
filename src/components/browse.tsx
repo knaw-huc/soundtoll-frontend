@@ -31,6 +31,7 @@ export default class Browse extends React.Component {
                                     <p>&nbsp;</p>
                                 </div>
                                 <div className="hcBrowseCollection"><p><strong>Commodities</strong></p>
+                                    <p><a href="#commodities">Browse</a> through commodities.</p>
                                     <p>Download a list of commodities in <div className="hcClickable" onClick={() => goOut("http://www.soundtoll.nl/images/files/List%20of%20products2.pdf")}>PDF</div> format.</p>
                                 </div>
                             </div>

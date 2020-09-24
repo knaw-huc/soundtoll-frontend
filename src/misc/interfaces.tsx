@@ -86,6 +86,16 @@ export interface IShipmaster {
     volledige_naam: string;
 }
 
+export interface ICommodity {
+    name: string;
+}
+
+export interface ICommodityList {
+    itemList: ICommodity[],
+    page: number,
+    number_of_pages: number;
+}
+
 export interface IShipMasterList {
     itemList: IShipmaster[],
     page: number,
@@ -124,8 +134,12 @@ export interface IResultPassage {
     schipper_achternaam: string,
     schipper_naam: string,
     jaar: number,
+    maand: string,
+    dag: string,
     id_doorvaart: string,
     schipper_plaatsnaam: string;
+    van_eerste: string,
+    naar_eerste: string
 }
 
 export interface IResultPassageList {
