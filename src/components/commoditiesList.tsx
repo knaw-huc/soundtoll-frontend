@@ -16,7 +16,7 @@ function CommoditiesList(props: {commList: IResult}) {
         },
         searchvalues: "none",
         page: 1,
-        sortorder: "schipper_achternaam.raw"
+        sortorder: "schipper_achternaam.raw;asc"
     }
 
 

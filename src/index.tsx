@@ -22,9 +22,12 @@ import HistoricalPlaces from "./components/historicalPlaces";
 const interpreter = interpret(SontMachine);
 interpreter.start();
 
+gotoUrl();
+
 function gotoUrl () {
     if (window.location.hash.substr(1).indexOf("detail/") === 0) {
-        const id = +window.location.hash.substr(window.location.hash.indexOf("/") + 1)
+        const id = +window.location.hash.substr(window.location.hash.indexOf("/") + 1);
+        console.log(id);
         interpreter.send("detail", {passage_id: id});
     } else {
         if (window.location.hash.substr(1).indexOf("map/") === 0) {
@@ -44,12 +47,11 @@ function gotoUrl () {
             }
 
         }
-
     }
 }
 window.onhashchange = gotoUrl;
 
-gotoUrl();
+
 
 if (window.location.hash.substr(1).length > 0) {
     interpreter.send(window.location.hash.substr(1))

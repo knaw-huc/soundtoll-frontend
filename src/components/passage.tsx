@@ -42,7 +42,7 @@ function Passage(props: { passageId: number }) {
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
                     <h1>
-                        Passage
+                        {dv.jaar > 1633  ? (<div>Passage</div>) : (<div>Registration</div>)}
                     </h1>
                     <div className="hcLayoutFacet-Result hcBasicSideMargin hcMarginBottom15">
                         <div className="hcLayoutFacets">

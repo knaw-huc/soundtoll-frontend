@@ -13,6 +13,36 @@ export interface IPassageData {
     schipper_plaatsnaam: string,
     schipper_naam: string,
     datum: string,
+    jaar: number,
+    soort_korting: string,
+    korting_muntsoort1: string,
+    korting_bedrag1: string,
+    korting_muntsoort2: string,
+    korting_bedrag2: string,
+    korting_muntsoort3: string,
+    korting_bedrag3: string,
+    subtotaal1_muntsoort1: string,
+    subtotaal1_bedrag1: string,
+    subtotaal1_muntsoort2: string,
+    subtotaal1_bedrag2: string,
+    subtotaal1_muntsoort3: string,
+    subtotaal1_bedrag3: string,
+    subtotaal2_muntsoort1: string,
+    subtotaal2_bedrag1: string,
+    subtotaal2_muntsoort2: string,
+    subtotaal2_bedrag2: string,
+    subtotaal2_muntsoort3: string,
+    subtotaal2_bedrag3: string,
+    totaal_muntsoort1: string,
+    totaal_bedrag1: string,
+    totaal_muntsoort2: string,
+    totaal_bedrag2: string,
+    totaal_muntsoort3: string,
+    totaal_bedrag3: string,
+    totaal_muntsoort4: string,
+    totaal_bedrag4: string,
+    totaal_muntsoort5: string,
+    totaal_bedrag5: string
     tonnage: string,
     cargo: IPassageCargo[],
     tax: IPassageTax[],
@@ -86,6 +116,14 @@ export interface IShipmaster {
     volledige_naam: string;
 }
 
+export interface IShipmasterPatronym {
+    patroniem: string;
+}
+
+export interface IShipmasterChrName {
+    voornaam: string;
+}
+
 export interface ICommodity {
     name: string;
 }
@@ -98,6 +136,18 @@ export interface ICommodityList {
 
 export interface IShipMasterList {
     itemList: IShipmaster[],
+    page: number,
+    number_of_pages: number;
+}
+
+export interface IShipMasterPatronymList {
+    itemList: IShipmasterPatronym[],
+    page: number,
+    number_of_pages: number;
+}
+
+export interface IShipMasterChrNameList {
+    itemList: IShipmasterChrName[],
     page: number,
     number_of_pages: number;
 }
@@ -144,6 +194,7 @@ export interface IResultPassage {
 
 export interface IResultPassageList {
     amount: number,
+    pages: number,
     passages: IResultPassage[]
 }
 

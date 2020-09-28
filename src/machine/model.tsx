@@ -72,7 +72,7 @@ export const SontMachine = Machine<{
                 }),
                 target: "map"},
             test: "test",
-            "*": "fourOhFour"
+            "*": "home"
         },
         states: {
             fourOhFour: {},

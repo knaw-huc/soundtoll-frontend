@@ -12,6 +12,8 @@ import DestinationPortFacet from "../elements/facets/destinationPortFacet";
 import DepartureStandardFacet from "../elements/facets/departureStandardFacet";
 import DestinationStandardFacet from "../elements/facets/destinationStandardFacet";
 import CommodityFacet from "../elements/facets/commodityFacet";
+import PatronymFacet from "../elements/facets/patronymFacet";
+import ChrNameFacet from "../elements/facets/chrNameFacet";
 import PassageList from "./passageList";
 import {
     IFacetCandidate, IRemoveFacet,
@@ -37,7 +39,7 @@ export default function Search(props: { search_string: string }) {
         },
         searchvalues: "none",
         page: 1,
-        sortorder: "schipper_achternaam.raw"
+        sortorder: "schipper_achternaam.raw;asc"
     }
 
 
@@ -58,8 +60,10 @@ export default function Search(props: { search_string: string }) {
     const [commodityFacets, setCommodityFacets] = useState(searchData.facetstate.misc);
     let searchBuffer = searchData;
     const [searchStruc, setSearchStruc] = useState<ISearchObject>(searchData);
-    const [data, setData] = useState<IResultPassageList>({amount: 0, passages: []});
+    const [data, setData] = useState<IResultPassageList>({amount: 0, pages: 0, passages: []});
     const [refresh, setRefresh] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [pages, setPages] = useState<number[]>([]);
 
     const sendCandidate: ISendCandidate = (candidate: IFacetCandidate) => {
         searchBuffer = searchStruc;
@@ -93,7 +97,7 @@ export default function Search(props: { search_string: string }) {
             searchBuffer.page = 1;
             setSearchStruc(searchBuffer);
             setRefresh(!refresh);
-            window.scroll(0,0);
+            window.scroll(0, 0);
         }
     }
 
@@ -122,11 +126,28 @@ export default function Search(props: { search_string: string }) {
         const url = ELASTIC_URL + Base64.toBase64(JSON.stringify(searchStruc));
         const response = await fetch(url);
         const json = await response.json();
+        setPages(createPages(json));
         setData(json);
+        setLoading(false);
+    }
+
+    function createPages(json: IResultPassageList) {
+        let arr: number[] = [];
+        for (var i:number = 1; i<= json.pages; i++) {
+            arr.push(i);
+        }
+        return arr;
     }
 
     function nextPage() {
         goToPage(searchStruc.page + 1);
+    }
+
+    function selectPage(item: string) {
+        const pg: number = Number(item);
+        if (pg != NaN) {
+            goToPage(pg);
+        }
     }
 
     function prevPage() {
@@ -142,7 +163,7 @@ export default function Search(props: { search_string: string }) {
         searchBuffer.page = page;
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
-        window.scroll(0,0);
+        window.scroll(0, 0);
     }
 
     const setSortOrder: ISortOrder = (field: string) => {
@@ -243,6 +264,8 @@ export default function Search(props: { search_string: string }) {
                             {shipMasterFacets ? (
                                 <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
                                     <ShipmasterFacet parentCallback={sendCandidate}/>
+                                    <ChrNameFacet parentCallback={sendCandidate}/>
+                                    <PatronymFacet parentCallback={sendCandidate}/>
                                     <HomePortFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Home port"/>
                                     <BigRegionFacetHome parentCallback={sendCandidate}/>
@@ -300,9 +323,12 @@ export default function Search(props: { search_string: string }) {
                                 <div><select value={searchStruc.sortorder} onChange={(e) => {
                                     setSortOrder(e.target.value)
                                 }}>
-                                    <option value="schipper_achternaam.raw">Order by family name</option>
-                                    <option value="jaar">Order by year</option>
-                                    <option value="schipper_plaatsnaam.raw">Order by home port</option>
+                                    <option value="schipper_achternaam.raw;asc">Order by family name &#8595;</option>
+                                    <option value="schipper_achternaam.raw;desc">Order by family name &#8593;</option>
+                                    <option value="jaar;asc">Order by year &#8595;</option>
+                                    <option value="jaar;desc">Order by year &#8593;</option>
+                                    <option value="schipper_plaatsnaam.raw;asc">Order by home port &#8595;</option>
+                                    <option value="schipper_plaatsnaam.raw;desc">Order by home port &#8593;</option>
                                 </select></div>
                             </div>
                             <div className="hcMarginBottom2">
@@ -335,10 +361,23 @@ export default function Search(props: { search_string: string }) {
                                     <div className="hcLabel">To</div>
                                 </div>
                             </div>
-                            <PassageList result={data}/>
-                            {data.amount > 20 ? (
+                            {loading ? (<div className="hcResultListLoading">Loading...</div>) : ( <PassageList result={data}/> )}
+                            {!loading && data.amount > 50 ? (
                                 <div className="hcPagination">
                                     <div className="hcClickable" onClick={prevPage}>&#8592; Previous</div>
+                                    <div className="hcClickable">
+                                        <select className="hcPageSelector"  onChange={(e) => selectPage(e.target.value)}>
+                                            {pages.map((pg: number) => {
+                                                if (pg == searchStruc.page) {
+                                                    return (
+                                                        <option value={pg} selected>{pg}</option>)
+                                                } else {
+                                                    return (
+                                                        <option value={pg}>{pg}</option>)
+                                                }
+                                            })}
+                                        </select>
+                                    </div>
                                     <div className="hcClickable" onClick={nextPage}>Next &#8594;</div>
                                 </div>
                             ) : (<div/>)}

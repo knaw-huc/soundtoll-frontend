@@ -5,19 +5,24 @@ import Footer from "../page/footer";
 import "../assets/css/soundtoll.css";
 import {SONT_SERVICE} from "../config";
 import ShipMasterNamesList from "./shipmasterNamesList";
+import ShipmasterPatronymList from "./shipMasterPatronymList";
+import SchipmasterGivenNameList from "./shipmasterGivenNameList";
 import {IResult, IShipMasterList} from "../misc/interfaces";
+import ShipmasterGivenNameList from "./shipmasterGivenNameList";
 
 function Shipmasters() {
 
     let [letter, setLett] = useState('A');
     let [page, setPage] = useState(1);
     let [result, setResult] = useState<IResult>({number_of_records: 0, data: {}});
-    let [loading, setLoading] = useState(true)
+    let [name, setName] = useState("shipmasters");
+    let [loading, setLoading] = useState(true);
     const data = result.data as IShipMasterList;
     const lastPage: number = data.number_of_pages;
 
+
     async function fetchUrl() {
-        const response = await fetch(SONT_SERVICE + "shipmasters/" + letter + "/" + page.toString());
+        const response = await fetch(SONT_SERVICE + name + "/" + letter + "/" + page.toString());
         const json = await response.json();
         setResult(json);
         setLoading(false);
@@ -25,7 +30,7 @@ function Shipmasters() {
 
     useEffect(() => {
         fetchUrl();
-    }, [page, letter]);
+    }, [name, letter]);
 
     function move(pageNr: number): void {
         if (pageNr > 0 && pageNr <= lastPage) {
@@ -133,12 +138,21 @@ function Shipmasters() {
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("Z")}>
                             Z
                         </div>
+                        <div className="hcRightMargin"><select className="hcPortPicker"
+                                                               onChange={(e) => {setLoading(true); setName(e.target.value);}}>
+                            <option value="shipmasters">Full name</option>
+                            <option value="chrnames">Given name</option>
+                            <option value="patronyms">Patronym</option>
+                        </select>
+                        </div>
                     </div>
                     {loading ? (
                         <div>Loading...</div>
                     ) : (
                         <div>
-                            <ShipMasterNamesList skipperList={result as IResult}/>
+                            {name == "shipmasters" ? (<ShipMasterNamesList skipperList={result as IResult}/>) :
+                            name == "patronyms" ? (<ShipmasterPatronymList skipperList={result as IResult}/>) : (<ShipmasterGivenNameList skipperList={result as IResult}/>)}
+
                             {/*<div className="hcPageBrowser">
                                 <div className="hcClickable hcRightMargin" onClick={() => move(1)}>Start</div>
                                 <div className="hcClickable hcRightMargin" onClick={() => move(page - 1)}>Prev</div>
@@ -149,6 +163,7 @@ function Shipmasters() {
 
                     )}
                 </div>
+
             </div>
             <Footer/>
         </div>

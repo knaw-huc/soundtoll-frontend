@@ -16,7 +16,7 @@ function HistoricalPlacesNamesList(props: {namesList: IResult}) {
         },
         searchvalues: "none",
         page: 1,
-        sortorder: "schipper_achternaam.raw"
+        sortorder: "schipper_achternaam.raw;asc"
     }
 
     function pickName(name: string): void {

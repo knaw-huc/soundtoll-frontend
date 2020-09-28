@@ -413,7 +413,8 @@ input, select, option, textarea {
   min-height: 150px; }
 
 .hcLabel {
-  color: #999999;
+  font-weight: bold;
+  color: #777777;
   text-transform: uppercase;
   font-size: .85rem; }
 
@@ -422,6 +423,8 @@ input, select, option, textarea {
   width: 100%;
   min-width: 40px;
   bottom: 0; }
+
+
 
 .hcTextSnippit::before {
   content: " ..."; }
@@ -502,7 +505,7 @@ input, select, option, textarea {
     align-items: baseline;
     padding-right: 1rem; }
   select {
-    font-size: 14px !important;} }
+    font-size: 14px;} }
 
 .hcBorderBottom {
   border-bottom: 1px solid #ededed; }
@@ -1096,7 +1099,22 @@ margin: 6px 0 0 16px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  vertical-align: center}
+
+.hcLowerLine{
+  border-bottom: 1px solid #777777;
+}
+
+.hcUpperLine{
+  border-top: 1px solid #777777;
+}
+
+.hcResultListLoading{
+  display: block;
+  font-weight: bold;
+  margin: 20px 0 0 10px;
+}
 
 .hcPagination > * {
   margin: 0 .5rem; }
@@ -1328,6 +1346,11 @@ border-left: 1px solid #ccc;
   width: fit-content;
   height: auto;
   margin-left: 10px;
+}
+
+.hcPageSelector{
+  height: 36px;
+  font-size: 12px !important;
 }
 
 .hcPortPicker:focus, select:focus{

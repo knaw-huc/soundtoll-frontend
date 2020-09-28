@@ -87,7 +87,9 @@ function PassageDetails(props: {passage: IResult}) {
                 </div>
                 <div className="hcPassageValue">
                     {locations.map(place => {
-                        return <div>{place.name} (<div className="hcClickable" onClick={() => showMap(place.code)}>{place.mname}</div>)</div>
+                        if (place.name !== "-") {
+                            return <div>{place.name} (<div className="hcClickable" onClick={() => showMap(place.code)}>{place.mname}</div>)</div>
+                        }
                     })}
                 </div>
             </div>
@@ -107,7 +109,7 @@ function PassageDetails(props: {passage: IResult}) {
                 </div>
                 <div className="hcPassageValue">
                     {currencies.map(currency => {
-                        return <div>{currency.name} ({currency.code})</div>
+                        return <div>{currency.name} (<a href={currency.url} target="new">{currency.code}</a>)</div>
                     })}
                 </div>
             </div>
