@@ -24,6 +24,7 @@ interpreter.start();
 
 gotoUrl();
 
+
 function gotoUrl () {
     if (window.location.hash.substr(1).indexOf("detail/") === 0) {
         const id = +window.location.hash.substr(window.location.hash.indexOf("/") + 1);
@@ -49,6 +50,9 @@ function gotoUrl () {
         }
     }
 }
+
+
+
 window.onhashchange = gotoUrl;
 
 

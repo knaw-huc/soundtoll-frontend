@@ -249,6 +249,14 @@ strong {
   padding: .7rem 0;
   cursor: pointer; }
 
+.hcLabelLast {
+  flex: 0 0 1em;
+}
+
+.hcFixedLastCol{
+  flex: 0 0 2em;
+}
+
 .hcRowCard {
   background-color: #fff;
   padding: 1rem;
@@ -412,7 +420,7 @@ input, select, option, textarea {
   height: auto;
   min-height: 150px; }
 
-.hcLabel {
+.hcLabel, .hcLabelLast {
   font-weight: bold;
   color: #777777;
   text-transform: uppercase;

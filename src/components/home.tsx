@@ -12,24 +12,16 @@ export default class Home extends React.Component {
                     <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
                         <h2>Home</h2>
                         <div className="hcBlockText">
-                            <p>“Class is meaningless,” says Sartre; however, according to Werther[3] , it is not so much class that is meaningless, but rather
-                                the dialectic of class. Sontag suggests the use of the neosemantic paradigm of
-                                narrative to read society. It could be said that Tilton[4]
-                                implies that we have to choose between patriarchialist narrative and
-                                Batailleist `powerful communication’.</p>
-
-                            <p>Baudrillard uses the term ‘social realism’ to denote a self-falsifying
-                                totality. In a sense, Lacan promotes the use of the neosemantic paradigm of
-                                narrative to attack outdated, sexist perceptions of sexual identity.</p>
-
-                            <p>The subject is interpolated into a social realism that includes language as
-                                a whole. Thus, Lyotard’s critique of the neosemantic paradigm of narrative
-                                holds that the law is part of the meaninglessness of consciousness.</p>
-
-                            <p>Many theories concerning the role of the writer as reader exist. In a sense,
-                                if social realism holds, we have to choose between the neosemantic paradigm of
-                                narrative and the neocultural paradigm of consensus. </p>
-                            <p><strong><i>This page will contain the homepage of the Soundtoll Registers Online. With another text, of course...</i></strong></p>
+                            <h3>Versie 28-09-2020 </h3>
+                            <p>Deze versie zal dinsdag 28 september beschikbaar komen op de testserver https://soundtoll.sd.di.huc.knaw.nl/</p>
+                            <h3>Issues waaraan nog gewerkt wordt</h3>
+                            <ul>
+                                <li>Direct linken naar doorvaart- en registratiegegevens</li>
+                                <li>Vanuit detailgegevens terugkeren naar resultaatlijst in juiste staat </li>
+                                <li>Free text facet koppelen aan index</li>
+                                <li>Slider voor filteren op periode</li>
+                                <li>Testen, debuggen en details wijzigen</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

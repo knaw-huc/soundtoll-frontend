@@ -1,6 +1,6 @@
 import {assign, Machine} from "xstate";
 
-export const SontMachine = Machine<{
+export const SontMachineDetail = Machine<{
     passage_id: number,
     code: string,
     search_string: string

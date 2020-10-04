@@ -8,7 +8,8 @@ function PlacesNamesList(props: {namesList: IResult, port: string}) {
     let left = right.splice(0, Math.ceil(right.length / 2));
     let searchData:ISearchObject = {
         facetstate: {
-            shipmaster: true,
+            search: true,
+            shipmaster: false,
             departure: false,
             arrival: false,
             standard: false,

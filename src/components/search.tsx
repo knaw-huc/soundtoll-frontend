@@ -14,6 +14,7 @@ import DestinationStandardFacet from "../elements/facets/destinationStandardFace
 import CommodityFacet from "../elements/facets/commodityFacet";
 import PatronymFacet from "../elements/facets/patronymFacet";
 import ChrNameFacet from "../elements/facets/chrNameFacet";
+import FreeTextFacet from "../elements/facets/freeTextFacet";
 import PassageList from "./passageList";
 import {
     IFacetCandidate, IRemoveFacet,
@@ -31,7 +32,8 @@ export default function Search(props: { search_string: string }) {
 
     let searchData: ISearchObject = {
         facetstate: {
-            shipmaster: true,
+            search: true,
+            shipmaster: false,
             departure: false,
             arrival: false,
             standard: false,
@@ -53,6 +55,7 @@ export default function Search(props: { search_string: string }) {
 
     }
 
+    const [searchFacets, setSearchfacets] = useState(searchData.facetstate.search);
     const [shipMasterFacets, setShipMasterfacets] = useState(searchData.facetstate.shipmaster);
     const [departureFacets, setDepartureFacets] = useState(searchData.facetstate.departure);
     const [destinationFacets, setDestinationFacets] = useState(searchData.facetstate.arrival);
@@ -256,6 +259,17 @@ export default function Search(props: { search_string: string }) {
                             <button type="button" name="button" id="showFacets" className="hcfixedSideButton"><img
                                 src="https://d33wubrfki0l68.cloudfront.net/191a405740a4ade92836ba6eea6a6ceaa798bf2f/a4d8b/images/icons/icon-set-facets.svg"
                                 className="icon" alt="Facet button"/></button>
+
+                            <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
+                                 onClick={() => {setSearchfacets(!searchFacets)}}>
+                                {searchFacets ? (<span className="hcFacetGroup">&#9660; SEARCH</span>) : (
+                                    <span className="hcFacetGroup">&#9658; SEARCH</span>)}
+                            </div>
+                            {searchFacets ? (
+                                <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
+                                    <FreeTextFacet parentCallback={sendCandidate}/>
+                                </div>) : (<div/>)}
+
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
                                  onClick={toggleShipMasterFacets}>
                                 {shipMasterFacets ? (<span className="hcFacetGroup">&#9660; SHIPMASTERS</span>) : (
@@ -359,6 +373,7 @@ export default function Search(props: { search_string: string }) {
                                     <div className="hcLabel">Home port</div>
                                     <div className="hcLabel">From</div>
                                     <div className="hcLabel">To</div>
+                                    <div className="hcLabelLast">Type</div>
                                 </div>
                             </div>
                             {loading ? (<div className="hcResultListLoading">Loading...</div>) : ( <PassageList result={data}/> )}

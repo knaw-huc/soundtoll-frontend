@@ -234,6 +234,7 @@ export interface IRemoveFacet {
 }
 
 export interface IFacetState {
+    search: boolean;
     shipmaster: boolean;
     departure: boolean;
     arrival: boolean,

@@ -24,7 +24,7 @@ function Passage(props: { passageId: number }) {
     
     useEffect(() => {
         fetchData();
-    })
+    },[loading])
 
     function openImage(scanUrl: string): void {
         setImagedata({open: true, url: scanUrl});
