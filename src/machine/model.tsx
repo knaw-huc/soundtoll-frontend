@@ -72,29 +72,12 @@ export const SontMachine = Machine<{
                 }),
                 target: "map"},
             test: "test",
-            "*": "detail"
+            "*": "browse"
         },
         states: {
             fourOhFour: {},
-            detail: {
-                initial: "no_scan" as const,
-                states: {
-                    scan: {
-                        on: {
-                            close_scan: "no_scan"
-                        }
-                    },
-                    no_scan: {
-                        on: {
-                            select_scan: "scan",
-                            select_map: "#fetch.map"
-                        }
-                    }
-                }
-            },
-            map: {
-
-            },
+            detail: {},
+            map: {},
             maps: {},
             home: {},
             search: {

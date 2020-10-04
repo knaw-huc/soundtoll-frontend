@@ -28,7 +28,6 @@ gotoUrl();
 function gotoUrl () {
     if (window.location.hash.substr(1).indexOf("detail/") === 0) {
         const id = +window.location.hash.substr(window.location.hash.indexOf("/") + 1);
-        console.log(id);
         interpreter.send("detail", {passage_id: id});
     } else {
         if (window.location.hash.substr(1).indexOf("map/") === 0) {
@@ -51,19 +50,15 @@ function gotoUrl () {
     }
 }
 
-
-
 window.onhashchange = gotoUrl;
 
-
-
-if (window.location.hash.substr(1).length > 0) {
+/*if (window.location.hash.substr(1).length > 0) {
     interpreter.send(window.location.hash.substr(1))
-}
+}*/
 ReactDOM.render(
     <div>
         {StateMachineComponent(interpreter, {
-            detail: ({state}) => <Passage passageId={(state.context || {}).passage_id}/>,
+            "detail": ({state}) => <Passage passageId={(state.context || {}).passage_id}/>,
             "home": ({state}) => <Home/>,
             "browse": ({state}) => <Browse/>,
             "search": ({state}) => <Search search_string={(state.context || {}).search_string}/>,
