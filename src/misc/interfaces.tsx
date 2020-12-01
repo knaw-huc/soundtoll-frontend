@@ -189,7 +189,8 @@ export interface IResultPassage {
     id_doorvaart: string,
     schipper_plaatsnaam: string;
     van_eerste: string,
-    naar_eerste: string
+    naar_eerste: string,
+    type: string
 }
 
 export interface IResultPassageList {

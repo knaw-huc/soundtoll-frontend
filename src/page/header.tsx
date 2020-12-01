@@ -3,6 +3,8 @@ import logo from "../assets/images/logo_sont.png";
 // import {interpret} from "xstate";
 // import {SontMachine} from "../machine/model";
 // import {StateMachineComponent} from "../renderMachine";
+import EN from "../assets/images/en.gif";
+import NE from "../assets/images/nl.gif";
 
 
 

@@ -6,12 +6,6 @@ function PassageList(props: { result: IResultPassageList}) {
     return (
         <div className="hcList hcMarginBottom2">
             {props.result.passages.map((item) => {
-                let type: string = "";
-                if (item.jaar > 1634) {
-                    type = "P";
-                } else {
-                    type = "R";
-                }
                 return (
                     <div className="hcListBasicResult">
                         <div className="hcClickable" onClick={() => {
@@ -21,7 +15,7 @@ function PassageList(props: { result: IResultPassageList}) {
                         <div>{item.schipper_plaatsnaam}</div>
                         <div>{item.van_eerste}</div>
                         <div>{item.naar_eerste}</div>
-                        <div className="hcFixedLastCol">{type}</div>
+                        <div className="hcFixedLastCol">{item.type}</div>
                     </div>
                 )
             })}

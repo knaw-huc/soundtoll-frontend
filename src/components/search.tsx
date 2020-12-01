@@ -15,6 +15,7 @@ import CommodityFacet from "../elements/facets/commodityFacet";
 import PatronymFacet from "../elements/facets/patronymFacet";
 import ChrNameFacet from "../elements/facets/chrNameFacet";
 import FreeTextFacet from "../elements/facets/freeTextFacet";
+import TypeFacet from "../elements/facets/typeFacet";
 import PassageList from "./passageList";
 import {
     IFacetCandidate, IRemoveFacet,
@@ -77,6 +78,7 @@ export default function Search(props: { search_string: string }) {
                 values: [candidate.candidate]
             } as ISearchValues];
             setSearchStruc(searchBuffer);
+            window.location.href = '#search/' +  Base64.toBase64(JSON.stringify(searchStruc));
             setRefresh(!refresh);
         } else {
             if (typeof searchBuffer.searchvalues === "object") {
@@ -157,7 +159,6 @@ export default function Search(props: { search_string: string }) {
         if (searchStruc.page > 0) {
             goToPage(searchStruc.page - 1);
         }
-
     }
 
 
@@ -268,6 +269,7 @@ export default function Search(props: { search_string: string }) {
                             {searchFacets ? (
                                 <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
                                     <FreeTextFacet parentCallback={sendCandidate}/>
+                                    <TypeFacet parentCallback={sendCandidate}/>
                                 </div>) : (<div/>)}
 
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"

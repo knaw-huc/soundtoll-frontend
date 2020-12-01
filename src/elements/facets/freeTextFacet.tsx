@@ -6,12 +6,18 @@ import {facetList, ISendCandidate} from "../../misc/interfaces";
 
 function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
 
-    let [more, setMore] = useState(true);
-    const [filter, setFilter] = useState("");
-    let [data, setData] = useState<facetList>({"buckets": []});
-    let url: string = SONT_SERVICE + "elastic/initial_facet/schipper_voornamen/short";
     const [help, setHelp] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [textField, setTextField] = useState<string>("");
+
+    function handleChange(e: React.FormEvent<HTMLInputElement>): void {
+        setTextField(e.currentTarget.value);
+    }
+
+    function setTextFacet() {
+        if (textField !== "") {
+            props.parentCallback({facet: "Free text", field: "FREE_TEXT", candidate: textField});
+        }
+    }
 
 
 
@@ -31,7 +37,8 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
                 Press ENTER to search
             </div> }
 
-            <div className="hcFacetFilter"><input type="text" name=""  id="freeText" placeholder="Press ENTER to search"/></div>
+            <div className="hcFacetFilter"><input type="text" name=""  id="freeText" placeholder="Press ENTER to search"  onChange={handleChange}/></div>
+            <button className="ftSearchBtn" onClick={setTextFacet}>Search</button>
         </div>
     );
 }

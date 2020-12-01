@@ -24,7 +24,6 @@ export function StateMachineComponent<TContext, Schema, Events extends EventObje
 
   return React.createElement(function ThisIsAFunctionComponentNoteTheCapitalFirstLetterYo() {
     const [curState, setState] = useState(interpreter.state);
-    console.log(interpreter.state);
     useEffect(() => {
       const cb: StateListener<TContext, Events> = state => {
         return setState(state);
