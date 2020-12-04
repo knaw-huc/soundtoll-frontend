@@ -6,10 +6,25 @@ import AboutNL from "../page/content/aboutNL";
 import EN from "../assets/images/en.gif";
 import NE from "../assets/images/nl.gif";
 import {useState} from "react";
+import {ISetAboutPage} from "../misc/interfaces";
 
 export default function About() {
 
     const [language, setLanguage] = useState('EN');
+    const [page, setPage] = useState('home');
+
+    function pager() {
+        switch (page) {
+            case 'home':
+                return (<div>{language === 'EN' ? (<AboutEN/>) : (<AboutNL/>)}</div>);
+            default:
+                return (<div/>);
+        }
+    }
+
+    const setAboutPage: ISetAboutPage = (aboutPage: string) => {
+        setPage(page);
+    }
 
     return (
         <div>
@@ -20,8 +35,7 @@ export default function About() {
             </div>
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
-                    {language === 'EN' ? (<AboutEN/>) : (<AboutNL/>)}
-
+                    {pager()}
                 </div>
             </div>
 

@@ -207,6 +207,9 @@ export interface IMapData {
     zoom: number;
 }
 
+export interface ISetAboutPage {
+    (aboutPage: string): void;
+}
 
 export interface IFacetCandidate {
     facet: string,

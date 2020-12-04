@@ -1,10 +1,10 @@
 import React from "react";
 import {goOut} from "../../misc/functions";
 import "../../assets/css/soundtoll.css";
+import {PDF_PATH} from "../../config";
 
-export default class AboutNL extends React.Component {
+export default function AboutNL()  {
 
-    render()  {
         return(
 
             <div>
@@ -12,27 +12,27 @@ export default class AboutNL extends React.Component {
                 <div className="hcContentContainer">
                     <div className="hc2columns">
                         <div className="hcBrowseCollection"><p><strong>Wat is STRO</strong></p>
-                            <p><div className="hcClickable">Invoerwerkwijze</div> (Dutch)</p>
-                            <p><div className="hcClickable">Beknopte bronnenkritiek STRO-database </div></p>
-                            <p><div className="hcClickable">Beknopte bronnenkritiek van de originele STR</div></p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "method.pdf")}>Invoerwerkwijze</div> (Engels)</p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "sc_database.pdf")}>Beknopte bronnenkritiek STRO-database</div> (Engels)</p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "sc_source.pdf")}>Beknopte bronnenkritiek van de originele STR</div> (Engels)</p>
                             <p>&nbsp;</p>
                         </div>
                         <div className="hcBrowseCollection"><p><strong>Handleiding</strong></p>
-                            <p>In bewerking</p>
+                            <p>In ontwikkeling</p>
                         </div>
 
                     </div>
                     <div className="hc2columns">
                         <div className="hcBrowseCollection"><p><strong>Nuttige documenten</strong></p>
-                            <p><a href="#currencies">Volledige lijst met STR-microfilms</a></p>
-                            <p><a href="#about/en/">(Onvolledige) lijst met producten die als ladingen in STRO voorkomen</a></p>
-                            <p><a href="#about/en/">Romeinse cijfers in STRO: notatie en interpretatie</a></p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_films.pdf")}>Volledige lijst met STR-microfilms</div></p>
+                            <p><div  className="hcClickable" onClick={() => goOut(PDF_PATH + "products.pdf")}>(Onvolledige) lijst met producten die als ladingen in STRO voorkomen</div></p>
+                            <p><div  className="hcClickable" onClick={() => goOut(PDF_PATH + "roman_numerals.pdf")}>Romeinse cijfers in STRO: notatie en interpretatie</div></p>
                         </div>
                         <div className="hcBrowseCollection"><p><strong>Totstandkoming STRO</strong></p>
-                            <p><a href="#commodities">Projectorganisatie</a></p>
-                            <p><div className="hcClickable" onClick={() => goOut("http://www.soundtoll.nl/images/files/List%20of%20products2.pdf")}>Vrijwilligers</div></p>
-                            <p><a href="#about/en/">Dankbetuiging</a></p>
-                            <p><a href="#about/en/">Financiering</a></p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_project_organisatie.pdf")}>Projectorganisatie</div></p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "volunteers.pdf")}>Vrijwilligers</div></p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_dankbetuiging.pdf")}>Dankbetuiging</div></p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_financiering.pdf")}>Financiering</div></p>
                         </div>
                     </div>
 
@@ -40,5 +40,4 @@ export default class AboutNL extends React.Component {
             </div>
 
         )
-    }
 }
