@@ -1814,3 +1814,28 @@ color: #ffffff;
 background-color: #1c5a91;
 }
 
+.numSelector {
+display: inline !important;
+font-size: 10px !important;
+line-height: 12px;
+height: 24px;
+margin: 0 4px !important;
+}
+
+.hcLineElement{
+display: inline;
+}
+
+.expand_collapse{
+font-size: 20px;
+display: inline;
+font-weight: bold;
+color: #1c5a91;
+cursor: pointer;
+}
+
+.error {
+font-weight: bold;
+color: #b00;
+}
+
