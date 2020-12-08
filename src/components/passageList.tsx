@@ -15,7 +15,9 @@ function PassageList(props: { result: IResultPassageList}) {
                         <div>{item.schipper_plaatsnaam}</div>
                         <div>{item.van_eerste}</div>
                         <div>{item.naar_eerste}</div>
-                        <div className="hcFixedLastCol">{item.type}</div>
+                        {item.type === "P" ? (
+                            <div className="hcFixedLastColPassage" title="Passage">{item.type}</div>
+                        ) : (<div className="hcFixedLastColRegistration" title="Registration">{item.type}</div>)}
                     </div>
                 )
             })}

@@ -8,6 +8,7 @@ import {IMapData} from "../misc/interfaces";
 
 function Geomap(props: { code: string }) {
     const [data, setData] = useState<IMapData>({name: "", region: "", lat: 0, long: 0, zoom: 1});
+    const [loading, setLoading] = useState(true);
     let url: string = "none";
 
     window.scroll(0,0);
@@ -16,6 +17,7 @@ function Geomap(props: { code: string }) {
         const response = await fetch(SONT_SERVICE + "map/" + props.code);
         const json = await response.json();
         setData(json);
+        setLoading(false);
     }
 
     const position: [number, number] = [data.lat as number, data.long as number]
@@ -38,17 +40,19 @@ function Geomap(props: { code: string }) {
 
     useEffect(() => {
         fetchData();
-    });
+    }, [loading]);
 
     return (
         <div>
             <Header/>
-            <div className="hcContentContainer hcMarginBottom5">
+            {loading ? (<div>Loading...</div>) : ( <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
                     <h1>{data.name}</h1>
                     {map}
+                    <button className="ftSearchBtn" onClick={() => {window.history.back()}}>Back</button>
                 </div>
-            </div>
+            </div>)}
+
             <Footer/>
         </div>
     )

@@ -56,8 +56,8 @@ function Passage(props: { passageId: number }) {
                                     )
                                 })
                             )}
-
-
+                            <div>&nbsp;</div>
+                            <button className="ftSearchBtn" onClick={() => {window.history.back()}}>Back</button>
                         </div>
                         <div className="hcLayoutResults">
                             <div className="hcResultsHeader hcMarginBottom1">

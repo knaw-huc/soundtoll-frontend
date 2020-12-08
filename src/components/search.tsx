@@ -168,6 +168,7 @@ export default function Search(props: { search_string: string }) {
         searchBuffer.page = page;
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
+        window.location.href = '#search/' +  Base64.toBase64(JSON.stringify(searchStruc));
         window.scroll(0, 0);
     }
 
@@ -387,7 +388,7 @@ export default function Search(props: { search_string: string }) {
                                     <div className="hcClickable">
                                         <select className="hcPageSelector"  onChange={(e) => selectPage(e.target.value)}>
                                             {pages.map((pg: number) => {
-                                                if (pg == searchStruc.page) {
+                                                if (pg === searchStruc.page) {
                                                     return (
                                                         <option value={pg} selected>{pg}</option>)
                                                 } else {

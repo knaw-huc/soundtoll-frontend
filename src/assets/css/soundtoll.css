@@ -326,9 +326,22 @@ cursor: pointer;
 flex: 0 0 1em;
 }
 
-.hcFixedLastCol {
+.hcFixedLastColPassage, .hcFixedLastColRegistration {
 flex: 0 0 2em;
+color: #fff;
+text-align: center;
+font-weight: bold;
+height: 24px;
 }
+
+.hcFixedLastColPassage {
+background-color: #1c5a91;
+}
+
+.hcFixedLastColRegistration {
+background-color: #a00;
+}
+
 
 .hcRowCard {
 background-color: #fff;

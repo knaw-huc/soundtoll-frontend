@@ -150,8 +150,8 @@ function Shipmasters() {
                         <div>Loading...</div>
                     ) : (
                         <div>
-                            {name == "shipmasters" ? (<ShipMasterNamesList skipperList={result as IResult}/>) :
-                            name == "patronyms" ? (<ShipmasterPatronymList skipperList={result as IResult}/>) : (<ShipmasterGivenNameList skipperList={result as IResult}/>)}
+                            {name === "shipmasters" ? (<ShipMasterNamesList skipperList={result as IResult}/>) :
+                            name === "patronyms" ? (<ShipmasterPatronymList skipperList={result as IResult}/>) : (<ShipmasterGivenNameList skipperList={result as IResult}/>)}
 
                             {/*<div className="hcPageBrowser">
                                 <div className="hcClickable hcRightMargin" onClick={() => move(1)}>Start</div>

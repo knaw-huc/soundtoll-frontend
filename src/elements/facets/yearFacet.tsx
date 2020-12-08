@@ -39,7 +39,7 @@ function YearFacet(props: { parentCallback: ISendCandidate })
     }
 
     function setYearFacet() {
-        if (err == "") {
+        if (err === "") {
             if (single) {
                 props.parentCallback({facet: "Year", field: "jaar", candidate: String(from)});
             } else {
