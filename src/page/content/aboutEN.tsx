@@ -26,7 +26,7 @@ export default class AboutEN extends React.Component {
                             <div className="hc2columns">
                                 <div className="hcBrowseCollection"><p><strong>Helpful documents</strong></p>
                                     <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_films.pdf")}>A complete list of STR microfilms</div></p>
-                                    <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "products.pdf")}>Products that occur as cargoes in STRO</div></p>
+                                    <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "products.pdf")}>(Incomplete) list of products that occur as cargoes in STRO</div></p>
                                     <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "roman_numerals.pdf")}>Roman numerals in STR: usage and interpretation</div></p>
                                 </div>
                                 <div className="hcBrowseCollection"><p><strong>The establishment of STRO</strong></p>

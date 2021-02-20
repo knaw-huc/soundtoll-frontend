@@ -38,7 +38,7 @@ export default class Header extends React.Component {
             <div className="hcContentContainer bgColorBrand1 hcMarginBottom5">
                 <header className="hcPageHeaderSimple hcBasicSideMargin">
                     <div className="hcBrand">
-                        <div className="hcBrandLogo">
+                        <div className="hcBrandLogo" onClick={this.goHome}>>
                             <img src={logo} className="logo" alt="Logo Soundtolls"/>
                         </div>
                         <div className="hcSiteTitle">

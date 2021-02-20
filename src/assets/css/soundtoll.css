@@ -1092,6 +1092,7 @@ height: 100%;
 margin-top: 6px;
 height: 33px;
 width: auto;
+cursor: pointer;
 }
 
 .hcBrandName {

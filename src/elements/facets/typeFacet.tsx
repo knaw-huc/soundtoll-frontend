@@ -23,7 +23,8 @@ function TypeFacet(props: { parentCallback: ISendCandidate }) {
             {help &&
             <div className="hcFacetHelp">
                 <strong>Type facet </strong><br/>
-                Registrations consists of one or more passages
+                <strong>Passage:</strong> After 1633, each passage was recorded in one entry in the STR.<br/>
+                <strong>Registration:</strong> Before 1634, each passage was recorded in one or several entries in the STR. Accordingly, STRO includes one or several registrations per pre-1634 passage.
             </div>}
             <div className="hcFacetItem" onClick={() => {
                 props.parentCallback({facet: "Type (P = Passage, R = Registration)", field: "type", candidate: "P"});

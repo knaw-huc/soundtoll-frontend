@@ -30,7 +30,7 @@ export default class Footer extends React.Component {
                                         <img src={rug} alt="Logo" />
                                 </div>
                                 <div className="hcPartnerLogo">
-                                        <img src={fa} alt="Logo" />
+                                    <img src={breed} alt="Logo" />
                                 </div>
                                 <div className="hcPartnerLogo">
                                         <img src={nwo} alt="Logo" />
@@ -51,9 +51,7 @@ export default class Footer extends React.Component {
                                 </div>
                             </div>
                             <div className="hcPartnerLogoRow">
-                                <div className="hcPartnerLogo">
-                                        <img src={breed} alt="Logo" />
-                                </div>
+
                                 <div className="hcPartnerLogo">
                                         <img src={oks} alt="Logo" />
                                 </div>
