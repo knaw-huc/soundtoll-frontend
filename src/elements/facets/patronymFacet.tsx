@@ -60,7 +60,7 @@ function PatronymFacet(props: {parentCallback: ISendCandidate}) {
     return (
         <div className="hcFacet">
             <div className="hcFacetTitle">
-                <span>Patronym</span>
+                <span>Patronymic</span>
 
                 <span className="hcIconHelp" onClick={() => setHelp(!help)}><img
                     src="https://d33wubrfki0l68.cloudfront.net/85886ca3e2d8c36ba06d7773a094512272453181/545f8/images/icons/icon-huc-help.svg"
@@ -68,8 +68,8 @@ function PatronymFacet(props: {parentCallback: ISendCandidate}) {
             </div>
             { help &&
             <div className="hcFacetHelp">
-                <strong>Patronym facet </strong><br/>
-                The names of the patronyms are ordered by their number of passages.
+                <strong>Patronymic facet </strong><br/>
+                The names of the patronymics are ordered by their number of passages.
             </div> }
 
             <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>

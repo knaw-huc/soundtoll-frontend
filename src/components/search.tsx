@@ -183,6 +183,12 @@ export default function Search(props: { search_string: string }) {
         searchBuffer = searchStruc;
         searchBuffer.page = 1;
         searchBuffer.searchvalues = "none";
+        setSearchfacets(false);
+        setCommodityFacets(false);
+        setDepartureFacets(false);
+        setDestinationFacets(false);
+        setShipMasterfacets(false);
+        setStandardFacets(false);
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
     }
@@ -348,6 +354,10 @@ export default function Search(props: { search_string: string }) {
                                     <option value="jaar;desc">Order by year &#8593;</option>
                                     <option value="schipper_plaatsnaam.raw;asc">Order by home port &#8595;</option>
                                     <option value="schipper_plaatsnaam.raw;desc">Order by home port &#8593;</option>
+                                    <option value="van_eerste.raw;asc">Order by from &#8595;</option>
+                                    <option value="van_eerste.raw;desc">Order by from &#8593;</option>
+                                    <option value="naar_eerste.raw;asc">Order by to &#8595;</option>
+                                    <option value="naar_eerste.raw;desc">Order by to &#8593;</option>
                                 </select></div>
                             </div>
                             <div className="hcMarginBottom2">

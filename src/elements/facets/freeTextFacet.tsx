@@ -34,7 +34,7 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
             { help &&
             <div className="hcFacetHelp">
                 <strong>Free text facet </strong><br/>
-                Press ENTER to search
+                Search through all indexed fields. For performance reasons searching with wildcards is not possible. For more directed searches use the facets, which allow seaching with wildcards (*).
             </div> }
 
             <div className="hcFacetFilter"><input type="text" name=""  id="freeText" placeholder="Press ENTER to search"  onChange={handleChange}/></div>

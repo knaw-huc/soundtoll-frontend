@@ -10,14 +10,14 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
     const [filter, setFilter] = useState("");
     const [data, setData] = useState<facetList>({"buckets": []});
     const [loading, setLoading] = useState(true);
-    let url: string = SONT_SERVICE + "elastic/initial_facet/schipper_naam/short";
+    let url: string = SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/short";
     const [help, setHelp] = useState(false);
 
     async function fetchData() {
         if (more) {
-            url = SONT_SERVICE + "elastic/facet/schipper_naam/short/" + filter;
+            url = SONT_SERVICE + "elastic/facet/schipper_achternaam/short/" + filter;
         } else {
-            url = SONT_SERVICE + "elastic/facet/schipper_naam/long/" + filter;
+            url = SONT_SERVICE + "elastic/facet/schipper_achternaam/long/" + filter;
         }
 
         const response = await fetch(url);
@@ -30,16 +30,16 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/schipper_naam/short";
+                url= SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/short";
             } else {
-                url= SONT_SERVICE + "elastic/facet/schipper_naam/short/" + filter;
+                url= SONT_SERVICE + "elastic/facet/schipper_achternaam/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/schipper_naam/long";
+                url= SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/long";
             } else {
-                url= SONT_SERVICE + "elastic/facet/schipper_naam/long/" + filter;
+                url= SONT_SERVICE + "elastic/facet/schipper_achternaam/long/" + filter;
             }
             setMore(true);
         }
@@ -60,7 +60,7 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
     return (
         <div className="hcFacet">
             <div className="hcFacetTitle">
-                <span>Full name</span>
+                <span>Surname</span>
                 <span className="hcIconHelp" onClick={() => setHelp(!help)}><img
                     src="https://d33wubrfki0l68.cloudfront.net/85886ca3e2d8c36ba06d7773a094512272453181/545f8/images/icons/icon-huc-help.svg"
                     alt=""/></span>

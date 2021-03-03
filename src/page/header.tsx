@@ -16,18 +16,12 @@ export default class Header extends React.Component {
     }
 
     goSearching() {
-        // const interpreter = interpret(SontMachine);
-        // interpreter.send("search", {search_string: "none"});
         window.location.href = "#search/";
     }
 
     goHome() {
         window.location.href = "#home";
     }
-
-    // goGeo() {
-    //     window.location.href = "http://localhost:3000/#maps";
-    // }
 
     goAbout() {
         window.location.href = "#about";
