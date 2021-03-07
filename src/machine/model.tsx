@@ -4,6 +4,7 @@ export const SontMachine = Machine<{
     passage_id: number,
     code: string,
     search_string: string
+    language: string
 }, {
     states: {
         fourOhFour: {},
@@ -15,7 +16,7 @@ export const SontMachine = Machine<{
         },
         map: {},
         maps: {},
-        test:{},
+        test: {},
         home: {},
         search: {},
         browse: {},
@@ -43,7 +44,8 @@ export const SontMachine = Machine<{
         context: {
             passage_id: -1,
             code: "none",
-            search_string: "none"
+            search_string: "none",
+            language: "en"
         },
         on: {
             detail: {
@@ -53,7 +55,12 @@ export const SontMachine = Machine<{
                 target: "detail"
             },
             maps: "maps",
-            home: "home",
+            home: {
+                actions: assign({
+                    language: (context, event) => event.language
+                }),
+                target: "home"
+            },
             search: {
                 actions: assign({
                     search_string: (context, event) => event.search_string
@@ -66,11 +73,18 @@ export const SontMachine = Machine<{
             places: "places",
             hist_places: "hist_places",
             names: "names",
-            about: "about",
-            map: {actions: assign({
+            about: {
+                actions: assign({
+                    language: (context, event) => event.language
+                }),
+                target: "about"
+            },
+            map: {
+                actions: assign({
                     code: (context, event) => event.code
                 }),
-                target: "map"},
+                target: "map"
+            },
             test: "test",
             "*": "browse"
         },
@@ -104,9 +118,7 @@ export const SontMachine = Machine<{
                             choose_character: "character"
                         }
                     },
-                    character: {
-
-                    }
+                    character: {}
                 }
 
             },
@@ -120,9 +132,7 @@ export const SontMachine = Machine<{
                             choose_character: "character"
                         }
                     },
-                    character: {
-
-                    }
+                    character: {}
                 }
             }
         }

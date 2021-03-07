@@ -9,18 +9,18 @@ import {useState} from "react";
 
 export default function Home() {
 
-    const [language, setLanguage] = useState('EN');
+    const [language, setLanguage] = useState('en');
 
     return (
         <div>
             <Header/>
             <div className="langMenu">
-                <div className="langImg hcClickable" onClick={() => {setLanguage('EN')}}><img src={EN}/></div>
-                <div className="langImg hcClickable" onClick={() => {setLanguage('NE')}}><img src={NE}/></div>
+                <div className="langImg hcClickable" onClick={() => {setLanguage('en')}}><img src={EN}/></div>
+                <div className="langImg hcClickable" onClick={() => {setLanguage('ne')}}><img src={NE}/></div>
             </div>
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
-                    {language === 'EN' ? (<HomeEN/>) : (<HomeNL/>)}
+                    {language === 'en' ? (<HomeEN/>) : (<HomeNL/>)}
 
                 </div>
             </div>

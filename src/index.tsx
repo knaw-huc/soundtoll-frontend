@@ -43,7 +43,13 @@ function gotoUrl () {
                     interpreter.send("search", {search_string: id});
                 }
             } else {
-                interpreter.send(window.location.hash.substr(1))
+                if (window.location.hash.substr(1).indexOf("about") === 0) {
+                    const id = window.location.hash.substr(window.location.hash.indexOf("/") + 1)
+                    interpreter.send("about", {language: id});
+                } else {
+                    interpreter.send(window.location.hash.substr(1))
+                }
+
             }
 
         }
@@ -64,7 +70,7 @@ ReactDOM.render(
             "search": ({state}) => <Search search_string={(state.context || {}).search_string}/>,
             "maps": ({state}) => <Maps/>,
             "map": ({state}) => <Geomap code={(state.context || {}).code}/>,
-            "about": ({state}) => <About/>,
+            "about": ({state}) => <About language={(state.context || {}).language}/>,
             "currencies": ({state}) => <Currency/>,
             "commodities": ({state}) => <Commodities/>,
             "names": ({state}) => <Shipmasters/>,

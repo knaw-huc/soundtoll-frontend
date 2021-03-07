@@ -13,6 +13,9 @@ function HomeNL() {
                     - Tresoar, Fries Historisch en Letterkundig Centrum te Leeuwarden.
                 </div>
                 <p>
+                    <img src={boot} alt="Ship"/>
+                </p>
+                <p>
                     De Sonttolregisters (STR) zijn de administratie van de tol die de koning van Denemarken hief over de scheepvaart door de Sont, de zeestraat die de belangrijkste verbinding vormt tussen de Noordzee en de Oostzee. Zij zijn (met hiaten in de eerste decennia) bewaard gebleven voor de periode 1497 tot 1857, toen de tol werd opgeheven. Vanaf 1574 is de serie vrijwel compleet.
                 </p>
 
@@ -35,7 +38,7 @@ function HomeNL() {
                     Deze kerngegevens zijn in STRO ingevoerd. De voortschrijdende keuzes die wij daarbij hebben gemaakt, zijn neergelegd in de invoerinstructies die wij voor de vrijwilligers opstelden.
                 </p>
 
-                <div className="hcHomeText hcClickable" onClick={() => {window.location.href = "#about";}}>Meer informatie over STRO</div>
+                <div className="hcHomeText hcClickable" onClick={() => {window.scroll(0,0); window.location.href = "#about";}}>Meer informatie over STRO</div>
             </div>
         </div>
     );

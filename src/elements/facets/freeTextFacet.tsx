@@ -13,6 +13,12 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
         setTextField(e.currentTarget.value);
     }
 
+    function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>): void {
+        if (e.key === 'Enter') {
+            setTextFacet();
+        }
+    }
+
     function setTextFacet() {
         if (textField !== "") {
             props.parentCallback({facet: "Free text", field: "FREE_TEXT", candidate: textField});
@@ -37,7 +43,7 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
                 Search through all indexed fields. For performance reasons searching with wildcards is not possible. For more directed searches use the facets, which allow seaching with wildcards (*).
             </div> }
 
-            <div className="hcFacetFilter"><input type="text" name=""  id="freeText" placeholder="Press ENTER to search"  onChange={handleChange}/></div>
+            <div className="hcFacetFilter"><input type="text" name=""  id="freeText" placeholder="Press ENTER to search"  onChange={handleChange} onKeyUp={handleKeyPress}/></div>
             <button className="ftSearchBtn" onClick={setTextFacet}>Search</button>
         </div>
     );

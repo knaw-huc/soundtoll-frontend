@@ -8,15 +8,15 @@ import NE from "../assets/images/nl.gif";
 import {useState} from "react";
 import {ISetAboutPage} from "../misc/interfaces";
 
-export default function About() {
+export default function About(props: {language: string}) {
 
-    const [language, setLanguage] = useState('EN');
+    const [language, setLanguage] = useState(props.language);
     const [page, setPage] = useState('home');
 
     function pager() {
         switch (page) {
             case 'home':
-                return (<div>{language === 'EN' ? (<AboutEN/>) : (<AboutNL/>)}</div>);
+                return (<div>{language === 'en' ? (<AboutEN/>) : (<AboutNL/>)}</div>);
             default:
                 return (<div/>);
         }
@@ -30,8 +30,8 @@ export default function About() {
         <div>
             <Header/>
             <div className="langMenu">
-                <div className="langImg hcClickable" onClick={() => {setLanguage('EN')}}><img src={EN}/></div>
-                <div className="langImg hcClickable" onClick={() => {setLanguage('NE')}}><img src={NE}/></div>
+                <div className="langImg hcClickable" onClick={() => {setLanguage('en')}}><img src={EN}/></div>
+                <div className="langImg hcClickable" onClick={() => {setLanguage('ne')}}><img src={NE}/></div>
             </div>
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
