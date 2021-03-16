@@ -47,11 +47,12 @@ export interface IPassageData {
     cargo: IPassageCargo[],
     tax: IPassageTax[],
     scans: IPassageScans[],
+    opmerking_bron: string,
     section: string,
     register: string,
     locations: IPassageLocation[]
     valuta: IPassageValuta[]
-    units: string[]
+    units: IPassageUnit[]
 }
 
 export interface IPassageScans {
@@ -102,9 +103,14 @@ export interface IPassageLocation {
 }
 
 export interface IPassageValuta {
-    name: string;
-    code: string;
-    url: string;
+    name: string,
+    code: string,
+    url: string
+}
+
+export interface IPassageUnit {
+    unit: string,
+    standard_unit: string
 }
 
 export interface ICurrencyList {
@@ -187,7 +193,8 @@ export interface IResultPassage {
     maand: string,
     dag: string,
     id_doorvaart: string,
-    schipper_plaatsnaam: string;
+    schipper_plaatsnaam: string,
+    schipper_patroniem: string,
     van_eerste: string,
     naar_eerste: string,
     type: string

@@ -1,8 +1,9 @@
 import React from "react";
 import {IPassageData} from "../misc/interfaces";
 
-export default function CargoTable(props: {passage: IPassageData}) {
-
+export default function CargoTable(props: { passage: IPassageData }) {
+    const subtotaal1: string = props.passage.subtotaal1_bedrag1 + " " + props.passage.subtotaal1_muntsoort1 + " " + props.passage.subtotaal1_bedrag2 + " " + props.passage.subtotaal1_muntsoort2 + " " + props.passage.subtotaal1_bedrag3 + " " + props.passage.subtotaal1_muntsoort3;
+    const korting: string = props.passage.korting_bedrag1 + " " + props.passage.korting_muntsoort1 + " " + props.passage.korting_bedrag2 + " " + props.passage.korting_muntsoort2 + " " + props.passage.korting_bedrag3 + " " + props.passage.korting_muntsoort3;
     return (
         <div className="hcCargoTable">
             <div className="hcCargoTableRow">
@@ -27,28 +28,28 @@ export default function CargoTable(props: {passage: IPassageData}) {
             </div>
 
 
-                {props.passage.cargo.map(item => {
-                    return <div className="hcCargoTableRow">
-                        <div className="hcCargoTableValue">
-                            {item.regel}. {item.van}
-                        </div>
-                        <div className="hcCargoTableValue">
-                            {item.naar}
-                        </div>
-                        <div className="hcCargoTableValue">
-                            {item.aantal}
-                        </div>
-                        <div className="hcCargoTableValue">
-                            {item.maat}
-                        </div>
-                        <div className="hcCargoTableValue">
-                            {item.soort}
-                        </div>
-                        <div className="hcCargoTableValue">
-                            {item.bedrag1} {item.muntsoort1} {item.bedrag2} {item.muntsoort2} {item.bedrag3} {item.muntsoort3}
-                        </div>
+            {props.passage.cargo.map(item => {
+                return <div className="hcCargoTableRow">
+                    <div className="hcCargoTableValue">
+                        {item.regel}. {item.van}
                     </div>
-                })}
+                    <div className="hcCargoTableValue">
+                        {item.naar}
+                    </div>
+                    <div className="hcCargoTableValue">
+                        {item.aantal}
+                    </div>
+                    <div className="hcCargoTableValue">
+                        {item.maat}
+                    </div>
+                    <div className="hcCargoTableValue">
+                        {item.soort}
+                    </div>
+                    <div className="hcCargoTableValue">
+                        {item.bedrag1} {item.muntsoort1} {item.bedrag2} {item.muntsoort2} {item.bedrag3} {item.muntsoort3}
+                    </div>
+                </div>
+            })}
 
             <div className="hcCargoTableRow">
                 <div className="hcCargoTableValue">
@@ -66,9 +67,12 @@ export default function CargoTable(props: {passage: IPassageData}) {
                 <div className="hcCargoTableValue">
 
                 </div>
-                <div className="hcCargoTableValue hcUpperLine">
-                    {props.passage.subtotaal1_bedrag1} {props.passage.subtotaal1_muntsoort1} {props.passage.subtotaal1_bedrag2} {props.passage.subtotaal1_muntsoort2} {props.passage.subtotaal1_bedrag3} {props.passage.subtotaal1_muntsoort3}
-                </div>
+                {subtotaal1.trim() === "" ? (<div/>) : (
+                    <div className="hcCargoTableValue hcUpperLine">
+                        {subtotaal1}
+                    </div>
+                )}
+
             </div>
 
             <div className="hcCargoTableRow">
@@ -87,9 +91,10 @@ export default function CargoTable(props: {passage: IPassageData}) {
                 <div className="hcCargoTableValue">
                     {props.passage.soort_korting}
                 </div>
-                <div className="hcCargoTableValue hcLowerLine">
-                    {props.passage.korting_bedrag1} {props.passage.korting_muntsoort1} {props.passage.korting_bedrag2} {props.passage.korting_muntsoort2} {props.passage.korting_bedrag3} {props.passage.korting_muntsoort3}
-                </div>
+                {korting.trim() === "" ? (<div/>) : (<div className="hcCargoTableValue hcLowerLine">
+                    {korting}
+                </div>)}
+
             </div>
 
             <div className="hcCargoTableRow">
@@ -114,26 +119,26 @@ export default function CargoTable(props: {passage: IPassageData}) {
             </div>
 
             {props.passage.tax.map(item => {
-               return  <div className="hcCargoTableRow">
-                   <div className="hcCargoTableValue">
+                return <div className="hcCargoTableRow">
+                    <div className="hcCargoTableValue">
 
-                   </div>
-                   <div className="hcCargoTableValue">
+                    </div>
+                    <div className="hcCargoTableValue">
 
-                   </div>
-                   <div className="hcCargoTableValue">
+                    </div>
+                    <div className="hcCargoTableValue">
 
-                   </div>
-                   <div className="hcCargoTableValue">
+                    </div>
+                    <div className="hcCargoTableValue">
 
-                   </div>
-                   <div className="hcCargoTableValue">
-                       {item.naam}
-                   </div>
-                   <div className="hcCargoTableValue">
-                       {item.bedrag1} {item.muntsoort1} {item.bedrag2} {item.muntsoort2} {item.bedrag3} {item.muntsoort3}
-                   </div>
-               </div>
+                    </div>
+                    <div className="hcCargoTableValue">
+                        {item.naam}
+                    </div>
+                    <div className="hcCargoTableValue">
+                        {item.bedrag1} {item.muntsoort1} {item.bedrag2} {item.muntsoort2} {item.bedrag3} {item.muntsoort3}
+                    </div>
+                </div>
             })}
             <div className="hcCargoTableRow">
                 <div className="hcCargoTableValue">

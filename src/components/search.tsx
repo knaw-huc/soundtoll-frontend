@@ -79,7 +79,7 @@ export default function Search(props: { search_string: string }) {
                 values: [candidate.candidate]
             } as ISearchValues];
             setSearchStruc(searchBuffer);
-            window.location.href = '#search/' +  Base64.toBase64(JSON.stringify(searchStruc));
+            window.location.href = '#search/' + Base64.toBase64(JSON.stringify(searchStruc));
             setRefresh(!refresh);
         } else {
             if (typeof searchBuffer.searchvalues === "object") {
@@ -139,7 +139,7 @@ export default function Search(props: { search_string: string }) {
 
     function createPages(json: IResultPassageList) {
         let arr: number[] = [];
-        for (var i:number = 1; i<= json.pages; i++) {
+        for (var i: number = 1; i <= json.pages; i++) {
             arr.push(i);
         }
         return arr;
@@ -168,7 +168,7 @@ export default function Search(props: { search_string: string }) {
         searchBuffer.page = page;
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
-        window.location.href = '#search/' +  Base64.toBase64(JSON.stringify(searchStruc));
+        window.location.href = '#search/' + Base64.toBase64(JSON.stringify(searchStruc));
         window.scroll(0, 0);
     }
 
@@ -270,7 +270,9 @@ export default function Search(props: { search_string: string }) {
                                 className="icon" alt="Facet button"/></button>
 
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
-                                 onClick={() => {setSearchfacets(!searchFacets)}}>
+                                 onClick={() => {
+                                     setSearchfacets(!searchFacets)
+                                 }}>
                                 {searchFacets ? (<span className="hcFacetGroup">&#9660; SEARCH</span>) : (
                                     <span className="hcFacetGroup">&#9658; SEARCH</span>)}
                             </div>
@@ -383,7 +385,8 @@ export default function Search(props: { search_string: string }) {
                             </div>
                             <div className="hcList">
                                 <div className="hcListHeader">
-                                    <div className="hcLabel">Full name</div>
+                                    <div className="hcLabel">Name</div>
+                                    <div className="hcLabel">Patronymic</div>
                                     <div className="hcLabel">Date</div>
                                     <div className="hcLabel">Home port</div>
                                     <div className="hcLabel">From</div>
@@ -391,12 +394,15 @@ export default function Search(props: { search_string: string }) {
                                     <div className="hcLabelLast">Type</div>
                                 </div>
                             </div>
-                            {loading ? (<div className="hcResultListLoading">Loading...</div>) : ( <PassageList result={data}/> )}
+                            {loading ? (<div className="hcResultListLoading">Loading...</div>) : (
+                                <PassageList result={data}/>)}
                             {!loading && data.amount > 50 ? (
                                 <div className="hcPagination">
-                                    <div className="hcClickable" onClick={prevPage}>&#8592; Previous</div>
+                                    {searchStruc.page < 2 ?
+                                        (<div/>) : (
+                                            <div className="hcClickable" onClick={prevPage}>&#8592; Previous</div>)}
                                     <div className="hcClickable">
-                                        <select className="hcPageSelector"  onChange={(e) => selectPage(e.target.value)}>
+                                        <select className="hcPageSelector" onChange={(e) => selectPage(e.target.value)}>
                                             {pages.map((pg: number) => {
                                                 if (pg === searchStruc.page) {
                                                     return (
@@ -408,7 +414,9 @@ export default function Search(props: { search_string: string }) {
                                             })}
                                         </select>
                                     </div>
-                                    <div className="hcClickable" onClick={nextPage}>Next &#8594;</div>
+                                    {searchStruc.page < data.pages ? (
+                                        <div className="hcClickable" onClick={nextPage}>Next &#8594;</div>
+                                    ) : (<div/>)}
                                 </div>
                             ) : (<div/>)}
                         </div>

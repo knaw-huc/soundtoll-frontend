@@ -1,7 +1,7 @@
 import React from "react";
 import {IResultPassageList} from "../misc/interfaces";
 
-function PassageList(props: { result: IResultPassageList}) {
+function PassageList(props: { result: IResultPassageList }) {
 
     return (
         <div className="hcList hcMarginBottom2">
@@ -9,8 +9,9 @@ function PassageList(props: { result: IResultPassageList}) {
                 return (
                     <div className="hcListBasicResult">
                         <div className="hcClickable" onClick={() => {
-                            window.scroll(0,0); window.location.href = "#detail/" + item.id_doorvaart
+                            window.open( "#detail/" + item.id_doorvaart);
                         }}>{item.schipper_naam}</div>
+                        <div>{item.schipper_patroniem}</div>
                         <div>{item.dag}/{item.maand}/{item.jaar}</div>
                         <div>{item.schipper_plaatsnaam}</div>
                         <div>{item.van_eerste}</div>

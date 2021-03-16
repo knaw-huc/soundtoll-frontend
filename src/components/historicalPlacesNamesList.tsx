@@ -2,7 +2,7 @@ import React from "react";
 import {IResult, IPlaceList, ISearchObject, ISearchValues} from "../misc/interfaces";
 import {Base64} from "js-base64";
 
-function HistoricalPlacesNamesList(props: {namesList: IResult}) {
+function HistoricalPlacesNamesList(props: {namesList: IResult, port: string}) {
     const data = props.namesList.data as IPlaceList;
     let right = data.itemList;
     let left = right.splice(0, Math.ceil(right.length / 2));
@@ -20,8 +20,19 @@ function HistoricalPlacesNamesList(props: {namesList: IResult}) {
         sortorder: "schipper_achternaam.raw;asc"
     }
 
+    let portname = "";
+    if (props.port === "van.plaats") {
+        portname = "Port of departure";
+    } else {
+        if (props.port === "naar.plaats") {
+            portname = "Port of destination";
+        } else {
+            portname = "Home port";
+        }
+    }
+
     function pickName(name: string): void {
-        searchData.searchvalues = [{name: "Home port", field: "schipper_plaatsnaam", values: [name]} as ISearchValues];
+        searchData.searchvalues = [{name: portname, field: props.port, values: [name]} as ISearchValues];
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
         window.location.href = "/#search/" + codedData;
         window.scroll(0,0);

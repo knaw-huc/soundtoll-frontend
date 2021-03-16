@@ -48,6 +48,14 @@ function PassageDetails(props: {passage: IResult}) {
             </div>
             <div className="hcPassageRow">
                 <div className="hcPassageLabel">
+                    Patronymic
+                </div>
+                <div className="hcPassageValue">
+                    {pass.schipper_patroniem}
+                </div>
+            </div>
+            <div className="hcPassageRow">
+                <div className="hcPassageLabel">
                     Section
                 </div>
                 <div className="hcPassageValue">
@@ -99,7 +107,7 @@ function PassageDetails(props: {passage: IResult}) {
                 </div>
                 <div className="hcPassageValue">
                     {units.map(unit => {
-                        return <div>{unit}</div>
+                        return <div>{unit.unit} ({unit.standard_unit})</div>
                     })}
                 </div>
             </div>
@@ -111,6 +119,14 @@ function PassageDetails(props: {passage: IResult}) {
                     {currencies.map(currency => {
                         return <div>{currency.name} (<a href={currency.url} target="new">{currency.code}</a>)</div>
                     })}
+                </div>
+            </div>
+            <div className="hcPassageRow">
+                <div className="hcPassageLabel">
+                    Remarks
+                </div>
+                <div className="hcPassageValue">
+                    {pass.opmerking_bron}
                 </div>
             </div>
         </div>

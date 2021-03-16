@@ -76,7 +76,7 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
             {!loading ? (<div className="hcFacetItems">
                 {data.buckets.map((item) => {
                     return (
-                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Full name", field: "schipper_naam", candidate: item.key})}>
+                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Surname", field: "schipper_achternaam", candidate: item.key})}>
                             {item.key}
                         </div>
                     )

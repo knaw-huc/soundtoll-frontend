@@ -272,6 +272,7 @@ align-items: center;
 }
 
 .hcList {
+    font-size: 0.8em;
 display: flex;
 flex-direction: column;
 }
@@ -1755,15 +1756,6 @@ cursor: pointer;
 font-size: 0.95rem;
 }
 
-/*.hcRightMargin select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  color: #0087d4;
-  border: none;
-  margin-left: 0;
-  padding-left: 0;
-}*/
 
 .hcFacetSelector {
 font-size: small;

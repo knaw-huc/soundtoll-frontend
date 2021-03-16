@@ -76,7 +76,7 @@ function PatronymFacet(props: {parentCallback: ISendCandidate}) {
             {!loading ? (<div className="hcFacetItems">
                 {facets.buckets.map((item) => {
                     return (
-                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Patronym", field: "schipper_patroniem", candidate: item.key})}>
+                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Patronymic", field: "schipper_patroniem", candidate: item.key})}>
                             {item.key}
                         </div>
                     )

@@ -19,19 +19,20 @@ function PlacesNamesList(props: {namesList: IResult, port: string}) {
         page: 1,
         sortorder: "schipper_achternaam.raw;asc"
     }
-    let portName: string = "Home port"
+
 
 
     function pickPlace(name: string): void {
+        let portName: string = "Home port (standardized)"
         switch (props.port) {
             case "schipper_plaatsnaam":
-                portName = "Home port";
+                portName = "Home port (standardized)";
                 break;
             case "van_standaard.plaats":
-                portName = "Departure port";
+                portName = "Port of departure (standardized)";
                 break;
             case "naar_standaard.plaats":
-                portName = "Port of arrival";
+                portName = "Port of arrival (standardized)";
                 break;
         }
         searchData.searchvalues = [{name: portName, field: props.port, values: [name]} as ISearchValues];

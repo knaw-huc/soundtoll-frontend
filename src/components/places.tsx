@@ -16,7 +16,7 @@ function Places() {
     const [port, setPort] = useState("plaats_standaard");
 
     async function fetchUrl() {
-        const response = await fetch(SONT_SERVICE + "places/" + letter + "/" + page.toString());
+        const response = await fetch(SONT_SERVICE + "places/" + letter + "/" + port);
         const json = await response.json();
         setResult(json);
         setLoading(false);
@@ -51,7 +51,7 @@ function Places() {
             <Header/>
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
-                    <h2>Places</h2>
+                    <h2>Placenames standardized</h2>
                     <div className="hcLetterPicker">
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("A")}>
                             A
@@ -142,12 +142,6 @@ function Places() {
                     ) : (
                         <div>
                             <PlacesNamesList namesList={result as IResult} port={port}/>
-                            {/*<div className="hcPageBrowser">
-                                <div className="hcClickable hcRightMargin" onClick={() => move(1)}>Start</div>
-                                <div className="hcClickable hcRightMargin" onClick={() => move(page - 1)}>Prev</div>
-                                <div className="hcClickable hcRightMargin" onClick={() => move(page + 1)}>Next</div>
-                                <div className="hcClickable hcRightMargin" onClick={() => move(lastPage)}>End</div>
-                            </div>*/}
                         </div>
 
                     )}

@@ -19,7 +19,7 @@ function HistoricalPlaces() {
 
 
     async function fetchUrl() {
-        const response = await fetch(SONT_SERVICE + "hist_places/" + letter + "/" + page.toString());
+        const response = await fetch(SONT_SERVICE + "hist_places/" + letter + "/" + port);
         const json = await response.json();
         setResult(json);
         setLoading(false);
@@ -49,7 +49,7 @@ function HistoricalPlaces() {
             <Header/>
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
-                    <h2>Historical places</h2>
+                    <h2>Historical placenames</h2>
                     <div className="hcLetterPicker">
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("A")}>
                             A
@@ -145,13 +145,7 @@ function HistoricalPlaces() {
                         <div>Loading...</div>
                     ) : (
                         <div>
-                            <HistoricalPlacesNamesList namesList={result as IResult}/>
-                            <div className="hcPageBrowser">
-                                <div className="hcClickable hcRightMargin" onClick={() => move(1)}>Start</div>
-                                <div className="hcClickable hcRightMargin" onClick={() => move(page - 1)}>Prev</div>
-                                <div className="hcClickable hcRightMargin" onClick={() => move(page + 1)}>Next</div>
-                                <div className="hcClickable hcRightMargin" onClick={() => move(lastPage)}>End</div>
-                            </div>
+                            <HistoricalPlacesNamesList namesList={result as IResult} port={port}/>
                         </div>
 
                     )}
