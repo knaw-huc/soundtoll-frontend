@@ -9,7 +9,7 @@ import {IMapData} from "../misc/interfaces";
 function Geomap(props: { code: string }) {
     const [data, setData] = useState<IMapData>({name: "", region: "", lat: 0, long: 0, zoom: 1});
     const [loading, setLoading] = useState(true);
-    let url: string = "none";
+    const [url, setUrl] = useState("https://d.tile.openstreetmap.de/{z}/{x}/{y}.png");
 
     window.scroll(0,0);
 
@@ -21,11 +21,7 @@ function Geomap(props: { code: string }) {
     }
 
     const position: [number, number] = [data.lat as number, data.long as number]
-    if (data.region !== 'Danmark') {
-        url ="https://d.tile.openstreetmap.de/{z}/{x}/{y}.png";
-    } else {
-        url= "https://hisgis.nl/dk/topo20_hoeje_maalebordsblade/{z}/{x}/{y}.png";
-    }
+
     const map = (
         <Map center={position} zoom={data.zoom as number}>
             <TileLayer
@@ -50,6 +46,10 @@ function Geomap(props: { code: string }) {
                     <h1>{data.name}</h1>
                     {map}
                     <button className="ftSearchBtn" onClick={() => {window.history.back()}}>Back</button>
+                    {data.region == 'Danmark' &&  <div className="mapControl">
+                        <button className="ftSearchBtn" onClick={() => {setUrl("https://d.tile.openstreetmap.de/{z}/{x}/{y}.png")}}>Standard</button>
+                        <button className="ftSearchBtn" onClick={() => {setUrl("https://hisgis.nl/dk/topo20_hoeje_maalebordsblade/{z}/{x}/{y}.png")}}>Historical</button>
+                    </div>}
                 </div>
             </div>)}
 

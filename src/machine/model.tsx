@@ -57,7 +57,7 @@ export const SontMachine = Machine<{
             maps: "maps",
             home: {
                 actions: assign({
-                    language: (context, event) => event.language
+                    language: (context) => context.language
                 }),
                 target: "home"
             },
@@ -75,7 +75,7 @@ export const SontMachine = Machine<{
             names: "names",
             about: {
                 actions: assign({
-                    language: (context, event) => event.language
+                    language: (context) => context.language
                 }),
                 target: "about"
             },
@@ -93,7 +93,16 @@ export const SontMachine = Machine<{
             detail: {},
             map: {},
             maps: {},
-            home: {},
+            home: {
+                on: {
+                    SET_LANGUAGE: {
+                        actions: assign({
+                            language: (context, event) => event.language
+                        }),
+                        target: "home"
+                    }
+                }
+            },
             search: {
                 on: {
                     item: "detail"
@@ -122,7 +131,16 @@ export const SontMachine = Machine<{
                 }
 
             },
-            about: {},
+            about: {
+                on: {
+                    SET_LANGUAGE: {
+                        actions: assign({
+                            language: (context, event) => event.language
+                        }),
+                        target: "about"
+                    }
+                }
+            },
             test: {},
             names: {
                 initial: "no_character" as const,

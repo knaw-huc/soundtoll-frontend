@@ -17,6 +17,7 @@ import {SontMachine} from "./machine/model";
 import Currency from "./components/currency";
 import Places from "./components/places";
 import HistoricalPlaces from "./components/historicalPlaces";
+import {ISetLangEvent, ISetValue} from "./misc/interfaces";
 
 
 const interpreter = interpret(SontMachine);
@@ -24,6 +25,9 @@ interpreter.start();
 
 gotoUrl();
 
+const setLanguage:ISetLangEvent  = (struc:ISetValue) => {
+    interpreter.send(struc);
+}
 
 function gotoUrl () {
     if (window.location.hash.substr(1).indexOf("detail/") === 0) {
@@ -44,8 +48,8 @@ function gotoUrl () {
                 }
             } else {
                 if (window.location.hash.substr(1).indexOf("about") === 0) {
-                    const id = window.location.hash.substr(window.location.hash.indexOf("/") + 1)
-                    interpreter.send("about", {language: id});
+                    //const id = window.location.hash.substr(window.location.hash.indexOf("/") + 1)
+                    interpreter.send("about");
                 } else {
                     interpreter.send(window.location.hash.substr(1))
                 }
@@ -65,12 +69,12 @@ ReactDOM.render(
     <div>
         {StateMachineComponent(interpreter, {
             "detail": ({state}) => <Passage passageId={(state.context || {}).passage_id}/>,
-            "home": ({state}) => <Home/>,
+            "home": ({state}) => <Home  language={(state.context || {}).language} setLanguage={setLanguage}/>,
             "browse": ({state}) => <Browse/>,
             "search": ({state}) => <Search search_string={(state.context || {}).search_string}/>,
             "maps": ({state}) => <Maps/>,
             "map": ({state}) => <Geomap code={(state.context || {}).code}/>,
-            "about": ({state}) => <About language={(state.context || {}).language}/>,
+            "about": ({state}) => <About language={(state.context || {}).language} setLanguage={setLanguage}/>,
             "currencies": ({state}) => <Currency/>,
             "commodities": ({state}) => <Commodities/>,
             "names": ({state}) => <Shipmasters/>,

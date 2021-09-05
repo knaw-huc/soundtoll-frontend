@@ -4,22 +4,23 @@ import {SONT_SERVICE} from "../../config";
 import {facetList, ISendCandidate} from "../../misc/interfaces";
 
 
-function DestinationStandardFacet(props: {parentCallback: ISendCandidate}) {
+function HomePortStandardFacet(props: {parentCallback: ISendCandidate}) {
 
     let [more, setMore] = useState(true);
     const [filter, setFilter] = useState("");
     let [data, setData] = useState<facetList>({"buckets": []});
-    let url: string = SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/short";
+    let url: string = SONT_SERVICE + "elastic/initial_facet/plaats_standaard/short";
     const [help, setHelp] = useState(false);
     const [loading, setLoading] = useState(true);
     const facets: facetList = data;
 
     async function fetchData() {
         if (more) {
-            url = SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/short/" + filter;
+            url = SONT_SERVICE + "elastic/facet/plaats_standaard/short/" + filter;
         } else {
-            url = SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/long/" + filter;
+            url = SONT_SERVICE + "elastic/facet/plaats_standaard/long/" + filter;
         }
+
         const response = await fetch(url);
         const json = await response.json();
         setData(json);
@@ -29,16 +30,16 @@ function DestinationStandardFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/short";
+                url= SONT_SERVICE + "elastic/initial_facet/plaats_standaard/short";
             } else {
-                url= SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/short/" + filter;
+                url= SONT_SERVICE + "elastic/facet/plaats_standaard/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/long";
+                url= SONT_SERVICE + "elastic/initial_facet/plaats_standaard/long";
             } else {
-                url= SONT_SERVICE + "elastic/nested_facet/naar_standaard.plaats/long/" + filter;
+                url= SONT_SERVICE + "elastic/facet/plaats_standaard/long" + filter;
             }
             setMore(true);
         }
@@ -54,27 +55,28 @@ function DestinationStandardFacet(props: {parentCallback: ISendCandidate}) {
 
     useEffect(() => {
         fetchData();
-    }, [filter, more]);
+    }, [more, filter]);
 
     return (
         <div className="hcFacet">
             <div className="hcFacetTitle">
-                <span>Destination: standard</span>
+                <span>Home port: standard</span>
+
                 <span className="hcIconHelp" onClick={() => setHelp(!help)}><img
                     src="https://d33wubrfki0l68.cloudfront.net/85886ca3e2d8c36ba06d7773a094512272453181/545f8/images/icons/icon-huc-help.svg"
                     alt=""/></span>
             </div>
             { help &&
             <div className="hcFacetHelp">
-                <strong>The full name facet </strong><br/>
-                The names of the home ports are ordered by their number of passages.
-            </div>}
+                <strong>Standard home port name </strong><br/>
+                The names of the standard home ports are ordered by their number of passages.
+            </div> }
 
             <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>
             {!loading ? (<div className="hcFacetItems">
                 {facets.buckets.map((item) => {
                     return (
-                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Post of destination (std.)", field: "naar_standaard.plaats", candidate: item.key})}>
+                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Home port standard", field: "plaats_standaard", candidate: item.key})}>
                             {item.key}
                         </div>
                     )
@@ -85,10 +87,11 @@ function DestinationStandardFacet(props: {parentCallback: ISendCandidate}) {
                     { more ? (<div>More...</div>) : (<div>Less...</div>)}
 
                 </div>
-            </div>) :
-                (<div className="hcFacetLoading">Loading...</div>)}
+            </div>) : (
+                <div className="hcfacetLoading">Loading...</div>
+            )}
         </div>
     );
 }
 
-export default DestinationStandardFacet;
+export default HomePortStandardFacet;

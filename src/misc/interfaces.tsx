@@ -160,6 +160,7 @@ export interface IShipMasterChrNameList {
 
 export interface IPlace {
     name: string;
+    list?: string;
 }
 
 export interface IPlaceList {
@@ -226,6 +227,19 @@ export interface IFacetCandidate {
 
 export interface ISendCandidate {
     (data: IFacetCandidate):void
+}
+
+export interface IPickPlace {
+    (name: string): void
+}
+
+export interface ISetValue {
+    type: "SET_LANGUAGE",
+    value: string
+}
+
+export interface ISetLangEvent {
+    (struc: ISetValue): void
 }
 
 export interface ISendPage {

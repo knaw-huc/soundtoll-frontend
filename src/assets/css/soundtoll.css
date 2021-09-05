@@ -272,7 +272,7 @@ align-items: center;
 }
 
 .hcList {
-    font-size: 0.8em;
+font-size: 0.8em;
 display: flex;
 flex-direction: column;
 }
@@ -332,6 +332,10 @@ color: #fff;
 text-align: center;
 font-weight: bold;
 height: 24px;
+}
+
+.hcFixedFirstColPassage {
+flex-basis: 300px;
 }
 
 .hcFixedLastColPassage {
@@ -1827,11 +1831,11 @@ height: 24px;
 margin: 0 4px !important;
 }
 
-.hcLineElement{
+.hcLineElement {
 display: inline;
 }
 
-.expand_collapse{
+.expand_collapse {
 font-size: 20px;
 display: inline;
 font-weight: bold;
@@ -1842,5 +1846,26 @@ cursor: pointer;
 .error {
 font-weight: bold;
 color: #b00;
+}
+
+.foldArrow {
+display: inline-block;
+font-size: smaller;
+margin-left: 6px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.inline-container {
+display: inline-block;
+}
+
+.mapControl{
+display: inline-block;
+margin-left: 80px;
+}
+
+.mapControl .ftSearchBtn {
+margin-right: 20px;
 }
 
