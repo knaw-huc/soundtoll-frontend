@@ -27,6 +27,18 @@ export default function Header() {
         window.location.href = "#about";
     }
 
+    function goMail() {
+        window.location.href ="mailto:info@huygens.knaw.nl";
+    }
+
+    function goPrivacy() {
+        window.location.href ="https://www.knaw.nl/en/about-us/career-and-talent-development-at-the-academy/privacy-statement";
+    }
+
+    function goDownload() {
+        window.location.href = "#download";
+    }
+
 
         return (
             <div className="hcContentContainer bgColorBrand1 hcMarginBottom5">
@@ -43,7 +55,10 @@ export default function Header() {
                         <div onClick={goHome}>Home</div>
                         <div onClick={goSearching}>Search</div>
                         <div onClick={goBrowsing}>Browse</div>
+                        <div onClick={goDownload}>Download</div>
                         <div onClick={goAbout}>About</div>
+                        <div onClick={goPrivacy}>Privacy</div>
+                        <div onClick={goMail}>Contact</div>
                     </nav>
                 </header>
             </div>
