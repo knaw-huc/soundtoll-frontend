@@ -11,7 +11,7 @@ function YearFacet(props: { parentCallback: ISendCandidate })
     const [textField, setTextField] = useState<string>("");
     const [single, setSingle] = useState(true);
     const [err, setErr] = useState("");
-    const min = 1568;
+    const min = 1497;
     const max = 1857
     let from = min;
     let to = max;

@@ -14,7 +14,7 @@ function TypeFacet(props: { parentCallback: ISendCandidate }) {
     return (
         <div className="hcFacet">
             <div className="hcFacetTitle">
-                <span>Type</span>
+                <span>Record type</span>
 
                 <span className="hcIconHelp" onClick={() => setHelp(!help)}><img
                     src="https://d33wubrfki0l68.cloudfront.net/85886ca3e2d8c36ba06d7773a094512272453181/545f8/images/icons/icon-huc-help.svg"
@@ -22,7 +22,7 @@ function TypeFacet(props: { parentCallback: ISendCandidate }) {
             </div>
             {help &&
             <div className="hcFacetHelp">
-                <strong>Type facet </strong><br/>
+                <strong>Record type facet </strong><br/>
                 <strong>Passage:</strong> After 1633, each passage was recorded in one entry in the STR.<br/>
                 <strong>Registration:</strong> Before 1634, each passage was recorded in one or several entries in the STR. Accordingly, STRO includes one or several registrations per pre-1634 passage.
             </div>}

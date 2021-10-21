@@ -60,7 +60,7 @@ function DepartureStandardFacet(props: {parentCallback: ISendCandidate}) {
     return (
         <div className="hcFacet">
             <div className="hcFacetTitle">
-                <span>Departure</span>
+                <span>Departure: standard</span>
                 <span className="hcIconHelp" onClick={() => setHelp(!help)}><img
                     src="https://d33wubrfki0l68.cloudfront.net/85886ca3e2d8c36ba06d7773a094512272453181/545f8/images/icons/icon-huc-help.svg"
                     alt=""/></span>

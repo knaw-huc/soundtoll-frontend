@@ -4,7 +4,7 @@ import {SONT_SERVICE} from "../../config";
 import {facetList, ISendCandidate} from "../../misc/interfaces";
 
 
-function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
+function ShipmasterFacet(props: { parentCallback: ISendCandidate }) {
 
     let [more, setMore] = useState(true);
     const [filter, setFilter] = useState("");
@@ -12,6 +12,7 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
     const [loading, setLoading] = useState(true);
     let url: string = SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/short";
     const [help, setHelp] = useState(false);
+    const [name, setName] = useState("");
 
     async function fetchData() {
         if (more) {
@@ -30,16 +31,16 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
     function changeListLength() {
         if (more) {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/short";
+                url = SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/short";
             } else {
-                url= SONT_SERVICE + "elastic/facet/schipper_achternaam/short/" + filter;
+                url = SONT_SERVICE + "elastic/facet/schipper_achternaam/short/" + filter;
             }
             setMore(false);
         } else {
             if (filter === "") {
-                url= SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/long";
+                url = SONT_SERVICE + "elastic/initial_facet/schipper_achternaam/long";
             } else {
-                url= SONT_SERVICE + "elastic/facet/schipper_achternaam/long/" + filter;
+                url = SONT_SERVICE + "elastic/facet/schipper_achternaam/long/" + filter;
             }
             setMore(true);
         }
@@ -47,8 +48,8 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
 
 
     function handleChange(e: React.FormEvent<HTMLInputElement>) {
-        if (e.currentTarget.value.length > 1)
-        {
+        if (e.currentTarget.value.length > 1) {
+            setName(e.currentTarget.value);
             setFilter(e.currentTarget.value);
         }
     }
@@ -66,27 +67,39 @@ function ShipmasterFacet(props: {parentCallback: ISendCandidate}) {
                     alt=""/></span>
             </div>
             <div>
-            {help ? (<div className="hcFacetHelp">
-                <strong>The full name facet </strong><br/>
-                The names of the shipmasters are ordered by their number of passages. Filtering this facet is based on <u>family name</u>.
-            </div>) : (<div/>)}
+                {help ? (<div className="hcFacetHelp">
+                    <strong>The surname facet </strong><br/>
+                    The surnames of the shipmasters are ordered by their number of passages. Filtering this facet is
+                    based on <u>family name</u>.
+                </div>) : (<div/>)}
 
             </div>
-            <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter" placeholder="Type to filter"/></div>
+            <div className="hcFacetFilter"><input type="text" name="" onChange={handleChange} id="shipMasterFilter"
+                                                  placeholder="Type to filter"/></div>
             {!loading ? (<div className="hcFacetItems">
-                {data.buckets.map((item) => {
-                    return (
-                        <div className="hcFacetItem" onClick={() => props.parentCallback({facet: "Surname", field: "schipper_achternaam", candidate: item.key})}>
-                            {item.key}
-                        </div>
-                    )
-                })}
+                    {/*{name.length > 2 &&
+                    <div className="hcFacetItem" onClick={() => props.parentCallback({
+                        facet: "Surname",
+                        field: "schipper_achternaam",
+                        candidate: name
+                    })}>{name}</div>}*/}
+                    {data.buckets.map((item) => {
+                        return (
+                            <div className="hcFacetItem" onClick={() => props.parentCallback({
+                                facet: "Surname",
+                                field: "schipper_achternaam",
+                                candidate: item.key
+                            })}>
+                                {item.key}
+                            </div>
+                        )
+                    })}
 
 
-                <div className="hcClickable" onClick={changeListLength}>
-                    { more ? (<div>More...</div>) : (<div>Less...</div>)}
-                </div>
-            </div>) :
+                    <div className="hcClickable" onClick={changeListLength}>
+                        {more ? (<div>More...</div>) : (<div>Less...</div>)}
+                    </div>
+                </div>) :
                 (<div className="hcFacetLoading">Loading...</div>)}
         </div>
     );

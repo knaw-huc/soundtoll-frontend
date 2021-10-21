@@ -3,6 +3,7 @@ import Header from "../page/header";
 import Footer from "../page/footer";
 import ShipmasterFacet from "../elements/facets/shipmasterFacet";
 import HomePortFacet from "../elements/facets/homePortFacet";
+import HomePortStandardFacet from "../elements/facets/homePortStandardFacet";
 import SmallRegionFacet from "../elements/facets/smallRegionFacet";
 import {useState} from "react";
 import BigRegionFacet from "../elements/facets/bigRegionFacet";
@@ -294,6 +295,7 @@ export default function Search(props: { search_string: string }) {
                                     <ChrNameFacet parentCallback={sendCandidate}/>
                                     <PatronymFacet parentCallback={sendCandidate}/>
                                     <HomePortFacet parentCallback={sendCandidate}/>
+                                    <HomePortStandardFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Home port"/>
                                     <BigRegionFacetHome parentCallback={sendCandidate}/>
                                 </div>) : (<div/>)}
@@ -306,6 +308,7 @@ export default function Search(props: { search_string: string }) {
                             {departureFacets ? (
                                 <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
                                     <DeparturePortFacet parentCallback={sendCandidate}/>
+                                    <DepartureStandardFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Departure"/>
                                     <BigRegionFacet parentCallback={sendCandidate} port="Departure"/>
                                 </div>) : (<div/>)}
@@ -318,20 +321,11 @@ export default function Search(props: { search_string: string }) {
                             {destinationFacets ? (
                                 <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
                                     <DestinationPortFacet parentCallback={sendCandidate}/>
+                                    <DestinationStandardFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Destination"/>
                                     <BigRegionFacet parentCallback={sendCandidate} port="Destination"/>
                                 </div>) : (<div/>)}
 
-                            <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
-                                 onClick={toggleStandardFacets}>
-                                {standardFacets ? (<span className="hcFacetGroup">&#9660; STANDARD NAMES</span>) : (
-                                    <span className="hcFacetGroup">&#9658; STANDARD NAMES</span>)}
-                            </div>
-                            {standardFacets ? (
-                                <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
-                                    <DepartureStandardFacet parentCallback={sendCandidate}/>
-                                    <DestinationStandardFacet parentCallback={sendCandidate}/>
-                                </div>) : (<div/>)}
 
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
                                  onClick={toggleCommodityFacets}>
@@ -386,7 +380,7 @@ export default function Search(props: { search_string: string }) {
                             <div className="hcList">
                                 <div className="hcListHeader">
                                     <div className="hcLabel">Name</div>
-                                    <div className="hcLabel">Patronymic</div>
+                                    {/*<div className="hcLabel">Patronymic</div>*/}
                                     <div className="hcLabel">Date</div>
                                     <div className="hcLabel">Home port</div>
                                     <div className="hcLabel">From</div>
