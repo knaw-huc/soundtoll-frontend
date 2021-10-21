@@ -20,6 +20,7 @@ export const SontMachine = Machine<{
         home: {},
         search: {},
         browse: {},
+        download: {},
         about: {},
         commodities: {},
         currencies: {},
@@ -68,6 +69,7 @@ export const SontMachine = Machine<{
                 target: "search"
             },
             browse: "browse",
+            download: "download",
             commodities: "commodities",
             currencies: "currencies",
             places: "places",
@@ -118,6 +120,7 @@ export const SontMachine = Machine<{
             },
             commodities: {},
             currencies: {},
+            download: {},
             hist_places: {},
             places: {
                 initial: "no_character" as const,

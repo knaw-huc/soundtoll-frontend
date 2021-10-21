@@ -18,6 +18,8 @@ import Currency from "./components/currency";
 import Places from "./components/places";
 import HistoricalPlaces from "./components/historicalPlaces";
 import {ISetLangEvent, ISetValue} from "./misc/interfaces";
+import Download from "./components/download";
+
 
 
 const interpreter = interpret(SontMachine);
@@ -51,7 +53,11 @@ function gotoUrl () {
                     //const id = window.location.hash.substr(window.location.hash.indexOf("/") + 1)
                     interpreter.send("about");
                 } else {
-                    interpreter.send(window.location.hash.substr(1))
+                    if (window.location.hash.substr(1).indexOf("download") === 0) {
+                        interpreter.send("download");
+                    } else {
+                        interpreter.send(window.location.hash.substr(1))
+                    }
                 }
 
             }
@@ -76,6 +82,7 @@ ReactDOM.render(
             "map": ({state}) => <Geomap code={(state.context || {}).code}/>,
             "about": ({state}) => <About language={(state.context || {}).language} setLanguage={setLanguage}/>,
             "currencies": ({state}) => <Currency/>,
+            "download": ({state}) => <Download/>,
             "commodities": ({state}) => <Commodities/>,
             "names": ({state}) => <Shipmasters/>,
             "places": ({state}) => <Places/>,
