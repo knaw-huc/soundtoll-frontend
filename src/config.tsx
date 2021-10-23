@@ -6,3 +6,4 @@ export const ELASTIC_URL: string = SONT_SERVICE + "elastic/search/";
 export const PDF_PATH: string = HOST + "pdf/";
 export const DOWNLOAD_PATH: string = HOST + "db_downloads/";
 //export const PDF_PATH: string = "https://soundtoll.nl/pdf/";
+

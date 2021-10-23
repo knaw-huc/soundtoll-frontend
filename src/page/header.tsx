@@ -27,6 +27,7 @@ export default function Header() {
         window.location.href = "#about";
     }
 
+
     function goMail() {
         window.location.href ="mailto:info@huygens.knaw.nl";
     }
@@ -55,6 +56,7 @@ export default function Header() {
                         <div onClick={goHome}>Home</div>
                         <div onClick={goSearching}>Search</div>
                         <div onClick={goBrowsing}>Browse</div>
+                        <div onClick={goAbout}>About</div>
                         <div onClick={goDownload}>Download</div>
                         <div onClick={goAbout}>About</div>
                         <div onClick={goPrivacy}>Privacy</div>
