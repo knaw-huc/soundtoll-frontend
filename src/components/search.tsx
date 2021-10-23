@@ -130,7 +130,7 @@ export default function Search(props: { search_string: string }) {
     const cross: string = "[x]";
 
     async function fetchData() {
-        const url = ELASTIC_URL + Base64.toBase64(JSON.stringify(searchStruc));
+        const url = ELASTIC_URL + "?q=" + Base64.toBase64(JSON.stringify(searchStruc));
         const response = await fetch(url);
         const json = await response.json();
         setPages(createPages(json));
@@ -379,7 +379,7 @@ export default function Search(props: { search_string: string }) {
                             </div>
                             <div className="hcList">
                                 <div className="hcListHeader">
-                                    <div className="hcLabel">Name</div>
+                                    <div className="hcLabel">Name, ID</div>
                                     {/*<div className="hcLabel">Patronymic</div>*/}
                                     <div className="hcLabel">Date</div>
                                     <div className="hcLabel">Home port</div>
