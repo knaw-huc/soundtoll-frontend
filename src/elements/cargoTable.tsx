@@ -92,7 +92,7 @@ export default function CargoTable(props: { passage: IPassageData }) {
                     {props.passage.soort_korting}
                 </div>
                 {korting.trim() === "" ? (<div/>) : (<div className="hcCargoTableValue hcLowerLine">
-                    {korting}
+                    {korting} rebate
                 </div>)}
 
             </div>

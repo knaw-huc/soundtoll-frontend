@@ -1,6 +1,7 @@
 import React from "react";
-import {IResult, IPlaceList, ISearchObject, ISearchValues} from "../misc/interfaces";
+import {IResult, IPlaceList, ISearchObject, ISearchValues, IPickPlace} from "../misc/interfaces";
 import {Base64} from "js-base64";
+import PlaceItem from "./placeItem";
 
 function HistoricalPlacesNamesList(props: {namesList: IResult, port: string}) {
     const data = props.namesList.data as IPlaceList;
@@ -20,6 +21,7 @@ function HistoricalPlacesNamesList(props: {namesList: IResult, port: string}) {
         sortorder: "schipper_achternaam.raw;asc"
     }
 
+    const pickPlace: IPickPlace = (name: string) =>  {
     let portname = "";
     if (props.port === "van.plaats") {
         portname = "Port of departure";
@@ -30,8 +32,6 @@ function HistoricalPlacesNamesList(props: {namesList: IResult, port: string}) {
             portname = "Home port";
         }
     }
-
-    function pickName(name: string): void {
         searchData.searchvalues = [{name: portname, field: props.port, values: [name]} as ISearchValues];
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
         window.location.href = "/#search/" + codedData;
@@ -43,15 +43,11 @@ function HistoricalPlacesNamesList(props: {namesList: IResult, port: string}) {
             <div className="hc2columns">
                 <div>
                     {left.map(item => {
-                        return <div className="hcClickable" onClick={() => pickName(item.name)}>
-                            {item.name}<br/>
-                        </div>
+                        return <PlaceItem item={item} go={pickPlace}/>
                     })}</div>
                 <div>
                     {right.map(item => {
-                        return <div className="hcClickable" onClick={() => pickName(item.name)}>
-                            {item.name}<br/>
-                        </div>
+                        return <PlaceItem item={item} go={pickPlace}/>
                     })}
                 </div>
             </div>

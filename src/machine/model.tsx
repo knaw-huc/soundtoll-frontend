@@ -19,6 +19,7 @@ export const SontMachine = Machine<{
         test: {},
         home: {},
         search: {},
+        search_map: {},
         browse: {},
         download: {},
         about: {},
@@ -110,6 +111,7 @@ export const SontMachine = Machine<{
                     item: "detail"
                 }
             },
+            search_map: {},
             browse: {
                 on: {
                     check_commodities: "commodities",

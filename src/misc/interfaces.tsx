@@ -52,7 +52,8 @@ export interface IPassageData {
     register: string,
     locations: IPassageLocation[]
     valuta: IPassageValuta[]
-    units: IPassageUnit[]
+    units: IPassageUnit[],
+    vide_list: string[]
 }
 
 export interface IPassageScans {
@@ -213,6 +214,17 @@ export interface IMapData {
     lat: number,
     long: number,
     zoom: number;
+}
+
+export interface ISearchMapData {
+    number_of_records: number,
+    data: ISearchMapPlace[]
+}
+
+export interface ISearchMapPlace {
+    place_standard: string,
+    lat: number,
+    lon: number
 }
 
 export interface ISetAboutPage {
