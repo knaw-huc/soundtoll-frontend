@@ -2,7 +2,7 @@ import React from "react";
 import {useState, useEffect} from "react";
 import Header from "../page/header";
 import Footer from "../page/footer";
-import {ISearchMapData, ISearchObject, ISearchValues} from "../misc/interfaces";
+import {ISearchMapData, ISearchObject, ISearchValues, IMapSearchStruc} from "../misc/interfaces";
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import {ELASTIC_URL, SONT_SERVICE} from "../config";
 import {Base64} from "js-base64";
@@ -11,7 +11,18 @@ export default function Maps() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<ISearchMapData>({number_of_records: 0, data: []});
     const [port, setPort] = useState("home_port");
-    window.scroll(0,0);
+    const [region, setRegion] = useState("0");
+    const [years, setYears] = useState("0");
+    window.scroll(0, 0);
+    const periods: string[] = [
+        "none",
+        "1497-1634",
+        "1634-1857",
+        "1634-1700",
+        "1700-1750",
+        "1750-1800",
+        "1800-1857"
+    ]
 
     let searchData: ISearchObject = {
         facetstate: {
@@ -27,31 +38,56 @@ export default function Maps() {
         sortorder: "schipper_achternaam.raw;asc"
     }
 
+    let mapSearchData: IMapSearchStruc = {
+        port: port,
+        region: region,
+        years: years
+    }
+
     async function fetchData() {
-        const url = SONT_SERVICE + "map_places";
+        const url = SONT_SERVICE + "map_places/" + Base64.toBase64(JSON.stringify(mapSearchData));
         const response = await fetch(url);
         const json = await response.json();
         setData(json);
         setLoading(false);
     }
 
-    function goSearch(name: string)
-        {
-            switch (port) {
-                case "home_port":
-                    searchData.searchvalues = [{name: "Home port (standardized)", field: "plaats_standaard", values: [name]} as ISearchValues];
-                    break;
-                case "":
-                    searchData.searchvalues = [{name: "Port of departure (standardized)", field: "van_standaard.plaats", values: [name]} as ISearchValues];
-                    break;
-                case "naar_standaard.plaats":
-                    searchData.searchvalues = [{name: "Port of arrival (standardized)", field: "naar_standaard.plaats", values: [name]} as ISearchValues];
-                    break;
-            }
-            const codedData: string = Base64.toBase64(JSON.stringify(searchData));
-            window.location.href = "/#search/" + codedData;
-            window.scroll(0, 0);
+    function goSearch(name: string) {
+        switch (port) {
+            case "home_port":
+                searchData.searchvalues = [{
+                    name: "Home port (standardized)",
+                    field: "plaats_standaard",
+                    values: [name]
+                } as ISearchValues];
+                break;
+            case "from_port":
+                searchData.searchvalues = [{
+                    name: "Port of departure (standardized)",
+                    field: "van_standaard.plaats",
+                    values: [name]
+                } as ISearchValues];
+                break;
+            case "to_port":
+                searchData.searchvalues = [{
+                    name: "Port of arrival (standardized)",
+                    field: "naar_standaard.plaats",
+                    values: [name]
+                } as ISearchValues];
+                break;
         }
+        if (years !== "0") {
+            if (typeof searchData.searchvalues !== 'string') {
+                let jrs:ISearchValues = {name: "Period", field: "PERIOD", values: [periods[Number(years)]]};
+                searchData.searchvalues.push(jrs);
+            }
+
+
+        }
+        const codedData: string = Base64.toBase64(JSON.stringify(searchData));
+        window.location.href = "/#search/" + codedData;
+        window.scroll(0, 0);
+    }
 
     useEffect(() => {
         fetchData();
@@ -69,7 +105,10 @@ export default function Maps() {
                                 <div className="hcFacetTitle">
                                     <span>Port</span>
                                 </div>
-                                <select>
+                                <select onChange={(e) => {
+                                    setPort(e.target.value);
+                                    setLoading(true);
+                                }}>
                                     <option value="home_port">Home port</option>
                                     <option value="from_port">Port of departure</option>
                                     <option value="to_port">Port of arrival</option>
@@ -79,6 +118,45 @@ export default function Maps() {
                                 <div className="hcFacetTitle">
                                     <span>Big region</span>
                                 </div>
+                                <select onChange={(e) => {
+                                setRegion(e.target.value);
+                                setLoading(true);}
+                                }>
+                                    <option value="0">All regions</option>
+                                    <option value="14">Skagerrak, Kattegat (Denmark, Sweden)</option>
+                                    <option value="1">The Baltic</option>
+                                    <option value="2">North Sea (German/Danish coast)</option>
+                                    <option value="9">Iceland. Faroer. Green Land and Davis Straits</option>
+                                    <option value="4">Norway</option>
+                                    <option value="16">Dutch Republic</option>
+                                    <option value="5">Great Britain</option>
+                                    <option value="3">Arctic (Archangel. Murmansk)</option>
+                                    <option value="6">Atlantic Coasts of France Spain and Portugal</option>
+                                    <option value="10">Africa outside the Mediterranean</option>
+                                    <option value="7">The Mediterranean</option>
+                                    <option value="8">Far East</option>
+                                    <option value="13">South America</option>
+                                    <option value="11">West Indies</option>
+                                    <option value="12">North America</option>
+                                    <option value="17">Fishing</option>
+                                </select>
+                            </div>
+                            <div className="hcFacet">
+                                <div className="hcFacetTitle">
+                                    <span>Period</span>
+                                </div>
+                                <select onChange={(e) => {
+                                    setYears(e.target.value);
+                                    setLoading(true);
+                                }}>
+                                    <option value="0">All years</option>
+                                    <option value="1">Years before 1634</option>
+                                    <option value="2">Years 1634 - 1857</option>
+                                    <option value="3">Years 1634 - 1700</option>
+                                    <option value="4">Years 1700 - 1750</option>
+                                    <option value="5">Years 1750 - 1800</option>
+                                    <option value="6">Years 1800 - 1857</option>
+                                </select>
                             </div>
                         </div>
 
@@ -86,7 +164,8 @@ export default function Maps() {
                             <div className="hcResultsHeader hcMarginBottom1">
                                 {loading ? (
                                     <div>Loading...</div>
-                                ) : (
+                                ) : (<div>
+                                        {data.number_of_records} ports
                                     <Map center={[47.816387, 6.381389]} zoom={2}>
                                         <TileLayer
                                             url="https://d.tile.openstreetmap.de/{z}/{x}/{y}.png"
@@ -102,6 +181,7 @@ export default function Maps() {
                                             </Marker>);
                                         })}
                                     </Map>
+                                </div>
                                 )}
                             </div>
                         </div>

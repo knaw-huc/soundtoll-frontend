@@ -292,5 +292,11 @@ export interface ISearchObject {
     sortorder: string;
 }
 
+export interface IMapSearchStruc {
+    port: string,
+    region: string,
+    years: string
+}
+
 
 
