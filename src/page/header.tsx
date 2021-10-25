@@ -27,6 +27,9 @@ export default function Header() {
         window.location.href = "#about";
     }
 
+    function goMap() {
+        window.location.href = "#maps";
+    }
 
     function goMail() {
         window.location.href ="mailto:info@huygens.knaw.nl";
@@ -55,6 +58,7 @@ export default function Header() {
                     <nav>
                         <div onClick={goHome}>Home</div>
                         <div onClick={goSearching}>Search</div>
+                        <div onClick={goMap}>Map</div>
                         <div onClick={goBrowsing}>Browse</div>
                         <div onClick={goAbout}>About</div>
                         <div onClick={goDownload}>Download</div>

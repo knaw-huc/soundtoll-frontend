@@ -130,7 +130,7 @@ export default function Search(props: { search_string: string }) {
     const cross: string = "[x]";
 
     async function fetchData() {
-        const url = ELASTIC_URL + Base64.toBase64(JSON.stringify(searchStruc));
+        const url = ELASTIC_URL + "?q=" + Base64.toBase64(JSON.stringify(searchStruc));
         const response = await fetch(url);
         const json = await response.json();
         setPages(createPages(json));
@@ -346,8 +346,8 @@ export default function Search(props: { search_string: string }) {
                                 }}>
                                     <option value="schipper_achternaam.raw;asc">Order by family name &#8595;</option>
                                     <option value="schipper_achternaam.raw;desc">Order by family name &#8593;</option>
-                                    <option value="jaar;asc">Order by year &#8595;</option>
-                                    <option value="jaar;desc">Order by year &#8593;</option>
+                                    <option value="jaar;asc">Order by date &#8595;</option>
+                                    <option value="jaar;desc">Order by date &#8593;</option>
                                     <option value="schipper_plaatsnaam.raw;asc">Order by home port &#8595;</option>
                                     <option value="schipper_plaatsnaam.raw;desc">Order by home port &#8593;</option>
                                     <option value="van_eerste.raw;asc">Order by from &#8595;</option>
@@ -379,7 +379,7 @@ export default function Search(props: { search_string: string }) {
                             </div>
                             <div className="hcList">
                                 <div className="hcListHeader">
-                                    <div className="hcLabel">Name</div>
+                                    <div className="hcLabel">Name (ID)</div>
                                     {/*<div className="hcLabel">Patronymic</div>*/}
                                     <div className="hcLabel">Date</div>
                                     <div className="hcLabel">Home port</div>

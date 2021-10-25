@@ -10,7 +10,7 @@ function PassageList(props: { result: IResultPassageList }) {
                     <div className="hcListBasicResult">
                         <div className="hcClickable" onClick={() => {
                             window.open( "#detail/" + item.id_doorvaart);
-                        }}>{item.schipper_naam}</div>
+                        }}>{item.schipper_naam}<br/>({item.id_doorvaart})</div>
                         {/*<div>{item.schipper_patroniem}</div>*/}
                         <div>{item.dag}/{item.maand}/{item.jaar}</div>
                         <div>{item.schipper_plaatsnaam}</div>

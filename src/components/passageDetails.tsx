@@ -127,6 +127,15 @@ function PassageDetails(props: {passage: IResult}) {
                 </div>
                 <div className="hcPassageValue">
                     {pass.opmerking_bron}
+                    {pass.vide_list.length > 0 ? (
+                        <div>See also:
+                            {pass.vide_list.map((item, index) => {
+                                return (<div className="hcClickable" key={index} onClick={() => {
+                                    window.open( "#detail/" + item);
+                                }}><br/>{item}</div>)
+                            })}
+                        </div>
+                    ) : (<div/>)}
                 </div>
             </div>
         </div>
