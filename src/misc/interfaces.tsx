@@ -298,5 +298,9 @@ export interface IMapSearchStruc {
     years: string
 }
 
+export interface ICheckStruc {
+    amount: string
+}
+
 
 

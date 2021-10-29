@@ -19,6 +19,7 @@ import FreeTextFacet from "../elements/facets/freeTextFacet";
 import TypeFacet from "../elements/facets/typeFacet";
 import PassageList from "./passageList";
 import YearFacet from "../elements/facets/yearFacet";
+import GoDetailFacet from "../elements/facets/goDetail";
 import {
     IFacetCandidate, IRemoveFacet,
     IResetFacets, IResultPassageList,
@@ -282,6 +283,7 @@ export default function Search(props: { search_string: string }) {
                                     <FreeTextFacet parentCallback={sendCandidate}/>
                                     <YearFacet parentCallback={sendCandidate}/>
                                     <TypeFacet parentCallback={sendCandidate}/>
+                                    <GoDetailFacet/>
                                 </div>) : (<div/>)}
 
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
