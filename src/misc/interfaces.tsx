@@ -58,7 +58,8 @@ export interface IPassageData {
 
 export interface IPassageScans {
     bestandsnaam: string,
-    url: string
+    url: string,
+    iiif: string
 }
 
 export interface IPassageTax {

@@ -50,7 +50,7 @@ function Passage(props: { passageId: number }) {
                                 dv.scans.map(item => {
                                     return (
                                         <div>
-                                            <img id="hcLeftScan" src={item.url} onClick={() => {openImage(item.url)}} alt={item.bestandsnaam}/>
+                                            <img id="hcLeftScan" src={item.url} onClick={() => {window.open(item.iiif)}} alt={item.bestandsnaam}/>
                                             <span className="hcScanName">{item.bestandsnaam}</span>
                                         </div>
                                     )
