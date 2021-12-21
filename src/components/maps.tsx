@@ -70,7 +70,7 @@ export default function Maps() {
                 break;
             case "to_port":
                 searchData.searchvalues = [{
-                    name: "Port of arrival (standardized)",
+                    name: "Port of destination (standardized)",
                     field: "naar_standaard.plaats",
                     values: [name]
                 } as ISearchValues];
@@ -85,7 +85,8 @@ export default function Maps() {
 
         }
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
-        window.location.href = "/#search/" + codedData;
+        //window.location.href = "/#search/" + codedData;
+        window.open("/#search/" + codedData);
         window.scroll(0, 0);
     }
 
@@ -111,7 +112,7 @@ export default function Maps() {
                                 }}>
                                     <option value="home_port">Home port</option>
                                     <option value="from_port">Port of departure</option>
-                                    <option value="to_port">Port of arrival</option>
+                                    <option value="to_port">Port of destination</option>
                                 </select>
                             </div>
                             <div className="hcFacet">

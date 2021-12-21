@@ -288,21 +288,20 @@ export default function Search(props: { search_string: string }) {
 
                             <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
                                  onClick={toggleShipMasterFacets}>
-                                {shipMasterFacets ? (<span className="hcFacetGroup">&#9660; SHIPMASTERS</span>) : (
-                                    <span className="hcFacetGroup">&#9658; SHIPMASTERS</span>)}
+                                {shipMasterFacets ? (<span className="hcFacetGroup">&#9660; PORTS</span>) : (
+                                    <span className="hcFacetGroup">&#9658; PORTS</span>)}
                             </div>
                             {shipMasterFacets ? (
                                 <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
-                                    <ShipmasterFacet parentCallback={sendCandidate}/>
-                                    <ChrNameFacet parentCallback={sendCandidate}/>
-                                    <PatronymFacet parentCallback={sendCandidate}/>
-                                    <HomePortFacet parentCallback={sendCandidate}/>
-                                    <HomePortStandardFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Home port"/>
                                     <BigRegionFacetHome parentCallback={sendCandidate}/>
+                                    <SmallRegionFacet parentCallback={sendCandidate} port="Departure"/>
+                                    <BigRegionFacet parentCallback={sendCandidate} port="Departure"/>
+                                    <SmallRegionFacet parentCallback={sendCandidate} port="Destination"/>
+                                    <BigRegionFacet parentCallback={sendCandidate} port="Destination"/>
                                 </div>) : (<div/>)}
 
-                            <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
+                           {/* <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
                                  onClick={toggleDepartureFacets}>
                                 {departureFacets ? (<span className="hcFacetGroup">&#9660; DEPARTURES</span>) : (
                                     <span className="hcFacetGroup">&#9658; DEPARTURES</span>)}
@@ -313,9 +312,9 @@ export default function Search(props: { search_string: string }) {
                                     <DepartureStandardFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Departure"/>
                                     <BigRegionFacet parentCallback={sendCandidate} port="Departure"/>
-                                </div>) : (<div/>)}
+                                </div>) : (<div/>)}*/}
 
-                            <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
+                            {/*<div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
                                  onClick={toggleDestinationFacets}>
                                 {destinationFacets ? (<span className="hcFacetGroup">&#9660; DESTINATIONS</span>) : (
                                     <span className="hcFacetGroup">&#9658; DESTINATIONS</span>)}
@@ -326,10 +325,10 @@ export default function Search(props: { search_string: string }) {
                                     <DestinationStandardFacet parentCallback={sendCandidate}/>
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Destination"/>
                                     <BigRegionFacet parentCallback={sendCandidate} port="Destination"/>
-                                </div>) : (<div/>)}
+                                </div>) : (<div/>)}*/}
 
 
-                            <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
+                            {/*<div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
                                  onClick={toggleCommodityFacets}>
                                 {commodityFacets ? (<span className="hcFacetGroup">&#9660; COMMODITIES</span>) : (
                                     <span className="hcFacetGroup">&#9658; COMMODITIES</span>)}
@@ -337,7 +336,7 @@ export default function Search(props: { search_string: string }) {
                             {commodityFacets ? (
                                 <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
                                     <CommodityFacet parentCallback={sendCandidate}/>
-                                </div>) : (<div/>)}
+                                </div>) : (<div/>)}*/}
                         </div>
 
                         <div className="hcLayoutResults">

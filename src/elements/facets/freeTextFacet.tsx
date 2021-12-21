@@ -63,10 +63,10 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
                 <option value="van_standaard.plaats">Port of departure standard</option>
                 <option value="van_regio_groot.name">Port of departure big region</option>
                 <option value="van_regio_klein.name">Port of departure small region</option>
-                <option value="naar.plaats">Port of arrival</option>
-                <option value="naar_standaard.plaats">Port of arrival standard</option>
-                <option value="naar_regio_groot.name">Port of arrival big region</option>
-                <option value="naar_regio_klein.name">Port of arrival small region</option>
+                <option value="naar.plaats">Port of destination</option>
+                <option value="naar_standaard.plaats">Port of destination standard</option>
+                <option value="naar_regio_groot.name">Port of destination big region</option>
+                <option value="naar_regio_klein.name">Port of destination small region</option>
                 <option value="lading.soort">Commodity</option>
                 <option value="opmerking_bron">Remarks</option>
 

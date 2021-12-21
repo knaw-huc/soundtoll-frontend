@@ -18,7 +18,7 @@ function GoDetailFacet() {
         const json: ICheckStruc = await response.json();
         if (json.amount === "1") {
             setError(false);
-            window.open("#detail/" + textField);
+            window.location.href = "#detail/" + textField;
         } else {
             setError(true);
         }

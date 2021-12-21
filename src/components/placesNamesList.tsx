@@ -32,7 +32,7 @@ function PlacesNamesList(props: { namesList: IResult, port: string }) {
                 portName = "Port of departure (standardized)";
                 break;
             case "naar_standaard.plaats":
-                portName = "Port of arrival (standardized)";
+                portName = "Port of destination (standardized)";
                 break;
         }
         searchData.searchvalues = [{name: portName, field: props.port, values: [name]} as ISearchValues];

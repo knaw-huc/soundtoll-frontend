@@ -30,7 +30,7 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
                 field = "van_regio_groot.name";
                 break;
             case "Arrival":
-                header = "Arrival port big region";
+                header = "Destination port big region";
                 field = "naar_regio_groot.name";
                 break;
             default:

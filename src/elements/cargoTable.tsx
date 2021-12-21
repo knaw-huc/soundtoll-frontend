@@ -92,7 +92,7 @@ export default function CargoTable(props: { passage: IPassageData }) {
                     {props.passage.soort_korting}
                 </div>
                 {korting.trim() === "" ? (<div/>) : (<div className="hcCargoTableValue hcLowerLine">
-                    {korting} rebate
+                    {korting}
                 </div>)}
 
             </div>
@@ -133,7 +133,7 @@ export default function CargoTable(props: { passage: IPassageData }) {
 
                     </div>
                     <div className="hcCargoTableValue">
-                        {item.naam}
+                        {item.naam} {item.korting === 'J' && ' (rebate)'}
                     </div>
                     <div className="hcCargoTableValue">
                         {item.bedrag1} {item.muntsoort1} {item.bedrag2} {item.muntsoort2} {item.bedrag3} {item.muntsoort3}
