@@ -37,6 +37,12 @@ function Download() {
                         <li>Sections / secties: <br/><div className="hcClickable" onClick={() => {getFile('secties_totaal.csv.zip')}}>secties_totaal.csv.zip</div> (74 KB)<br/>
                             <div className="hcClickable" onClick={() => {getFile('secties_totaal.sql.zip')}}>secties_totaal.sql.zip</div> (75 KB)
                             </li>
+                        <li>Place names source / plaatsnamen bron: <br/><div className="hcClickable" onClick={() => {getFile('places_source.csv.zip')}}>places_source.csv.zip</div> (771 KB)<br/>
+                            <div className="hcClickable" onClick={() => {getFile('places_source.sql.zip')}}>places_source.sql.zip</div> (784 KB)
+                        </li>
+                        <li>Place names standardized / plaatsnamen gestandaardiseerd: <br/><div className="hcClickable" onClick={() => {getFile('places_standard.csv.zip')}}>places_standard.csv.zip</div> (84 KB)<br/>
+                            <div className="hcClickable" onClick={() => {getFile('places_standard.sql.zip')}}>places_standard.sql.zip</div> (87 KB)
+                        </li>
                     </ul>
                 </div>
             </div>

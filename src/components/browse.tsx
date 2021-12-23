@@ -19,11 +19,20 @@ export default class Browse extends React.Component {
                                 <div className="hcBrowseCollection"><p><strong>Shipmasters</strong></p>
                                     <div className="hcClickable" onClick={() => { window.location.href = "#names"}}>Browse</div> through person names.
                                 </div>
-                                <div className="hcBrowseCollection"><p><strong>Ports</strong></p>
+                                <div className="hcBrowseCollection"><p><strong>Ports by name</strong></p>
                                     <p><a href="#hist_places">Browse</a> through ports by historical names.</p>
                                     <p><a href="#places">Browse</a> through ports by standardized names.</p>
                                 </div>
 
+                            </div>
+                            <div className="hc2columns">
+                                <div className="hcBrowseCollection"><p><strong>Scans</strong></p>
+                                    <div className="hcClickable" onClick={() => { window.open("https://images.soundtoll.nl")}}>Browse</div> through passage document scans.
+                                </div>
+                                <div className="hcBrowseCollection"><p><strong>Ports by region</strong></p>
+                                    <p><a href="#hist_places">Browse</a> through ports by big region.</p>
+                                    <p><a href="#places">Browse</a> through ports by small region.</p>
+                                </div>
                             </div>
                             <div className="hc2columns">
                                 <div className="hcBrowseCollection"><p><strong>Information on currencies</strong></p>
