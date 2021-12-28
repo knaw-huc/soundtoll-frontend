@@ -296,7 +296,8 @@ export interface ISearchObject {
 export interface IMapSearchStruc {
     port: string,
     region: string,
-    years: string
+    years: string,
+    commodity: string
 }
 
 export interface ICheckStruc {

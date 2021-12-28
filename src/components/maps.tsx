@@ -13,6 +13,7 @@ export default function Maps() {
     const [port, setPort] = useState("home_port");
     const [region, setRegion] = useState("0");
     const [years, setYears] = useState("0");
+    const [textField, setTextField] = useState<string>("");
     window.scroll(0, 0);
     const periods: string[] = [
         "none",
@@ -41,15 +42,31 @@ export default function Maps() {
     let mapSearchData: IMapSearchStruc = {
         port: port,
         region: region,
-        years: years
+        years: years,
+        commodity: textField
     }
 
     async function fetchData() {
-        const url = SONT_SERVICE + "map_places/" + Base64.toBase64(JSON.stringify(mapSearchData));
+        const url = SONT_SERVICE + "map_places/?q=" + Base64.toBase64(JSON.stringify(mapSearchData));
         const response = await fetch(url);
         const json = await response.json();
         setData(json);
         setLoading(false);
+    }
+
+    function handleChange(e: React.FormEvent<HTMLInputElement>): void {
+        setTextField(e.currentTarget.value);
+    }
+
+    function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>): void {
+        if (e.key === 'Enter' && textField.trim() !== "") {
+            setLoading(true);
+        }
+    }
+
+    function setTextFacet() {
+        setTextField("");
+        setLoading(true);
     }
 
     function goSearch(name: string) {
@@ -57,14 +74,14 @@ export default function Maps() {
             case "home_port":
                 searchData.searchvalues = [{
                     name: "Home port (standardized)",
-                    field: "plaats_standaard",
+                    field: "FREE_TEXT:plaats_standaard",
                     values: [name]
                 } as ISearchValues];
                 break;
             case "from_port":
                 searchData.searchvalues = [{
                     name: "Port of departure (standardized)",
-                    field: "van_standaard.plaats",
+                    field: "FREE_TEXT:van_standaard.plaats",
                     values: [name]
                 } as ISearchValues];
                 break;
@@ -81,8 +98,12 @@ export default function Maps() {
                 let jrs:ISearchValues = {name: "Period", field: "PERIOD", values: [periods[Number(years)]]};
                 searchData.searchvalues.push(jrs);
             }
-
-
+        }
+        if (textField.trim() !== "") {
+            let comm:ISearchValues = {name: "Commodity", field: "FREE_TEXT:lading.soort", values: [textField]};
+            if (typeof searchData.searchvalues !== 'string') {
+                searchData.searchvalues.push(comm);
+            }
         }
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
         //window.location.href = "/#search/" + codedData;
@@ -158,6 +179,15 @@ export default function Maps() {
                                     <option value="5">Years 1750 - 1800</option>
                                     <option value="6">Years 1800 - 1857</option>
                                 </select>
+                            </div>
+                            <div className="hcFacet">
+                                <div className="hcFacetTitle">
+                                    <span>Commodity</span>
+                                </div>
+                                <input type="text" placeholder="Enter commodity name" value={textField} onChange={handleChange} onKeyUp={handleKeyPress}/>
+                                <div>
+                                    <button className="ftSearchBtn" onClick={setTextFacet}>Reset</button>
+                                </div>
                             </div>
                         </div>
 
