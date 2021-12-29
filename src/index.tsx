@@ -17,6 +17,8 @@ import {SontMachine} from "./machine/model";
 import Currency from "./components/currency";
 import Places from "./components/places";
 import HistoricalPlaces from "./components/historicalPlaces";
+import BigRegions from "./components/bigRegions";
+import SmallRegions from "./components/smallRegions";
 import {ISetLangEvent, ISetValue} from "./misc/interfaces";
 import Download from "./components/download";
 
@@ -87,6 +89,8 @@ ReactDOM.render(
             "names": ({state}) => <Shipmasters/>,
             "places": ({state}) => <Places/>,
             "hist_places": ({state}) => <HistoricalPlaces/>,
+            "big_regions": ({state}) => <BigRegions/>,
+            "small_regions": ({state}) => <SmallRegions/>,
             "fourOhFour": ({state}) => <div>404</div>,
             "": ({state}) => <div>The GUI for {state.value} is not yet defined</div>
     })}</div>

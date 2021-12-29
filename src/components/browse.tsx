@@ -30,8 +30,8 @@ export default class Browse extends React.Component {
                                     <div className="hcClickable" onClick={() => { window.open("https://images.soundtoll.nl")}}>Browse</div> through passage document scans.
                                 </div>
                                 <div className="hcBrowseCollection"><p><strong>Ports by region</strong></p>
-                                    <p><a href="#hist_places">Browse</a> through ports by big region.</p>
-                                    <p><a href="#places">Browse</a> through ports by small region.</p>
+                                    <p><a href="#big_regions">Browse</a> through ports by big region.</p>
+                                    <p><a href="#small_regions">Browse</a> through ports by small region.</p>
                                 </div>
                             </div>
                             <div className="hc2columns">

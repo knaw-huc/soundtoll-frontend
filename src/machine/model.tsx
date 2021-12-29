@@ -32,6 +32,8 @@ export const SontMachine = Machine<{
             }
         },
         hist_places: {},
+        big_regions: {},
+        small_regions: {},
         names: {
             states: {
                 no_character: {},
@@ -75,6 +77,8 @@ export const SontMachine = Machine<{
             currencies: "currencies",
             places: "places",
             hist_places: "hist_places",
+            big_regions: "big_regions",
+            small_regions: "small_regions",
             names: "names",
             about: {
                 actions: assign({
@@ -124,6 +128,8 @@ export const SontMachine = Machine<{
             currencies: {},
             download: {},
             hist_places: {},
+            big_regions: {},
+            small_regions: {},
             places: {
                 initial: "no_character" as const,
                 states: {
