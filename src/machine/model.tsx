@@ -19,9 +19,11 @@ export const SontMachine = Machine<{
         test: {},
         home: {},
         search: {},
+        contact: {},
         search_map: {},
         browse: {},
         download: {},
+        download_results: {},
         about: {},
         commodities: {},
         currencies: {},
@@ -73,9 +75,16 @@ export const SontMachine = Machine<{
             },
             browse: "browse",
             download: "download",
+            download_results: {
+                actions: assign({
+                    search_string: (context, event) => event.search_string
+                }),
+                target: "download_results"
+            },
             commodities: "commodities",
             currencies: "currencies",
             places: "places",
+            contact: "contact",
             hist_places: "hist_places",
             big_regions: "big_regions",
             small_regions: "small_regions",
@@ -100,6 +109,7 @@ export const SontMachine = Machine<{
             detail: {},
             map: {},
             maps: {},
+            contact: {},
             home: {
                 on: {
                     SET_LANGUAGE: {
@@ -127,6 +137,7 @@ export const SontMachine = Machine<{
             commodities: {},
             currencies: {},
             download: {},
+            download_results: {},
             hist_places: {},
             big_regions: {},
             small_regions: {},

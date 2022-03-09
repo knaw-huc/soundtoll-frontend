@@ -5,7 +5,7 @@ import {SONT_SERVICE} from "../../config";
 
 function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
     const [data, setData] = useState<IRegionDataList>({regions: []});
-    const url: string = SONT_SERVICE + "small_regions";
+    const url: string = SONT_SERVICE + "small_regions_facets";
     const port: string = props.port;
     const [help, setHelp] = useState(false);
     const [count, setCount] = useState(0);

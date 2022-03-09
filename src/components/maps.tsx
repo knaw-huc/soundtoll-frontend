@@ -74,14 +74,14 @@ export default function Maps() {
             case "home_port":
                 searchData.searchvalues = [{
                     name: "Home port (standardized)",
-                    field: "FREE_TEXT:plaats_standaard",
+                    field: "plaats_standaard",
                     values: [name]
                 } as ISearchValues];
                 break;
             case "from_port":
                 searchData.searchvalues = [{
                     name: "Port of departure (standardized)",
-                    field: "FREE_TEXT:van_standaard.plaats",
+                    field: "van_standaard.plaats",
                     values: [name]
                 } as ISearchValues];
                 break;
@@ -99,6 +99,7 @@ export default function Maps() {
                 searchData.searchvalues.push(jrs);
             }
         }
+        console.log("text = " + textField);
         if (textField.trim() !== "") {
             let comm:ISearchValues = {name: "Commodity", field: "FREE_TEXT:lading.soort", values: [textField]};
             if (typeof searchData.searchvalues !== 'string') {

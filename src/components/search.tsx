@@ -21,6 +21,7 @@ import PassageList from "./passageList";
 import YearFacet from "../elements/facets/yearFacet";
 import GoDetailFacet from "../elements/facets/goDetail";
 import {
+    IDownloadResults,
     IFacetCandidate, IRemoveFacet,
     IResetFacets, IResultPassageList,
     ISearchObject,
@@ -71,6 +72,7 @@ export default function Search(props: { search_string: string }) {
     const [refresh, setRefresh] = useState(true);
     const [loading, setLoading] = useState(true);
     const [pages, setPages] = useState<number[]>([]);
+    const [download, setDownload] = useState(false);
 
     const sendCandidate: ISendCandidate = (candidate: IFacetCandidate) => {
         searchBuffer = searchStruc;
@@ -195,6 +197,10 @@ export default function Search(props: { search_string: string }) {
         setRefresh(!refresh);
     }
 
+    const downloadResults: IDownloadResults = () => {
+        window.open("#download_results/" + Base64.toBase64(JSON.stringify(searchStruc)));
+    }
+
     const removeFacet: IRemoveFacet = (field: string, value: string) => {
         searchBuffer = searchStruc;
         if (typeof searchBuffer.searchvalues === "object") {
@@ -300,43 +306,6 @@ export default function Search(props: { search_string: string }) {
                                     <SmallRegionFacet parentCallback={sendCandidate} port="Destination"/>
                                     <BigRegionFacet parentCallback={sendCandidate} port="Destination"/>
                                 </div>) : (<div/>)}
-
-                           {/* <div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
-                                 onClick={toggleDepartureFacets}>
-                                {departureFacets ? (<span className="hcFacetGroup">&#9660; DEPARTURES</span>) : (
-                                    <span className="hcFacetGroup">&#9658; DEPARTURES</span>)}
-                            </div>
-                            {departureFacets ? (
-                                <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
-                                    <DeparturePortFacet parentCallback={sendCandidate}/>
-                                    <DepartureStandardFacet parentCallback={sendCandidate}/>
-                                    <SmallRegionFacet parentCallback={sendCandidate} port="Departure"/>
-                                    <BigRegionFacet parentCallback={sendCandidate} port="Departure"/>
-                                </div>) : (<div/>)}*/}
-
-                            {/*<div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
-                                 onClick={toggleDestinationFacets}>
-                                {destinationFacets ? (<span className="hcFacetGroup">&#9660; DESTINATIONS</span>) : (
-                                    <span className="hcFacetGroup">&#9658; DESTINATIONS</span>)}
-                            </div>
-                            {destinationFacets ? (
-                                <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
-                                    <DestinationPortFacet parentCallback={sendCandidate}/>
-                                    <DestinationStandardFacet parentCallback={sendCandidate}/>
-                                    <SmallRegionFacet parentCallback={sendCandidate} port="Destination"/>
-                                    <BigRegionFacet parentCallback={sendCandidate} port="Destination"/>
-                                </div>) : (<div/>)}*/}
-
-
-                            {/*<div className="hcFacetSubDivision" id="shipmasterFacetsTitle"
-                                 onClick={toggleCommodityFacets}>
-                                {commodityFacets ? (<span className="hcFacetGroup">&#9660; COMMODITIES</span>) : (
-                                    <span className="hcFacetGroup">&#9658; COMMODITIES</span>)}
-                            </div>
-                            {commodityFacets ? (
-                                <div className="hcLayoutFacetsToggle" id="hcLayoutFacetsToggle">
-                                    <CommodityFacet parentCallback={sendCandidate}/>
-                                </div>) : (<div/>)}*/}
                         </div>
 
                         <div className="hcLayoutResults">
@@ -347,8 +316,8 @@ export default function Search(props: { search_string: string }) {
                                 }}>
                                     <option value="schipper_achternaam.raw;asc">Order by family name &#8595;</option>
                                     <option value="schipper_achternaam.raw;desc">Order by family name &#8593;</option>
-                                    <option value="jaar;asc">Order by date &#8595;</option>
-                                    <option value="jaar;desc">Order by date &#8593;</option>
+                                    <option value="jaar;asc">Order by year &#8595;</option>
+                                    <option value="jaar;desc">Order by year &#8593;</option>
                                     <option value="schipper_plaatsnaam.raw;asc">Order by home port &#8595;</option>
                                     <option value="schipper_plaatsnaam.raw;desc">Order by home port &#8593;</option>
                                     <option value="van_eerste.raw;asc">Order by from &#8595;</option>
@@ -358,8 +327,9 @@ export default function Search(props: { search_string: string }) {
                                 </select></div>
                             </div>
                             <div className="hcMarginBottom2">
-                                <div className="hcSmallTxt hcTxtColorGreyMid">Selected facets: <span
-                                    className="hcFacetReset hcClickable" onClick={resetFacets}>Reset facets</span>
+                                <div className="hcSmallTxt hcTxtColorGreyMid">Selected facets:
+                                    {data.amount < 10000 && (<span className="hcFacetReset hcClickable" onClick={downloadResults}>Download results</span>)}
+                                    <span className="hcFacetReset hcClickable" onClick={resetFacets}>Reset facets</span>
                                 </div>
                                 {searchStruc.searchvalues === "none" ? (
                                     <span className="hcSelectedFacet"><span

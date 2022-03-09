@@ -3,6 +3,7 @@ import Header from "../page/header";
 import Footer from "../page/footer";
 import {goOut} from "../misc/functions";
 import "../assets/css/soundtoll.css";
+import {PDF_PATH} from "../config";
 
 export default class Browse extends React.Component {
 
@@ -27,7 +28,8 @@ export default class Browse extends React.Component {
                             </div>
                             <div className="hc2columns">
                                 <div className="hcBrowseCollection"><p><strong>Scans</strong></p>
-                                    <div className="hcClickable" onClick={() => { window.open("https://images.soundtoll.nl")}}>Browse</div> through passage document scans.
+                                    <p><div className="hcClickable" onClick={() => { window.open("https://images.soundtoll.nl")}}>Browse</div> through passage document scans.</p>
+                                    <p>(See also <div className="hcClickable" onClick={() => { window.open(PDF_PATH + "stro_films.pdf")}}>the complete list</div> of STR microfilms for this.)</p>
                                 </div>
                                 <div className="hcBrowseCollection"><p><strong>Ports by region</strong></p>
                                     <p><a href="#big_regions">Browse</a> through ports by big region.</p>

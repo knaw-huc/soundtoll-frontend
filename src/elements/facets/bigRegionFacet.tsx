@@ -5,7 +5,7 @@ import {SONT_SERVICE} from "../../config";
 
 function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
     const [data, setData] = useState<IRegionDataList>({regions: []});
-    const url: string = SONT_SERVICE + "big_regions";
+    const url: string = SONT_SERVICE + "big_regions_facets";
     const port: string = props.port;
     const [help, setHelp] = useState(false);
     const [count, setCount] = useState(0);

@@ -32,7 +32,7 @@ export default function Header() {
     }
 
     function goMail() {
-        window.location.href ="mailto:info@huygens.knaw.nl";
+        window.location.href ="#contact";
     }
 
     function goPrivacy() {

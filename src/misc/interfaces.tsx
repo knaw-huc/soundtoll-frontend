@@ -267,6 +267,10 @@ export interface IResetFacets {
     (): void
 }
 
+export interface IDownloadResults {
+    (): void
+}
+
 export interface IRemoveFacet {
     (field: string, value: string): void
 }
