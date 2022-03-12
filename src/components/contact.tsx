@@ -9,6 +9,8 @@ export default function About() {
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
                     <h2>Contact</h2>
+                    <p>&nbsp;</p>
+                    <p>For contact, please mail to <div onClick={() => {window.location.href='mailto:info@huygens,knaw.nl'}} className="hcClickable">info@huygens.knaw.nl</div></p>
                 </div>
             </div>
             <Footer/>

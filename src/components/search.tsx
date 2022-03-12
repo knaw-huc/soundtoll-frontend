@@ -328,7 +328,7 @@ export default function Search(props: { search_string: string }) {
                             </div>
                             <div className="hcMarginBottom2">
                                 <div className="hcSmallTxt hcTxtColorGreyMid">Selected facets:
-                                    {data.amount < 10000 && (<span className="hcFacetReset hcClickable" onClick={downloadResults}>Download results</span>)}
+                                    {data.amount < 10000 && !loading && (<span className="hcFacetReset hcClickable" onClick={downloadResults}>Download results</span>)}
                                     <span className="hcFacetReset hcClickable" onClick={resetFacets}>Reset facets</span>
                                 </div>
                                 {searchStruc.searchvalues === "none" ? (

@@ -27,6 +27,8 @@ export default function AboutNL()  {
                             <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_films.pdf")}>Volledige lijst met STR-microfilms</div></p>
                             <p><div  className="hcClickable" onClick={() => goOut(PDF_PATH + "products.pdf")}>(Onvolledige) lijst met producten die als ladingen in STRO voorkomen</div></p>
                             <p><div  className="hcClickable" onClick={() => goOut(PDF_PATH + "roman_numerals.pdf")}>Romeinse cijfers in STRO: notatie en interpretatie</div></p>
+                            <p><div  className="hcClickable" onClick={() => goOut(PDF_PATH + "Pund-og-Alen.pdf")}>Maten en gewichten 1: Poul Thestrup, <i>Pund og alen</i></div></p>
+                            <p><div  className="hcClickable" onClick={() => goOut(PDF_PATH + "websites_weights_measures.pdf")}>Maten en gewichten 2: nuttige websites</div></p>
                         </div>
                         <div className="hcBrowseCollection"><p><strong>Totstandkoming STRO</strong></p>
                             <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_project_organisatie.pdf")}>Projectorganisatie</div></p>
