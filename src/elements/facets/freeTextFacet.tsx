@@ -18,6 +18,8 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
     function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>): void {
         if (e.key === 'Enter') {
             setTextFacet();
+            e.currentTarget.value = "";
+            setSearchField("full_text");
         }
     }
 
@@ -50,7 +52,7 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
             <select onChange={(e) => {
                 setSearchField(e.target.value);
                 setSearchlabel(e.target.options[e.target.selectedIndex].text);
-            } }>
+            } } value={searchField}>
                 <option value="fulltext">All indexed fields</option>
                 <option value="schipper_achternaam">Shipmaster surname</option>
                 <option value="schipper_voornamen">Shipmaster given name</option>

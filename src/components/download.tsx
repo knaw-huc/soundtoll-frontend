@@ -1,8 +1,9 @@
 import React from "react";
 import Header from "../page/header";
 import Footer from "../page/footer";
-import{DOWNLOAD_PATH} from "../config";
+import {DOWNLOAD_PATH, PDF_PATH} from "../config";
 import {saveAs} from "file-saver";
+import {goOut} from "../misc/functions";
 
 function Download() {
     function getFile(name: string) {
@@ -15,6 +16,8 @@ function Download() {
             <div className="hcContentContainer hcMarginBottom5">
                 <div className="hcBasicSideMargin hcMarginTop1 hcMarginBottom5">
                     <h1>Download database data</h1>
+                    <p>Please, see for an explanation of the tables the <div className="hcClickable" onClick={() => goOut(PDF_PATH + "stro_tables.pdf")}>pdf</div> <em>Explanation of the STR tables</em>.</p>
+                    <p><strong>Code page:</strong> 65001 Unicode (UTF8)</p>
                     <ul className="downloadList">
                         <li>Taxes / belastingen: <br/>
                             <div className="hcClickable" onClick={() => {getFile('belastingen.csv.zip')}}>belastingen.csv.zip</div> (13,3 MB)<br/>

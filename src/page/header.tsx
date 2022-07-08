@@ -36,7 +36,7 @@ export default function Header() {
     }
 
     function goPrivacy() {
-        window.location.href ="https://www.knaw.nl/en/about-us/career-and-talent-development-at-the-academy/privacy-statement";
+        window.open("https://www.knaw.nl/privacy");
     }
 
     function goDownload() {

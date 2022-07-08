@@ -30,7 +30,7 @@ import {
     ISendPage,
     ISortOrder
 } from "../misc/interfaces";
-import {ELASTIC_URL} from "../config";
+import {ELASTIC_URL, HOST} from "../config";
 import {Base64} from "js-base64";
 
 export default function Search(props: { search_string: string }) {
@@ -62,10 +62,10 @@ export default function Search(props: { search_string: string }) {
 
     const [searchFacets, setSearchfacets] = useState(searchData.facetstate.search);
     const [shipMasterFacets, setShipMasterfacets] = useState(searchData.facetstate.shipmaster);
-    const [departureFacets, setDepartureFacets] = useState(searchData.facetstate.departure);
+   /* const [departureFacets, setDepartureFacets] = useState(searchData.facetstate.departure);
     const [destinationFacets, setDestinationFacets] = useState(searchData.facetstate.arrival);
     const [standardFacets, setStandardFacets] = useState(searchData.facetstate.standard);
-    const [commodityFacets, setCommodityFacets] = useState(searchData.facetstate.misc);
+    const [commodityFacets, setCommodityFacets] = useState(searchData.facetstate.misc);*/
     let searchBuffer = searchData;
     const [searchStruc, setSearchStruc] = useState<ISearchObject>(searchData);
     const [data, setData] = useState<IResultPassageList>({amount: 0, pages: 0, passages: []});
@@ -187,12 +187,8 @@ export default function Search(props: { search_string: string }) {
         searchBuffer = searchStruc;
         searchBuffer.page = 1;
         searchBuffer.searchvalues = "none";
-        setSearchfacets(false);
-        setCommodityFacets(false);
-        setDepartureFacets(false);
-        setDestinationFacets(false);
-        setShipMasterfacets(false);
-        setStandardFacets(false);
+        setSearchfacets(true);
+        setShipMasterfacets(true);
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
     }
@@ -228,7 +224,7 @@ export default function Search(props: { search_string: string }) {
         }
     }
 
-    function toggleDestinationFacets() {
+    /*function toggleDestinationFacets() {
         if (destinationFacets) {
             setDestinationFacets(false);
         } else {
@@ -258,7 +254,7 @@ export default function Search(props: { search_string: string }) {
         } else {
             setCommodityFacets(true);
         }
-    }
+    }*/
 
     useEffect(() => {
         fetchData();

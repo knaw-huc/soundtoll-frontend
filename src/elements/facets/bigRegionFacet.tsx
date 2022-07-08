@@ -5,6 +5,7 @@ import {SONT_SERVICE} from "../../config";
 
 function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
     const [data, setData] = useState<IRegionDataList>({regions: []});
+    const [region, setRegion] = useState("none");
     const url: string = SONT_SERVICE + "big_regions_facets";
     const port: string = props.port;
     const [help, setHelp] = useState(false);
@@ -19,6 +20,7 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
     function sendCandidate(value: string) {
         let header: string = "";
         let field: string = "";
+        setRegion("none");
 
         switch (props.port) {
             case "Home port":
@@ -61,7 +63,7 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate, port: string}) {
                 Select the region of the shipmasters home ports.
             </div> }
             <div className="hcFacetItems">
-                <select className="hcFacetSelector" onChange={(e) => sendCandidate(e.target.value)}>
+                <select className="hcFacetSelector" value={region} onChange={(e) => sendCandidate(e.target.value)}>
                     <option value="none">--- Select region ---</option>
                     {data.regions.map((item) => {
                         return <option value={item.region}>{item.region}</option>

@@ -62,7 +62,7 @@ function YearFacet(props: { parentCallback: ISendCandidate })
             {help &&
             <div className="hcFacetHelp">
                 <strong>Year facet </strong><br/>
-                Select single year of period
+                Select single year or period
             </div>}
             <div>
                 {single ? (

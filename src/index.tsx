@@ -36,7 +36,7 @@ const setLanguage: ISetLangEvent = (struc: ISetValue) => {
 
 function gotoUrl() {
     if (window.location.hash.substr(1).indexOf("detail/") === 0) {
-        const id = +window.location.hash.substr(window.location.hash.indexOf("/") + 1);
+        const id = window.location.hash.substr(window.location.hash.indexOf("/") + 1);
         interpreter.send("detail", {passage_id: id});
     } else {
         if (window.location.hash.substr(1).indexOf("map/") === 0) {

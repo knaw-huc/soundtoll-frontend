@@ -56,7 +56,7 @@ function GoDetailFacet() {
             {help &&
             <div className="hcFacetHelp">
                 <strong>Shortcut</strong><br/>
-                Go directly to a detail view with a passage ID.
+                Go directly to a specific passage/registration by entering its passage ID..
             </div>}
 
             <div className="hcFacetFilter"><input type="text" id="shortcut"

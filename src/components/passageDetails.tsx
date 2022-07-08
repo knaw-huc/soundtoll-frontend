@@ -46,14 +46,14 @@ function PassageDetails(props: {passage: IResult}) {
                     {pass.schipper_naam} from {pass.schipper_plaatsnaam}
                 </div>
             </div>
-            <div className="hcPassageRow">
+            {/*<div className="hcPassageRow">
                 <div className="hcPassageLabel">
                     Patronymic
                 </div>
                 <div className="hcPassageValue">
                     {pass.schipper_patroniem}
                 </div>
-            </div>
+            </div>*/}
             <div className="hcPassageRow">
                 <div className="hcPassageLabel">
                     Section
