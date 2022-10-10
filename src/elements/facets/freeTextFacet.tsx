@@ -19,7 +19,7 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
         if (e.key === 'Enter') {
             setTextFacet();
             e.currentTarget.value = "";
-            setSearchField("full_text");
+            setSearchField("fulltext");
         }
     }
 
@@ -44,7 +44,9 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
             { help &&
             <div className="hcFacetHelp">
                 <strong>Free text facet </strong><br/>
-                Search through all indexed fields. Searching with wildcards ('*' and '?') is allowed.
+                Search through all indexed fields. Searching with wildcards ('*' and '?') is allowed.<br/>
+                * = 0, 1 or more possible characters<br/>
+                ? = 1 possible character
             </div> }
 
             <div className="hcFacetFilter"><input type="text" name=""  id="freeText" placeholder="Press ENTER to search"  onChange={handleChange} onKeyUp={handleKeyPress}/></div>

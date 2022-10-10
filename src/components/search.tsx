@@ -187,8 +187,8 @@ export default function Search(props: { search_string: string }) {
         searchBuffer = searchStruc;
         searchBuffer.page = 1;
         searchBuffer.searchvalues = "none";
-        setSearchfacets(true);
-        setShipMasterfacets(true);
+        //setSearchfacets(true);
+        //setShipMasterfacets(true);
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
     }

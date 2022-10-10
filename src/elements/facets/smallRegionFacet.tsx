@@ -31,7 +31,7 @@ function SmallRegionFacet(props: {parentCallback: ISendCandidate, port: string})
                 header = "Departure port small region";
                 field = "van_regio_klein.name";
                 break;
-            case "Arrival":
+            case "Destination":
                 header = "Destination port small region";
                 field = "naar_regio_klein.name";
                 break;

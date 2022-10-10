@@ -28,7 +28,7 @@ export default class Browse extends React.Component {
                             </div>
                             <div className="hc2columns">
                                 <div className="hcBrowseCollection"><p><strong>Scans</strong></p>
-                                    <p><div className="hcClickable" onClick={() => { window.open("https://images.soundtoll.nl")}}>Browse</div> through passage document scans.</p>
+                                    <p><div className="hcClickable" onClick={() => { window.open("https://images.soundtoll.nl/?imagesetuuid=86a526ef-9798-45ec-8abd-fe187806ae64&uri=https://images.diginfra.net/api/pim/iiif/86a526ef-9798-45ec-8abd-fe187806ae64/canvas/492e11e3-dc91-41d8-9f2e-d8132c7077a0")}}>Browse</div> through passage document scans.</p>
                                     <p>(See also <div className="hcClickable" onClick={() => { window.open(PDF_PATH + "stro_films.pdf")}}>the complete list</div> of STR microfilms for this.)</p>
                                 </div>
                                 <div className="hcBrowseCollection"><p><strong>Ports by region</strong></p>

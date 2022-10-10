@@ -46,6 +46,9 @@ function Download() {
                         <li>Place names standardized / plaatsnamen gestandaardiseerd: <br/><div className="hcClickable" onClick={() => {getFile('places_standard.csv.zip')}}>places_standard.csv.zip</div> (84 KB)<br/>
                             <div className="hcClickable" onClick={() => {getFile('places_standard.sql.zip')}}>places_standard.sql.zip</div> (87 KB)
                         </li>
+                        <li>Images: <br/><div className="hcClickable" onClick={() => {getFile('images.csv.zip')}}>images.csv.zip</div> (9 MB)<br/>
+                            <div className="hcClickable" onClick={() => {getFile('images.sql.zip')}}>images.sql.zip</div> (10 MB)
+                        </li>
                     </ul>
                 </div>
             </div>
