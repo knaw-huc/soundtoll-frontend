@@ -30,7 +30,7 @@
     "react-numeric-input": "^2.2.3",
     "react-rangeslider": "^2.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "5.0.1",
     "typescript": "^3.7.5",
     "url-pattern": "^1.0.3",
     "xstate": "^4.7.8"
