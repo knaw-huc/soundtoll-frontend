@@ -1,5 +1,6 @@
 import React from "react";
 import {IPassageData} from "../misc/interfaces";
+import {Fragment} from "react";
 
 export default function CargoTable(props: { passage: IPassageData }) {
     const subtotaal1: string = props.passage.subtotaal1_bedrag1 + " " + props.passage.subtotaal1_muntsoort1 + " " + props.passage.subtotaal1_bedrag2 + " " + props.passage.subtotaal1_muntsoort2 + " " + props.passage.subtotaal1_bedrag3 + " " + props.passage.subtotaal1_muntsoort3;
@@ -43,7 +44,7 @@ export default function CargoTable(props: { passage: IPassageData }) {
                         {item.maat}
                     </div>
                     <div className="hcCargoTableValue">
-                        {item.soort}
+                        {item.maat_alt === '' ? (<Fragment>{item.soort}</Fragment>) : (<Fragment>{item.soort} ({item.aantal_alt} {item.maat_alt})</Fragment>)}
                     </div>
                     <div className="hcCargoTableValue">
                         {item.bedrag1} {item.muntsoort1} {item.bedrag2} {item.muntsoort2} {item.bedrag3} {item.muntsoort3}

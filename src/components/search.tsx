@@ -30,10 +30,14 @@ import {
     ISendPage,
     ISortOrder
 } from "../misc/interfaces";
-import {ELASTIC_URL, HOST} from "../config";
+//import {ELASTIC_URL, HOST} from "../config";
+import {getServiceServer, getHome} from "../config";
 import {Base64} from "js-base64";
 
 export default function Search(props: { search_string: string }) {
+
+    const HOST = getHome();
+    const ELASTIC_URL = getServiceServer() + "elastic/search/";
 
     let searchData: ISearchObject = {
         facetstate: {

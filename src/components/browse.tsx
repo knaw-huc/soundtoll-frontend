@@ -3,11 +3,13 @@ import Header from "../page/header";
 import Footer from "../page/footer";
 import {goOut} from "../misc/functions";
 import "../assets/css/soundtoll.css";
-import {PDF_PATH} from "../config";
+import {getServiceServer, getHome} from "../config";
 
 export default class Browse extends React.Component {
 
     render()  {
+        const PDF_PATH = getHome() + "pdf/";
+
         return(
 
             <div>

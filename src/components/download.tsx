@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "../page/header";
 import Footer from "../page/footer";
-import {DOWNLOAD_PATH, PDF_PATH} from "../config";
+import {getServiceServer, getHome} from "../config";
 import {saveAs} from "file-saver";
 import {goOut} from "../misc/functions";
 
 function Download() {
+    const DOWNLOAD_PATH = getHome() + "db_downloads/";
+    const PDF_PATH = getHome() + "pdf/";
+
     function getFile(name: string) {
         saveAs(DOWNLOAD_PATH + name, name);
     }

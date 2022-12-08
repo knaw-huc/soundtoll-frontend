@@ -1,10 +1,10 @@
 import React from "react";
 import {goOut} from "../../misc/functions";
 import "../../assets/css/soundtoll.css";
-import {PDF_PATH} from "../../config";
+import {getServiceServer, getHome} from "../../config";
 
 export default function AboutNL()  {
-
+    const PDF_PATH = getHome() + "pdf/";
         return(
 
             <div>
