@@ -8,7 +8,7 @@ import {getServiceServer, getHome} from "../../config";
 export default class AboutEN extends React.Component {
 
     render()  {
-        const PDF_PATH = getHome() + "pdf/";
+        const PDF_PATH = getHome() + "/pdf/";
 
         return(
 

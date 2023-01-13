@@ -27,7 +27,7 @@ function Passage(props: { passageId: number }) {
     },[loading])
 
     function openImage(scanUrl: string): void {
-        setImagedata({open: true, url: scanUrl});
+        setImagedata({open: true, url: scanUrl.replace("sonttol", "Sonttol")});
     }
 
     function closeImage(): void {
@@ -50,7 +50,7 @@ function Passage(props: { passageId: number }) {
                                 dv.scans.map(item => {
                                     return (
                                         <div>
-                                            <img id="hcLeftScan" src={item.url} onClick={() => {window.open(item.iiif)}} alt={item.bestandsnaam}/>
+                                            <img id="hcLeftScan" src={item.url.replace("sonttol", "Sonttol")} onClick={() => {window.open(item.iiif)}} alt={item.bestandsnaam}/>
                                             <span className="hcScanName">{item.bestandsnaam}</span>
                                         </div>
                                     )

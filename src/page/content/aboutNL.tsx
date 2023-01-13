@@ -4,7 +4,7 @@ import "../../assets/css/soundtoll.css";
 import {getServiceServer, getHome} from "../../config";
 
 export default function AboutNL()  {
-    const PDF_PATH = getHome() + "pdf/";
+    const PDF_PATH = getHome() + "/pdf/";
         return(
 
             <div>
