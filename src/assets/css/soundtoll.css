@@ -1817,8 +1817,9 @@ right: 400px;
 }
 
 .ftSearchBtn {
-margin-top: 4px;
+margin: 4px 4px 0 0;
 padding: 4px;
+min-width: 60px;
 color: #ffffff;
 background-color: #1c5a91;
 }

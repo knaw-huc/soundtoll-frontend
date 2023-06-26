@@ -4,7 +4,7 @@ import "../../assets/css/soundtoll.css";
 import {getServiceServer, getHome} from "../../config";
 
 export default function AboutNL()  {
-    const PDF_PATH = getHome() + "/pdf/";
+    const PDF_PATH = getHome() + "/data/pdf/";
         return(
 
             <div>
@@ -18,7 +18,7 @@ export default function AboutNL()  {
                             <p>&nbsp;</p>
                         </div>
                         <div className="hcBrowseCollection"><p><strong>Handleiding</strong></p>
-                            <p>In ontwikkeling</p>
+                            <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "STRO_gebruiksaanwijzing.pdf")}>Gebruikershandleiding</div></p>
                         </div>
 
                     </div>

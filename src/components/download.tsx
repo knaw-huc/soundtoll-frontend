@@ -6,8 +6,8 @@ import {saveAs} from "file-saver";
 import {goOut} from "../misc/functions";
 
 function Download() {
-    const DOWNLOAD_PATH = getHome() + "/db_downloads/";
-    const PDF_PATH = getHome() + "/pdf/";
+    const DOWNLOAD_PATH = getHome() + "/data/db_downloads/";
+    const PDF_PATH = getHome() + "/data/pdf/";
 
     function getFile(name: string) {
         saveAs(DOWNLOAD_PATH + name, name);

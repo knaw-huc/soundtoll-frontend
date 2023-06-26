@@ -16,7 +16,7 @@ function HomeEN() {
                   <img src={boot} alt="Ship"/>
               </p>
               <p>
-                  The Sound Toll Registers (STR) are the accounts of the toll which the kings of Denmark levied on the shipping through the Sound, the strait which is the main connection betweenthe North Sea and the Baltic Sea. They have been preserved (with gaps in the first decades) for the period from 1497 to 1857, when the toll was abolished. From 1574 on, the series is almost complete.
+                  The Sound Toll Registers (STR) are the accounts of the toll which the kings of Denmark levied on the shipping through the Sound, the strait which is the main connection between the North Sea and the Baltic Sea. They have been preserved (with gaps in the first decades) for the period from 1497 to 1857, when the toll was abolished. From 1574 on, the series is almost complete.
                   The STR are being kept by the Danish National Archives (Rigsarkivet) in Copenhagen.
               </p>
 

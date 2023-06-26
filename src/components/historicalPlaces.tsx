@@ -54,7 +54,7 @@ function HistoricalPlaces() {
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("A")}>
                             A
                         </div>
-                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("Æ")}>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("ae")}>
                             Æ
                         </div>
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("B")}>
@@ -99,7 +99,7 @@ function HistoricalPlaces() {
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("O")}>
                             O
                         </div>
-                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("Ø")}>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("oe")}>
                             Ø
                         </div>
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("P")}>

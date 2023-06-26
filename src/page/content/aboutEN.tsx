@@ -8,7 +8,7 @@ import {getServiceServer, getHome} from "../../config";
 export default class AboutEN extends React.Component {
 
     render()  {
-        const PDF_PATH = getHome() + "/pdf/";
+        const PDF_PATH = getHome() + "/data/pdf/";
 
         return(
 
@@ -23,7 +23,7 @@ export default class AboutEN extends React.Component {
                                     <p>&nbsp;</p>
                                 </div>
                                 <div className="hcBrowseCollection"><p><strong>Manual</strong></p>
-                                    <p>Upcoming</p>
+                                    <p><div className="hcClickable" onClick={() => goOut(PDF_PATH + "STRO_manual.pdf")}>User manual</div></p>
                                 </div>
 
                             </div>

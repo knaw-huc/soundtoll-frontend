@@ -7,7 +7,7 @@ function BigRegionFacet(props: {parentCallback: ISendCandidate}) {
     const [data, setData] = useState<IRegionDataList>({regions: []});
     const [region, setRegion] = useState("none");
     const url: string = SONT_SERVICE + "big_regions_facets";
-    const port: string = 'Home';
+    const port: string = 'Home port';
     const [help, setHelp] = useState(false);
     const [count, setCount] = useState(0);
 

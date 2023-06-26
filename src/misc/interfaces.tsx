@@ -197,6 +197,8 @@ export interface IResultPassage {
     dag: string,
     id_doorvaart: string,
     schipper_plaatsnaam: string,
+    schipper_voornamen: string,
+    schipper_tussenvoegsel: string,
     schipper_patroniem: string,
     van_eerste: string,
     naar_eerste: string,

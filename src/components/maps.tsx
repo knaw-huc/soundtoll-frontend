@@ -12,8 +12,9 @@ export default function Maps() {
     const [data, setData] = useState<ISearchMapData>({number_of_records: 0, data: []});
     const [port, setPort] = useState("home_port");
     const [region, setRegion] = useState("0");
-    const [years, setYears] = useState("0");
+    const [years, setYears] = useState("2");
     const [textField, setTextField] = useState<string>("");
+    const [refresh, setRefresh] = useState(true);
     window.scroll(0, 0);
     const periods: string[] = [
         "none",
@@ -64,8 +65,23 @@ export default function Maps() {
         }
     }
 
+    function go() {
+        if (textField.trim() !== "") {
+            setLoading(true);
+        }
+    }
+
     function setTextFacet() {
         setTextField("");
+        setPort("home_port");
+        setRegion("0");
+        setYears("0");
+        mapSearchData = {
+            port: "home_port",
+            region: "0",
+            years: "0",
+            commodity: ""
+        }
         setLoading(true);
     }
 
@@ -99,7 +115,7 @@ export default function Maps() {
                 searchData.searchvalues.push(jrs);
             }
         }
-        console.log("text = " + textField);
+
         if (textField.trim() !== "") {
             let comm:ISearchValues = {name: "Commodity", field: "FREE_TEXT:lading.soort", values: [textField]};
             if (typeof searchData.searchvalues !== 'string') {
@@ -131,7 +147,7 @@ export default function Maps() {
                                 <select onChange={(e) => {
                                     setPort(e.target.value);
                                     setLoading(true);
-                                }}>
+                                }} value={port}>
                                     <option value="home_port">Home port</option>
                                     <option value="from_port">Port of departure</option>
                                     <option value="to_port">Port of destination</option>
@@ -144,7 +160,7 @@ export default function Maps() {
                                 <select onChange={(e) => {
                                 setRegion(e.target.value);
                                 setLoading(true);}
-                                }>
+                                } value={region}>
                                     <option value="0">All regions</option>
                                     <option value="14">Skagerrak, Kattegat (Denmark, Sweden)</option>
                                     <option value="1">The Baltic</option>
@@ -171,7 +187,7 @@ export default function Maps() {
                                 <select onChange={(e) => {
                                     setYears(e.target.value);
                                     setLoading(true);
-                                }}>
+                                }} value={years}>
                                     <option value="0">All years</option>
                                     <option value="1">Years before 1634</option>
                                     <option value="2">Years 1634 - 1857</option>
@@ -187,6 +203,7 @@ export default function Maps() {
                                 </div>
                                 <input type="text" placeholder="Enter commodity name" value={textField} onChange={handleChange} onKeyUp={handleKeyPress}/>
                                 <div>
+                                    <button className="ftSearchBtn" onClick={go}>Go</button>
                                     <button className="ftSearchBtn" onClick={setTextFacet}>Reset</button>
                                 </div>
                             </div>

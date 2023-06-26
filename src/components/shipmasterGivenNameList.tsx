@@ -24,7 +24,7 @@ function ShipmasterGivenNameList(props: {skipperList: IResult}) {
     function pickShipmaster(name: string): void {
         searchData.searchvalues = [{name: "Given name", field: "schipper_voornamen", values: [name]} as ISearchValues];
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
-        window.location.href = "/#search/" + codedData;
+        window.open("/#search/" + codedData);
 
     }
 

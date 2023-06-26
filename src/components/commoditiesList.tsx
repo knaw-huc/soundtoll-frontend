@@ -24,7 +24,7 @@ function CommoditiesList(props: {commList: IResult}) {
     function pickCommodity(name: string): void {
         searchData.searchvalues = [{name: "Commodity", field: "lading.soort", values: [name]} as ISearchValues];
         const codedData: string = Base64.toBase64(JSON.stringify(searchData));
-        window.location.href = "/#search/" + codedData;
+        window.open("/#search/" + codedData);
 
     }
 
