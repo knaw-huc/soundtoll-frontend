@@ -133,6 +133,33 @@ function Commodities() {
                         <div className="hcClickable hcRightMargin" onClick={() => setLetter("Z")}>
                             Z
                         </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("1")}>
+                            1
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("2")}>
+                            2
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("3")}>
+                            3
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("4")}>
+                            4
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("5")}>
+                            5
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("6")}>
+                            6
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("7")}>
+                            7
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("8")}>
+                            8
+                        </div>
+                        <div className="hcClickable hcRightMargin" onClick={() => setLetter("9")}>
+                            9
+                        </div>
                     </div>
                     {loading ? (
                         <div>Loading...</div>
