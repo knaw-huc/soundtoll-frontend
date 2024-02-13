@@ -228,37 +228,6 @@ export default function Search(props: { search_string: string }) {
         }
     }
 
-    /*function toggleDestinationFacets() {
-        if (destinationFacets) {
-            setDestinationFacets(false);
-        } else {
-            setDestinationFacets(true);
-        }
-    }
-
-    function toggleDepartureFacets() {
-        if (departureFacets) {
-            setDepartureFacets(false);
-        } else {
-            setDepartureFacets(true);
-        }
-    }
-
-    function toggleStandardFacets() {
-        if (standardFacets) {
-            setStandardFacets(false);
-        } else {
-            setStandardFacets(true);
-        }
-    }
-
-    function toggleCommodityFacets() {
-        if (commodityFacets) {
-            setCommodityFacets(false);
-        } else {
-            setCommodityFacets(true);
-        }
-    }*/
 
     useEffect(() => {
         fetchData();

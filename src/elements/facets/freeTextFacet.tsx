@@ -19,7 +19,7 @@ function FreeTextFacet(props: {parentCallback: ISendCandidate}) {
         if (e.key === 'Enter') {
             setTextFacet();
             e.currentTarget.value = "";
-            setSearchField("fulltext");
+            //setSearchField("fulltext");
         }
     }
 
